@@ -8,36 +8,56 @@
 
     /* Colors */
     --bg-color: linear-gradient(to bottom, #FFFBF2, #FFFFFF);
-    --bg-banner: linear-gradient(to bottom, #D5C9B9, #945300);
+    --bg-banner: linear-gradient(to bottom, #d5c9b9bd, #945400ea);
     --primary-color: #C4A277;
     --secondary-color: #EDE9E6;
     --card-bg-color: #FFFBF2;
     --text-color-light: #FFFBF2;
     --text-color-dark: #2E1A00;
+    --gray:#333333;
 
+    /* FONT-SIZE */
+    --title: clamp(2.5rem, 6vw, 6rem);
+    --heading: clamp(1.8rem, 4vw, 2.5rem);
+    --subheading: clamp(1.2rem, 3vw, 1.5rem);
+    --lead: clamp(0.95rem, 2vw, 1rem);
+    --h6: clamp(0.75rem, 1.5vw, 0.88rem);
+
+    /* HOVER */
+    --btn-hover1:#2E1A00;
+    --btn-hover2:#333333;
 }
 
 body {
     background-color: var(--bg-color);
 }
 
+/* 96px */
 .title {
-    font-size: clamp(2.5rem, 6vw, 6rem);
+    font-family: var(--primaryFont);
+    font-size: var(--title);
+    font-weight: bolder;
 }
 
+/* 40px */
 .heading {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-size: var(--heading);
 }
 
+/* 24px */
 .subheading {
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-family: var(--primaryFont);
+    font-size: var(--subheading);
 }
 
-.lead {
-    font-size: clamp(0.95rem, 2vw, 1rem);
+/* 16px */
+.lead { 
+    font-size: var(--lead);
 }
 
+/* 14px */
 .h6 {
-    font-size: clamp(0.75rem, 1.5vw, 0.88rem);
+    font-size: var(--h6);
+    
 }
 
