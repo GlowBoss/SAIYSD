@@ -1,0 +1,73 @@
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Add Item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Item Name</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Item Group</label>
+                                <select class="form-select limited-dropdown">
+                                    <option disabled>Select group</option>
+                                    <option>Iced Coffee</option>
+                                    <option>Non-Coffee</option>
+                                    <option>Frappé</option>
+                                    <option>Milktea</option>
+                                    <option>Fruit Tea</option>
+                                    <option>Fruit Soda</option>
+                                    <option>Egg-Drop Sandwich</option>
+                                    <option>Hot Drinks</option>
+                                    <option>Combo Meals</option>
+                                    <option>Snacks</option>
+                                    <option>Dessert</option>
+                                    <option>Rice Meals</option>
+                                    <option>Pasta</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Price</label>
+                                <textarea class="form-control" rows="1" name="menu_price"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Size</label>
+                                <textarea class="form-control" rows="1" name="menu_price"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Attachment</label>
+                                <input type="file" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mt-3">
+                        <button type="button" class="btn btn-danger me-2" data-bs-dismiss="modal">CANCEL</button>
+                        <button type="submit" class="btn btn-success addbtn">ADD ITEM</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="orderToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive"
+    aria-atomic="true">
+    <div class="d-flex">
+        <div class="toast-body">
+            Item Added!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+            aria-label="Close"></button>
+    </div>
+</div>
+
