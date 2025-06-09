@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
+
+:root {
+    --primaryFont: 'Poppins', sans-serif;
+    --secondaryFont: 'ABeeZee', sans-serif;
+
+    --bg-color: linear-gradient(to bottom, #FFFBF2, #FFFFFF);
+    --bg-banner: linear-gradient(to bottom, #d5c9b9bd, #945400ea);
+    --primary-color: #C4A277;
+    --secondary-color: #EDE9E6;
+    --card-bg-color: #FFFBF2;
+    --text-color-light: #FFFBF2;
+    --text-color-dark: #2E1A00;
+    --gray: #333333;
+
+    --title: clamp(2.5rem, 6vw, 6rem);
+    --heading: clamp(1.8rem, 4vw, 2.5rem);
+    --subheading: clamp(1.2rem, 3vw, 1.5rem);
+    --lead: clamp(0.95rem, 2vw, 1rem);
+    --h6: clamp(0.75rem, 1.5vw, 0.88rem);
+
+    --btn-hover1: #2E1A00;
+    --btn-hover2: #333333;
+}
+
+body {
+    background-image: url('../img/admin_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--primaryFont);
+}
+
+.login-card {
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 2rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    max-width: 900px;
+    width: 100%;
+}
+
+.form-control {
+    border-radius: 0.5rem;
+    background-color: rgba(217, 217, 217, 1);
+}
+
+.login-left {
+    padding: 3rem;
+}
+
+.login-logo {
+    text-align: center;
+    padding: 3rem;
+}
+
+.login-logo img {
+    max-width: 200px;
+}
+
+.btn-login {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    border: none;
+    font-family: var(--secondaryFont);
+}
+
+.btn-login:hover {
+    background-color: var(--btn-hover1);
+    color: var(--text-color-light);
+}
+
+.form-text a {
+    text-decoration: none;
+}
+
+.form-text a:hover {
+    text-decoration: underline;
+}
