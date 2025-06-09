@@ -489,3 +489,8 @@ body {
 .feedback-card:hover {
     transform: translateY(-5px);
 }
+
+/* CART */
+.rounded-square {
+    background-color: var( --primary-color);
+}
