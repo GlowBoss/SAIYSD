@@ -1,3 +1,11 @@
+// NAVBAR
+document.querySelectorAll('.nav-link').forEach(link => {
+    if (link.href === window.location.href) {
+        link.classList.add('active');
+    }
+});
+
+// SWIPER
 let swiperCards = new Swiper(".card__content", {
   loop: true,
   spaceBetween: 32,
@@ -24,7 +32,7 @@ let swiperCards = new Swiper(".card__content", {
   },
 });
 
-// Location
+// LOCATION
 function showBranch(event, branch) {
   event.preventDefault();
 
