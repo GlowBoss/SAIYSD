@@ -13,3 +13,50 @@ html {
     flex-direction: column;
     background-color: var(--card-bg-color)
 }
+
+.carousel-control-prev-icon {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23C4A277" viewBox="0 0 16 16"><path d="M11.5 1.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5l-8-6a.5.5 0 0 1 0-.8l8-6a.5.5 0 0 1 .5-.2z"/></svg>');
+    background-size: cover;
+    padding: 10px;
+}
+
+.carousel-control-next-icon {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23C4A277" viewBox="0 0 16 16"><path d="M4.5 1.5a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5l8-6a.5.5 0 0 0 0-.8l-8-6a.5.5 0 0 0-.5-.2z"/></svg>');
+    background-size: cover;
+    padding: 10px;
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    
+    width: 10%;
+}
+
+.carousel-control-prev-icon::before,
+.carousel-control-next-icon::before {
+    color:#C4A277;
+    font-size: 24px;
+}
+
+.cardSmall {
+    width: 20rem;
+    height: 8rem;
+    border-radius: 20px;
+    text-align: center;
+   
+
+}
+
+.cardBig {
+    width: 15rem;
+    height: 18rem;
+    border-radius: 20px;
+    text-align: center;
+   
+}
+
+.cardContainer {
+    border-radius: 20px;
+    text-align: center;
+}

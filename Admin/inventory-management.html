@@ -7,11 +7,9 @@
     <title>Inventory Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-    <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/inventory-management.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -145,82 +143,14 @@
 
             <!-- Main content column -->
             <div class="col-md-8 col-lg-9">
-                <div class="col-md-9 col-lg-9">
-                    <div class="card rounded-5" style="max-height: 90vh">
-                        <h4 class="subheading2 p-5 mb-5" role="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar"
-                            style="cursor: pointer;">
-                            Inventory Management
-                        </h4>
-                        <div>
-                            <!-- TOP FUNCTIONS BAR -->
-                            <div class="d-flex justify-content-between align-items-center mb-3 px-5">
-                                <p class="subheading3 mb-0">Current Stocks</p>
-                                <div class="input-group" style="max-width: 500px;">
-                                    <input type="text" class="form-control rounded-end-0" placeholder="Enter Item Name"
-                                        aria-label="Enter Item Name" aria-describedby="button-addon2">
-                                    <button class="btn btn-success rounded-start-0 rounded-end-2" type="button"
-                                        id="button-addon2">
-                                        ADD ITEM
-                                    </button>
-                                    <button class="btn btn-outline-success mx-2 rounded-2" type="button"
-                                        id="export-excel">
-                                        Export to Excel
-                                    </button>
-                                </div>
-                            </div>
+                 <div class="col-md-9 col-lg-9">
+                        <div class="card rounded-5" style="height: 100%;">
+                            <h4 role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar"
+                                aria-controls="offcanvasSidebar" style="cursor: pointer;">
+                                Inventory Management
+                            </h4>
                         </div>
-                        <!-- TABLE -->
-                        <div class="card mb-5 mx-5 overflow-scroll" style="height: 65vh">
-                            <table class="table overflow-hidden">
-                                <thead class="table-secondary">
-                                    <tr>
-                                        <th scope="col">Item Code.</th>
-                                        <th scope="col">Photo</th>
-                                        <th scope="col">Item Name</th>
-                                        <th scope="col">Item Group</th>
-                                        <th scope="col">Last Purchase</th>
-                                        <th scope="col">On Hand</th>
-                                        <th scope="col">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>orange.png</td>
-                                        <td>Orange</td>
-                                        <td>Fruits</td>
-                                        <td>03 May 2025</td>
-                                        <td>100 Kg</td>
-                                        <td><a class="btn"><i class="ri-edit-box-line"></i></a>
-                                            <a class="btn"><i class="ri-more-line"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>orange.png</td>
-                                        <td>Orange</td>
-                                        <td>Fruits</td>
-                                        <td>04 May 2025</td>
-                                        <td>100 Kg</td>
-                                        <td><a class="btn"><i class="ri-edit-box-line"></i></a>
-                                            <a class="btn"><i class="ri-more-line"></i></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- PAGINATION -->
-                        <ul class="pagination mx-auto">
-                            <li class="page-item"><a class="page-link" href="#"><</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">></a></li>
-                        </ul>
                     </div>
-
-                </div>
             </div>
         </div>
 
