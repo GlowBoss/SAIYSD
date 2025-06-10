@@ -37,7 +37,7 @@ html {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
+    background-attachment: fixed;
 }
 
 .custom-visit {
@@ -76,11 +76,17 @@ html {
 }
 
 .dashboard-title {
-    color: var(--primary-color);
-    font-weight: 700;
-    font-size: var(--heading);
-    font-family: var(--primaryFont);
+        color: var(--primary-color);
+    }
+
+@media (max-width: 767.98px) {
+    .dashboard-title {
+        padding-top: 2rem; /* Add some top padding */
+        font-size: 1.75rem; /* Decrease font size */
+        color: var(--primary-color);
+    }
 }
+
 
 .dashboard-subtitle {
     font-style: italic;
@@ -109,6 +115,34 @@ html {
 .dashboard-box:hover {
     background-color: var(--btn-hover1);
     cursor: pointer;
+}
+/* Existing CSS */
+
+.icon-btn {
+    font-size: 1.5rem; /* Increased size */
+    padding: 0.5rem; /* Added padding */
+}
+
+@media (max-width: 767.98px) { /* Bootstrap's sm breakpoint */
+    .custom-visit,
+    .custom-logout {
+        padding: 0.5rem; /* Adjust padding for icon buttons */
+        font-size: 1.2rem; /* Adjust icon size */
+        width: auto; /* Adjust width as needed */
+        height: auto; /* Adjust height as needed */
+        display: inline-flex; /* Use flexbox for centering */
+        align-items: center; /* Vertically center the icon */
+        justify-content: center; /* Horizontally center the icon */
+    }
+
+    .custom-visit i,
+    .custom-logout i {
+        font-size: 1.2rem; /* Adjust icon size */
+    }
+
+    .d-flex.gap-3 {
+        gap: 0.5rem !important; /* Reduce gap between items */
+    }
 }
 
 .logo {
