@@ -59,8 +59,24 @@ body {
     padding: 3rem;
 }
 
+
 .login-logo img {
     max-width: 200px;
+}
+@media (max-width: 767.98px) {
+    .login-card {
+        align-items: flex-start; 
+    }
+
+    .login-left {
+        margin-top: -4rem; 
+        padding: 2rem;
+    }
+
+    .login-logo {
+        margin-bottom: 0;
+        padding: 2rem; 
+    }
 }
 
 .btn-login {
