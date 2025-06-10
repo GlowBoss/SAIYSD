@@ -20,12 +20,22 @@ body {
     margin: 0 1rem;
 }
 
+.nav-link:hover {
+    color: var(--primary-color);  
+}
+
+.nav-link.active {
+    color: var(--primary-color); 
+    font-weight: 700;
+    /* border-bottom: 2px solid var(--primary-color);  */
+}
+
 .contact-btn {
     background-color: var(--primary-color);
     color: var(--text-color-light);
     border: none;
     padding: 6px 16px;
-    border-radius: 8px;
+    border-radius: 8px;     
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -231,7 +241,6 @@ body {
     position: absolute;
     inset: 0;
     background: rgba(46, 26, 0, 0.6);
-    /* Dark overlay for contrast */
     z-index: 0;
 }
 
@@ -277,6 +286,7 @@ body {
 
 .card__content {
     padding: 2rem 0;
+    
 }
 
 .swiper-wrapper {
@@ -284,7 +294,7 @@ body {
 }
 
 .card__article {
-    background: white;
+    background: var(--bg-color);
     border-radius: 1.25rem;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
