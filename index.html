@@ -18,37 +18,54 @@
 <body>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top py-2" style="background-color: white;">
+        <div class="container-fluid p-0">
             <!-- Left: Logo -->
-            <a class="navbar-brand fw-bold">SAISYD LOGO</a>
+            <a class="navbar-brand fw-bold" href="#">
+                <img src="assets/img/saisydLogo.png" alt="SAISYD Logo" style="height: 50px;">
+            </a>
 
-            <!-- Toggle button for small screens -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#saisydNavbar"
-                aria-controls="saisydNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <!-- Center: Nav links | Right: Icon + Button -->
+            <!-- Right: Toggle + Icon (for small screens) -->
+            <div class="d-flex align-items-center">
+                <!-- Icon visible only on small screens -->
+                <a href="cart.html" class="d-block d-lg-none ">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png" class="icon-bag" />
+                </a>
+
+                <!-- Toggle button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#saisydNavbar"
+                    aria-controls="saisydNavbar" aria-expanded="false" aria-label="Toggle navigation"  style="background: none; border: none; box-shadow: none; padding: 0;">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <!-- Center: Nav links | Right: Icon + Button for large screens -->
             <div class="collapse navbar-collapse" id="saisydNavbar">
                 <!-- Centered Nav Links -->
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 d-flex align-items-lg-center gap-lg-4 ">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 d-flex align-items-lg-center gap-lg-4">
                     <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Coffee</a></li>
+                    <li class="nav-item"><a class="nav-link" href="coffee.html">Coffee</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Location</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Track Order</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Help Center</a></li>
                 </ul>
 
-                <!-- Shopping bag + Contact Us -->
+                <!-- Only the icon will hide on small screens -->
                 <div class="d-flex align-items-center mt-lg-0">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png" class="icon-bag" />
-                    <button class="contact-btn ms-2">Contact Us</button>
+                    <!-- Large screen icon only -->
+                    <a href="cart.html" class="d-none d-lg-block">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png" class="icon-bag" />
+                    </a>
+
+                    <!-- Contact Us should always be visible -->
+                    <button class="contact-btn ms-0 ms-lg-2">Contact Us</button>
                 </div>
             </div>
         </div>
     </nav>
+
 
     <!-- Body -->
 
@@ -66,8 +83,8 @@
                                 dictum at mi nec.</p>
                             <div
                                 class="coffee-buttons d-flex gap-3 mt-3 justify-content-center justify-content-md-start">
-                                <button class="btn btn-fill">Test</button>
-                                <button class="btn btn-outline">Test</button>
+                                <button class="btn btn-fill ">Order Now</button>
+                                <!-- <button class="btn btn-outline">Test</button> -->
                             </div>
                         </div>
                         <div class="coffee-img mt-4 mt-md-0">
@@ -79,25 +96,6 @@
         </div>
     </div>
 
-    <div class="container py-5">
-        <div class="row text-center">
-            <div class="col-md-4 mb-4">
-                <div class="circle-icon"></div>
-                <h3 class="subheading2">LOREM IPSUM</h3>
-                <p class=" h6 ">Count of users who have successfully signed up on the website.</p>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="circle-icon"></div>
-                <h3 class="subheading2">LOREM IPSUM</h3>
-                <p class="h6 l">Count of users who have successfully signed up on the website.</p>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="circle-icon"></div>
-                <h3 class=" subheading2">LOREM IPSUM</h3>
-                <p class="circle-text">Count of users who have successfully signed up on the website.</p>
-            </div>
-        </div>
-    </div>
 
     <div class="container my-5">
         <div class="row align-items-center g-4">
@@ -131,7 +129,7 @@
     <div class="container my-5">
         <div class="menu-container">
             <h2 class="heading menu-title">POPULAR MENU</h2>
-            <div class="row row-cols-2 row-cols-md-4 g-4">
+            <div class="row row-cols-2 row-cols-md-3 g-4">
 
                 <!-- Products -->
                 <div class="col">
@@ -142,7 +140,6 @@
                             <span class="subheading menu-price me-4">₱140</span>
                             <span class="lead menu-size">500ml</span>
                         </div>
-                        <button class="lead buy-btn">Buy</button>
                     </div>
                 </div>
 
@@ -154,7 +151,6 @@
                             <span class="subheading menu-price me-4">₱140</span>
                             <span class="lead menu-size">500ml</span>
                         </div>
-                        <button class="lead buy-btn">Buy</button>
                     </div>
                 </div>
 
@@ -166,7 +162,6 @@
                             <span class="subheading menu-price me-4">₱140</span>
                             <span class="lead menu-size">500ml</span>
                         </div>
-                        <button class="lead buy-btn">Buy</button>
                     </div>
                 </div>
 
@@ -178,7 +173,6 @@
                             <span class="subheading menu-price me-4">₱140</span>
                             <span class="lead menu-size">500ml</span>
                         </div>
-                        <button class="lead buy-btn">Buy</button>
                     </div>
                 </div>
 
@@ -190,20 +184,6 @@
                             <span class="subheading menu-price me-4">₱140</span>
                             <span class="lead menu-size">500ml</span>
                         </div>
-                        <button class="lead buy-btn">Buy</button>
-                    </div>
-                </div>
-
-
-                <div class="col">
-                    <div class="menu-item">
-                        <img src="assets/img/coffee.png" alt="Amerikano">
-                        <div class="subheading menu-name">Amerikano</div>
-                        <div class="d-flex justify-content-center align-items-center gap-2">
-                            <span class="subheading menu-price me-4">₱140</span>
-                            <span class="lead menu-size">500ml</span>
-                        </div>
-                        <button class="lead buy-btn">Buy</button>
                     </div>
                 </div>
 
@@ -216,25 +196,16 @@
                             <span class="subheading menu-price me-4">₱140</span>
                             <span class="lead menu-size">500ml</span>
                         </div>
-                        <button class="lead buy-btn">Buy</button>
                     </div>
                 </div>
 
-                <div class="col">
-                    <div class="menu-item">
-                        <img src="assets/img/coffee.png" alt="Amerikano">
-                        <div class="subheading menu-name">Amerikano</div>
-                        <div class="d-flex justify-content-center align-items-center gap-2">
-                            <span class="subheading menu-price me-4">₱140</span>
-                            <span class="lead menu-size">500ml</span>
-                        </div>
-                        <button class="lead buy-btn">Buy</button>
-                    </div>
-                </div>
 
             </div>
         </div>
     </div>
+
+
+    <!-- ABOUT US -->
 
     <section class="about-us-section py-5"
         style="background-image: url('assets/img/sampleImage9.jpg'); background-size: cover; background-position: center;">
@@ -262,7 +233,7 @@
                         vel neque. Aliquam consequat lobortis justo a luctus. Nam nunc nibh, elementum in urna
                         vitae, fermentum faucibus enim. Pellentesque
                     </p>
-                  <button class="btn-location mt-3 px-4 py-2 rounded w-50 w-md-25">Our Menu</button>
+                    <button class="btn-location mt-3 px-4 py-2 rounded w-50 w-md-25">Our Menu</button>
                 </div>
             </div>
         </div>
@@ -319,7 +290,7 @@
     </div>
 
     <!-- LOCATION -->
-    <section class="location-section py-4 mb-5">
+    <section class="location-section py-4 mb-4">
         <div class="container">
             <div class="heading2 heading h3 mb-4 text-center">LOCATION</div>
 
@@ -413,16 +384,18 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
 
-    <section class="py-5 text-center simplified-payment-section"
+    <!-- SIMPLIFIED PAYMENT -->
+    <section class="py-5 text-center simplified-payment-section position-relative"
         style="background-image: url('assets/img/sampleImage8.jpg'); background-size: cover; background-position: center; color:var(--card-bg-color)">
-        <div class="container">
+        <div class="container position-relative z-2">
             <h2 class="heading2 heading mb-5">SIMPLIFIED PAYMENT</h2>
-            <div class="row">
+
+            <!-- Desktop View -->
+            <div class="row d-none d-md-flex">
                 <div class="col-md-4 mb-4">
                     <div class="mb-3 fs-1">
                         <img src="assets/img/light.png" alt="Flashlight Icon" style="height: 3em;">
@@ -432,7 +405,7 @@
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="mb-3 fs-1">
-                        <img src="assets/img/lock.png" alt="Flashlight Icon" style="height: 3em;">
+                        <img src="assets/img/lock.png" alt="Lock Icon" style="height: 3em;">
                     </div>
                     <h5 class="fw-bold subheading2">Secure Payments</h5>
                     <p class="h6">Your data is protected with advanced security measures for worry-free transactions.
@@ -440,13 +413,53 @@
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="mb-3 fs-1">
-                        <img src="assets/img/human.png" alt="Flashlight Icon" style="height: 3em;">
+                        <img src="assets/img/human.png" alt="User Icon" style="height: 3em;">
                     </div>
                     <h5 class="fw-bold subheading2">User Convenience</h5>
                     <p class="h6">Simplified payment options designed to suit your needs and preferences.</p>
                 </div>
             </div>
+
+            <!-- Mobile Carousel -->
+            <div id="paymentCarousel" class="carousel slide d-md-none" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active text-center" data-bs-interval="6000">
+                        <div class="mb-3 fs-1">
+                            <img src="assets/img/light.png" alt="Flashlight Icon" style="height: 3em;">
+                        </div>
+                        <h5 class="fw-bold subheading2">Fast Transactions</h5>
+                        <p class="h6">Enjoy quick and seamless payment processing for a hassle-free experience.</p>
+                    </div>
+                    <div class="carousel-item text-center" data-bs-interval="6000">
+                        <div class="mb-3 fs-1">
+                            <img src="assets/img/lock.png" alt="Lock Icon" style="height: 3em;">
+                        </div>
+                        <h5 class="fw-bold subheading2">Secure Payments</h5>
+                        <p class="h6">Your data is protected with advanced security measures for worry-free
+                            transactions.</p>
+                    </div>
+                    <div class="carousel-item text-center" data-bs-interval="6000">
+                        <div class="mb-3 fs-1">
+                            <img src="assets/img/human.png" alt="User Icon" style="height: 3em;">
+                        </div>
+                        <h5 class="fw-bold subheading2">User Convenience</h5>
+                        <p class="h6">Simplified payment options designed to suit your needs and preferences.</p>
+                    </div>
+                </div>
+                <!-- Carousel Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#paymentCarousel"
+                    data-bs-slide="prev" style="opacity: 0; pointer-events: auto;">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#paymentCarousel"
+                    data-bs-slide="next" style="opacity: 0; pointer-events: auto;">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+
+            </div>
         </div>
+        <div class="position-absolute top-0 start-0 w-100 h-100"
+            style="background-color: rgba(0, 0, 0, 0.3); z-index: 1;"></div>
     </section>
 
     <section class="py-5 text-center">
@@ -457,7 +470,8 @@
                 dolore magna aliqua.
             </p>
 
-            <div class="row justify-content-center mt-5">
+            <!-- Desktop View -->
+            <div class="row justify-content-center mt-5 d-none d-md-flex">
                 <div class="col-6 col-md-3 mb-4">
                     <div class="rounded-circle moreCircle mx-auto"></div>
                     <p class="lead more-p mt-2">Lorem ipsum dolor sit amet,</p>
@@ -471,8 +485,37 @@
                     <p class="lead more-p mt-2">Lorem ipsum dolor sit amet,</p>
                 </div>
             </div>
+
+            <!-- Mobile Carousel -->
+            <div id="connectCarousel" class="carousel slide d-md-none mt-5" data-bs-ride="carousel">
+                <div class="carousel-inner text-center">
+                    <div class="carousel-item active" data-bs-interval="4000">
+                        <div class="rounded-circle moreCircle mx-auto"></div>
+                        <p class="lead more-p mt-2">Lorem ipsum dolor sit amet,</p>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="4000">
+                        <div class="rounded-circle moreCircle mx-auto"></div>
+                        <p class="lead more-p mt-2">Lorem ipsum dolor sit amet,</p>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="4000">
+                        <div class="rounded-circle moreCircle mx-auto"></div>
+                        <p class="lead more-p mt-2">Lorem ipsum dolor sit amet,</p>
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#connectCarousel"
+                    data-bs-slide="prev" style="opacity: 0; pointer-events: auto;">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#connectCarousel"
+                    data-bs-slide="next" style="opacity: 0; pointer-events: auto;">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
         </div>
     </section>
+
 
     <div class="px-5">
         <div class="w-100"
@@ -483,24 +526,58 @@
     <!-- Feedback Section -->
     <section class="py-5 position-relative text-center mt-5"
         style="background: url('assets/img/sampleImage9.jpg') center/cover no-repeat; color:var(--card-bg-color);">
+
         <div class="container position-relative z-2">
             <h2 class="heading2 heading fw-bold mb-5">Feedback</h2>
-            <div class="row justify-content-center g-4">
+
+            <!-- Desktop View -->
+            <div class="row justify-content-center g-4 d-none d-md-flex">
                 <div class="col-md-4">
                     <div class="p-4 rounded-4 shadow feedback-card">
-                        <p class="lead mb-0" style="font-family: var(--secondaryFont);"></p>
+                        <p class="lead mb-0" style="font-family: var(--secondaryFont);">Feedback 1</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="p-4 rounded-4 shadow feedback-card">
-                        <p class="lead mb-0" style="font-family: var(--secondaryFont);"></p>
+                        <p class="lead mb-0" style="font-family: var(--secondaryFont);">Feedback 2</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="p-4 rounded-4 shadow feedback-card">
-                        <p class="lead mb-0" style="font-family: var(--secondaryFont);"></p>
+                        <p class="lead mb-0" style="font-family: var(--secondaryFont);">Feedback 3</p>
                     </div>
                 </div>
+            </div>
+
+            <!-- Mobile Carousel -->
+            <div id="feedbackCarousel" class="carousel slide d-md-none" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="8000">
+                        <div class="p-4 rounded-4 shadow feedback-card">
+                            <p class="lead mb-0" style="font-family: var(--secondaryFont);">Feedback 1</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="8000">
+                        <div class="p-4 rounded-4 shadow feedback-card">
+                            <p class="lead mb-0" style="font-family: var(--secondaryFont);">Feedback 2</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="8000">
+                        <div class="p-4 rounded-4 shadow feedback-card">
+                            <p class="lead mb-0" style="font-family: var(--secondaryFont);">Feedback 3</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#feedbackCarousel"
+                    data-bs-slide="prev" style="opacity: 0; pointer-events: auto;">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#feedbackCarousel"
+                    data-bs-slide="next" style="opacity: 0; pointer-events: auto;">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
             </div>
         </div>
 
@@ -509,58 +586,138 @@
     </section>
 
 
+
     <!-- Footer -->
     <footer class="bg-footer text-dark pt-5 pb-3">
         <div class="container">
-            <div class="row gy-4">
-                <!-- SAISYD Description -->
-                <div class="col-lg-4 col-md-6">
-                    <h5 class="lead fw-bold">SAISYD</h5>
-                    <p class="lead small">
+            <div class="d-lg-none accordion" id="footerAccordion">
+                <!-- SAISYD -->
+                <div class="accordion-item border-0">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-footer text-dark fw-bold" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapseSaisyd">
+                            SAISYD
+                        </button>
+                    </h2>
+                    <div id="collapseSaisyd" class="accordion-collapse collapse show">
+                        <div class="accordion-body small">
+                            Donec imperdiet sit amet sem consectetur tincidunt. In pulvinar ex ut tempus tincidunt.
+                            Cras vitae orci risus. Fusce eget dictum ex, a vulputate mi. Aliquam in mattis quam,
+                            vel laoreet elit. Pellentesque nulla leo, tristique at ex eget, efficitur bibendum tortor.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MarketPlace -->
+                <div class="accordion-item border-0">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-footer text-dark fw-bold collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapseMarket">
+                            MarketPlace
+                        </button>
+                    </h2>
+                    <div id="collapseMarket" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#" class="text-dark text-decoration-none footer-link">Services</a></li>
+                                <li><a href="#" class="text-dark text-decoration-none footer-link">Products</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Company -->
+                <div class="accordion-item border-0">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-footer text-dark fw-bold collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapseCompany">
+                            Company
+                        </button>
+                    </h2>
+                    <div id="collapseCompany" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#" class="text-dark text-decoration-none footer-link">About Servelt</a>
+                                </li>
+                                <li><a href="#" class="text-dark text-decoration-none footer-link">Help Center</a></li>
+                                <li><a href="#" class="text-dark text-decoration-none footer-link">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Follow Us -->
+                <div class="accordion-item border-0">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-footer text-dark fw-bold collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapseFollow">
+                            Follow Us
+                        </button>
+                    </h2>
+                    <div id="collapseFollow" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <p class="mb-1">
+                                <a href="https://www.tiktok.com/@saisyd" target="_blank"
+                                    class="text-dark text-decoration-none footer-link">
+                                    <i class="fab fa-tiktok me-2"></i>SAISYD
+                                </a>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop View (visible on large screens and up) -->
+            <div class="row gy-4 d-none d-lg-flex">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold">SAISYD</h5>
+                    <p class="small">
                         Donec imperdiet sit amet sem consectetur tincidunt. In pulvinar ex ut tempus tincidunt.
                         Cras vitae orci risus. Fusce eget dictum ex, a vulputate mi. Aliquam in mattis quam,
                         vel laoreet elit. Pellentesque nulla leo, tristique at ex eget, efficitur bibendum tortor.
                     </p>
                 </div>
-
-                <!-- Marketplace -->
-                <div class="col-lg-2 col-md-6">
-                    <h6 class="lead fw-bold">MarketPlace</h6>
+                <div class="col-lg-2">
+                    <h6 class="fw-bold">MarketPlace</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="lead text-dark text-decoration-none">Services</a></li>
-                        <li><a href="#" class="lead text-dark text-decoration-none">Products</a></li>
+                        <li><a href="#" class="text-dark text-decoration-none footer-link">Services</a></li>
+                        <li><a href="#" class="text-dark text-decoration-none footer-link">Products</a></li>
                     </ul>
                 </div>
-
-                <!-- Company -->
-                <div class="col-lg-2 col-md-6">
-                    <h6 class="lead fw-bold">Company</h6>
+                <div class="col-lg-2">
+                    <h6 class="fw-bold">Company</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-dark text-decoration-none">About Servelt</a></li>
-                        <li><a href="#" class="text-dark text-decoration-none">Help Center</a></li>
-                        <li><a href="#" class="text-dark text-decoration-none">Contact Us</a></li>
+                        <li><a href="#" class="text-dark text-decoration-none footer-link">About Servelt</a></li>
+                        <li><a href="#" class="text-dark text-decoration-none footer-link">Help Center</a></li>
+                        <li><a href="#" class="text-dark text-decoration-none footer-link">Contact Us</a></li>
                     </ul>
                 </div>
-
-                <!-- Follow Us -->
-                <div class="col-lg-3 offset-lg-1 col-md-6">
-                    <h6 class="lead fw-bold">FOLLOW US</h6>
+                <div class="col-lg-3 offset-lg-1">
+                    <h6 class="fw-bold">FOLLOW US</h6>
                     <p class="mb-1">
-                        <i class="lead fab fa-tiktok me-2"></i>SAISYD
+                        <a href="https://www.tiktok.com/@saisyd" target="_blank"
+                            class="text-dark text-decoration-none footer-link">
+                            <i class="fab fa-tiktok me-2"></i>SAISYD
+                        </a>
                     </p>
+
                 </div>
             </div>
 
+            <!-- Footer Bottom -->
             <div class="border-top mt-4 pt-3 d-flex justify-content-between align-items-center flex-wrap">
-                <p class="lead mb-0 small">© 2024 Copyright: <span class="lead footerSaisyd fw-bold">SAISYD CAFE</span>
+                <p class="lead mb-0 small">© 2024 Copyright:
+                    <span class="fw-bold">SAISYD CAFE</span>
                 </p>
                 <div class="d-flex gap-3 fs-5">
-                    <a href="#" class="lead text-dark"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="lead text-dark"><i class="fab fa-google"></i></a>
+                    <a href="#" class="text-dark"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-dark"><i class="fab fa-google"></i></a>
                 </div>
             </div>
         </div>
     </footer>
+
 
     <script src="assets/js/swiper-bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
