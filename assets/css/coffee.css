@@ -61,9 +61,10 @@ line-height: 1;
 .title-category{
 font-weight: bold;
 font-family: var( --primaryFont);
+color: var(--text-color-dark);
 }
 
-.categories {
+/* .categories {
     display: flex;
     gap: 10px;
     justify-content: flex-start;
@@ -83,7 +84,7 @@ font-family: var( --primaryFont);
     max-width: 290px;
     border-radius: 20px;
     /* border: 1px solid black; */
-    background-image:
+    /* background-image:
       linear-gradient(to top, black, transparent),
       url('../img/coffee/tea.png');
     background-size: cover;
@@ -95,14 +96,56 @@ font-family: var( --primaryFont);
     max-height: 120px;
     margin-bottom: 20px;
   }
+   */
   
-  
-  .category-card:hover {
+  /* .category-card:hover {
     transform: scale(1.02);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   }
+   */
+
+   .category-scroll {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .category-pill {
+    min-width: 120px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 2px solid var(--btn-hover1);
+    color: var(--text-color-dark);
+    font-weight: 600;
+    font-family: var(--primaryFont);
+    font-size: var(--lead);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+  
+  .category-pill:hover {
+    background-color: #e6d5c3;
+  }
+  
+  .category-pill.active {
+    background-color: var(--btn-hover1);
+    color: #fff;
+    border-color: var(--btn-hover1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 576px) {
+    .category-pill {
+      min-width: 100px;
+      padding: 8px 16px;
+    }
+  }
   
 
+/* product section */
 .products-section{
     height: 935px;
     overflow: scroll;

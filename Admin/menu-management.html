@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/menu-management.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
+
+
+    <!-- bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -142,35 +147,191 @@
             </div>
 
             <!-- Main content column -->
-            <div class="col-md-8 col-lg-9">
-                 <div class="col-md-9 col-lg-9">
-                        <div class="card rounded-5" style="height: 100%;">
-                            <h4 role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar"
-                                aria-controls="offcanvasSidebar" style="cursor: pointer;">
-                                Menu Management
-                            </h4>
+            <div class="col-12 col-md-8 col-lg-9">
+                <div class="card rounded-4 p-3">
+                    <!-- Header Row -->
+                    <div class="align-items-center  pt-5 px-0 px-lg-5 pb-2 px-2">
+                        <div class=" fw-bold subheading" role="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar"
+                            style="cursor: pointer;">
+                            Menu Management
                         </div>
                     </div>
+                    <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-2 justify-content-end mb-3 px-0 px-lg-5">
+                        <input type="text" class="search form-control" placeholder="Search Product Name"
+                            aria-label="Enter product Name" id="item-input">
+                        <button class="btn btn-success " type="button">Add</button>
+                        <!-- <button class="btn btn-success " type="button">Search</button> -->
+                        <div class="d-flex align-items-center gap-2" role="button" style="cursor: pointer;"
+                            onclick="exportToExcel()">
+                            <span class="h6 m-0 text-dark">Export Excel</span>
+                            <div class="rounded-circle bg-dark d-flex justify-content-center align-items-center"
+                                style="width: 35px; height: 35px;">
+                                <i class="bi bi-file-earmark-excel text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Table Section -->
+
+
+                    <div class="card mb-5 overflow-scroll " style="height: 65vh">
+                        <table class="table overflow-hidden">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Images</th>
+                                    <th scope="col">Product Name</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Available</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>latte.jpg</td>
+                                    <td>Café Latte</td>
+                                    <td>Espresso with steamed milk</td>
+                                    <td>Drinks</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
+                                        <a class="btn"><i class="ri-more-line"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>americano.jpg</td>
+                                    <td>Americano</td>
+                                    <td>Espresso with hot water</td>
+                                    <td>Drinks</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
+                                        <a class="btn"><i class="ri-more-line"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>matcha.jpg</td>
+                                    <td>Iced Matcha Latte</td>
+                                    <td>Japanese green tea with milk</td>
+                                    <td>Drinks</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
+                                        <a class="btn"><i class="ri-more-line"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>choco.jpg</td>
+                                    <td>Hot Chocolate</td>
+                                    <td>Rich chocolate drink with cream</td>
+                                    <td>Drinks</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
+                                        <a class="btn"><i class="ri-more-line"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>croissant.jpg</td>
+                                    <td>Butter Croissant</td>
+                                    <td>Flaky French pastry</td>
+                                    <td>Pastries</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
+                                        <a class="btn"><i class="ri-more-line"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>hamcheese.jpg</td>
+                                    <td>Ham & Cheese Sandwich</td>
+                                    <td>Toasted sandwich with ham and cheese</td>
+                                    <td>Sandwiches</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
+                                        <a class="btn"><i class="ri-more-line"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td>carbonara.jpg</td>
+                                    <td>Carbonara Pasta</td>
+                                    <td>Creamy pasta with bacon</td>
+                                    <td>Meals</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
+                                        <a class="btn"><i class="ri-more-line"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td>pancakes.jpg</td>
+                                    <td>Fluffy Pancakes</td>
+                                    <td>Stack of soft pancakes with syrup</td>
+                                    <td>Breakfast</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
+                                        <a class="btn"><i class="ri-more-line"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">9</th>
+                                    <td>fries.jpg</td>
+                                    <td>French Fries</td>
+                                    <td>Crispy potato fries</td>
+                                    <td>Snacks</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
+                                        <a class="btn"><i class="ri-more-line"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">10</th>
+                                    <td>blueberry.jpg</td>
+                                    <td>Blueberry Cheesecake</td>
+                                    <td>Rich cheesecake topped with blueberry</td>
+                                    <td>Desserts</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
+                                        <a class="btn"><i class="ri-more-line"></i></a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-        </div>
 
-    </div>
 
-    <!-- Add this script at the bottom to initialize Bootstrap offcanvas -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const offcanvasElement = document.getElementById("offcanvasSidebar");
-            const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
+            <!-- Add this script at the bottom to initialize Bootstrap offcanvas -->
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const offcanvasElement = document.getElementById("offcanvasSidebar");
+                    const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
 
-            // Open offcanvas by default on small screens
-            if (window.innerWidth < 768) {
-                bsOffcanvas.show();
-            }
-        });
-    </script>
-    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
-        </script>
+                    // Open offcanvas by default on small screens
+                    if (window.innerWidth < 768) {
+                        bsOffcanvas.show();
+                    }
+                });
+            </script>
+            <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+                crossorigin="anonymous">
+                </script>
 </body>
 
 </html>

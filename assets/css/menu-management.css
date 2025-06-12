@@ -13,3 +13,14 @@ html {
     flex-direction: column;
     background-color: var(--card-bg-color)
 }
+
+
+.search {
+    max-width: 240px;
+}
+
+@media (max-width: 576px) {
+    .search {
+        max-width: 100%;
+    }
+}
