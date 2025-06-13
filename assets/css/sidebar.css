@@ -31,5 +31,6 @@
 
 .custom-sidebar {
     overflow-y: auto;
+    min-height: 70vh;
     max-height: 100vh;
 }
