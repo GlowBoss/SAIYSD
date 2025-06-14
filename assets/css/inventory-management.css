@@ -1,4 +1,16 @@
-body,
+body {
+
+    font-family: var(--secondaryFont);
+    padding: 0%;
+
+
+}
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
 html {
     height: auto;
     overflow-x: hidden;
@@ -7,11 +19,10 @@ html {
 
 
 .mainContainer {
-    width: 100%;
+    width: 100vw;
     height: auto;
     display: flex;
     flex-direction: column;
-    background-color: var(--card-bg-color)
+    background-color: var(--card-bg-color);
+    overflow-x: hidden;
 }
-
-
