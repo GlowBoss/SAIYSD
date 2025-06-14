@@ -16,6 +16,25 @@
 
 </head>
 
+<style>
+    .form-check-input {
+        width: 1.5em;
+        height: 1.5em;
+        margin-top: 0.25em;
+        border: 3px solid var(--primary-color) !important;
+    }
+
+    .form-check-input:checked {
+        background-color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+    }
+
+    .form-check-label {
+        margin-left: 0.5em;
+        font-weight: 500;
+    }
+</style>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
@@ -46,21 +65,23 @@
         </div>
     </nav>
 
-    <div class="container-fluid mt-5">
-        <div class="row justify-content-center">
-            <!-- Cart Card -->
-            <div class="col-12 col-lg-5 mb-4">
-                <div class="card rounded-5 cart-section p-3 h-100">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div class="d-flex align-items-center">
-                                <div class="icon me-2">
-                                </div>
-                                <div class="subheading2 fw-bold cart-title">Cart</div>
-                            </div>
-                            <button class="btn btn-outline-danger btn-sm h6">
-                            <i class="fas fa-trash-alt"></i>
-                            </button>
+<div class="container-fluid mt-5">
+    <div class="row justify-content-center">
+        <!-- Cart Card -->
+        <div class="col-12 col-lg-5 mb-4">
+            <div class="card rounded-5 cart-section p-3" style="height: 75vh;">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex align-items-center">
+                        <div class="icon me-2">
                         </div>
+                        <div class="subheading2 fw-bold cart-title">Cart</div>
+                    </div>
+                    <button class="btn btn-outline-danger btn-sm h6">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+
+                <div class="overflow-auto" style="max-height: 75vh;">
                     <!-- Cart Item -->
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <div class="d-flex align-items-center">
@@ -71,83 +92,84 @@
                         <div class="product subheading fw-bold ms-3">Amerikano</div>
                         <div class="price subheading fw-bold ms-2">₱120</div>
                     </div>
-                    <div class="line-divider my-2" style="height: 1px; background-color: #ccc;"></div>
-                </div>
-            </div>
-
-            <!-- SUMMARY CONTAINER -->
-            <div class="col-12 col-lg-6 mb-4">
-                <div class="card rounded-5 p-3 h-100">
-                    <h3 class="subheading2 text-start ms-2 pt-2 pb-3">Summary</h3>
-                    <div class="d-flex justify-content-evenly mb-2">
-                        <p class="lead mb-0">Items: 1</p>
-                        <p class="lead mb-0">Total: ₱120</p>
-                    </div>
                     <hr>
-                    <!-- CHOOSE YOUR ORDER METHOD -->
-                    <div class="mx-3 mb-3">
-                        <p class="lead">Choose your order method:</p>
-                        <div class="row row-cols-2 gx-2">
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="orderType" id="dinein">
-                                    <label class="form-check-label" for="dinein">Dine-in</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="orderType" id="delivery">
-                                    <label class="form-check-label" for="delivery">Home Delivery</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="orderType" id="takeout">
-                                    <label class="form-check-label" for="takeout">Takeout</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="orderType" id="pickup">
-                                    <label class="form-check-label" for="pickup">Pickup</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <!-- MODE OF PAYMENT -->
-                    <div class="row row-cols-1 row-cols-md-2 g-4 mx-2 mb-3">
-                        <div class="col">
-                            <p class="lead">Mode of Payment:</p>
-                            <div class="form-check my-2">
-                                <input class="form-check-input" type="radio" name="modePayment" id="cash">
-                                <label class="form-check-label" for="cash">Cash On Delivery</label>
-                            </div>
-                            <div class="form-check my-2">
-                                <input class="form-check-input" type="radio" name="modePayment" id="gcash">
-                                <label class="form-check-label" for="gcash">GCash</label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3">
-                                <label for="refNumber" class="form-label">Enter Reference Number</label>
-                                <input type="text" class="form-control" id="refNumber" placeholder="1234-5678-910">
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="mx-3 mb-2">
-                        <p class="subheading">VAT: ₱0.00</p>
-                    </div>
-                    <hr>
-                    <div class="text-end px-3 mb-3">
-                        <h3 class="subheading3">TOTAL: ₱120</h3>
-                    </div>
-                    <button class="btn buy-btn rounded-5 mx-auto d-block mb-2">Checkout</button>
                 </div>
             </div>
         </div>
+
+        <!-- SUMMARY CONTAINER -->
+        <div class="col-12 col-lg-6 mb-4">
+            <div class="card rounded-5 p-3 h-100">
+                <h3 class="subheading2 text-start ms-2 pt-2 pb-3">Summary</h3>
+                <div class="d-flex justify-content-evenly mb-2">
+                    <p class="lead mb-0">Items: 1</p>
+                    <p class="lead mb-0">Total: ₱120</p>
+                </div>
+                <hr>
+                <!-- CHOOSE YOUR ORDER METHOD -->
+                <div class="mx-3 mb-3">
+                    <p class="lead">Choose your order method:</p>
+                    <div class="row row-cols-2 gx-2">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="orderType" id="dinein">
+                                <label class="form-check-label" for="dinein">Dine-in</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="orderType" id="delivery">
+                                <label class="form-check-label" for="delivery">Home Delivery</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="orderType" id="takeout">
+                                <label class="form-check-label" for="takeout">Takeout</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="orderType" id="pickup">
+                                <label class="form-check-label" for="pickup">Pickup</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- MODE OF PAYMENT -->
+                <div class="row row-cols-1 row-cols-md-2 g-4 mx-2 mb-3">
+                    <div class="col">
+                        <p class="lead">Mode of Payment:</p>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="modePayment" id="cash">
+                            <label class="form-check-label" for="cash">Cash On Delivery</label>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="modePayment" id="gcash">
+                            <label class="form-check-label" for="gcash">GCash</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="refNumber" class="form-label">Enter Reference Number</label>
+                            <input type="text" class="form-control" id="refNumber" placeholder="1234-5678-910">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="mx-3 mb-2">
+                    <p class="subheading">VAT: ₱0.00</p>
+                </div>
+                <hr>
+                <div class="text-end px-3 mb-3">
+                    <h3 class="subheading3">TOTAL: ₱120</h3>
+                </div>
+                <button class="btn buy-btn rounded-5 mx-auto d-block mb-2">Checkout</button>
+            </div>
+        </div>
     </div>
+</div>
 
 
 
