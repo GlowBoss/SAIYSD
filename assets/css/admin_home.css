@@ -111,6 +111,16 @@ html {
     transition: background-color 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
+@media (max-width: 767.98px) { /* Bootstrap's sm breakpoint */
+    .dashboard-box {
+        max-width: 90%; /* Set a maximum width */
+        height: auto; /* Allow height to adjust based on content */
+        padding: 10px; /* Adjust padding for smaller screens */
+        font-size: var(--h6); /* Adjust font size for better readability */
+        border-radius: 15px; /* Maintain rounded corners */
+        margin: 0 auto; /* Center the boxes */
+    }
+}
 
 .dashboard-box:hover {
     background-color: var(--btn-hover1);
