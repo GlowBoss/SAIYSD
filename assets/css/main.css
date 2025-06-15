@@ -256,8 +256,8 @@ footer .fab:not(.fa-tiktok):hover {
 
 .buy-btn:hover {
     opacity: 0.9;
-    background-color: var(--btn-hover1);
-    color: var(--text-color-light);
+    background-color: var(--btn-hover1) !important;
+    color: var(--text-color-light) !important;
 }
 
 /* ABOUT */
