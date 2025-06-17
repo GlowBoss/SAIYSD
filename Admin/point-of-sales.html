@@ -10,72 +10,19 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/pos.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
+
+    <!-- bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
 <body>
     <div class="container-fluid mainContainer p-3">
         <div class="row">
-            <!-- Sidebar column for md+ screens -->
-            <div class="col-12 col-md-4 col-lg-3 d-none d-md-block">
-                <div class="card sideBarLogo rounded-5 mb-2">
-                    <img src="../assets/img/round_logo.png" class="card-img-top" alt="logo" />
-                </div>
-                <div class="custom-sidebar rounded-5 p-4 bg-white border">
-                    <!-- Sidebar content here -->
-                    <div class="row pb-4">
-                        <div class="sideBar">
-                            <p class="m-0">MENU</p>
-                            <div class="nav-item d-flex justify-content-start align-items-center">
-                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                <a class="nav-link active ms-2" href="#">Dashboard</a>
-                            </div>
-                            <div class="nav-item d-flex justify-content-start align-items-center">
-                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                <a class="nav-link active ms-2" href="#">Notification</a>
-                            </div>
-                            <div class="nav-item d-flex justify-content-start align-items-center">
-                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                <a class="nav-link active ms-2" href="#">Order Management</a>
-                            </div>
-                            <div class="nav-item d-flex justify-content-start align-items-center">
-                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                <a class="nav-link active ms-2" href="#">Menu Management</a>
-                            </div>
-                            <div class="nav-item d-flex justify-content-start align-items-center">
-                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                <a class="nav-link active ms-2" href="#">Inventory</a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="row pb-4">
-                        <div class="sideBar">
-                            <p class="m-0">FINANCIAL</p>
-                            <div class="nav-item d-flex justify-content-start align-items-center">
-                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                <a class="nav-link active ms-2" href="#">Sales and Report</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row pb-4">
-                        <div class="sideBar">
-                            <p class="m-0">TOOLS</p>
-                            <div class="nav-item d-flex justify-content-start align-items-center">
-                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                <a class="nav-link active ms-2" href="#">Settings</a>
-                            </div>
-                            <div class="nav-item d-flex justify-content-start align-items-center">
-                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                <a class="nav-link active ms-2" href="#">Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!-- Offcanvas sidebar for small screens -->
-            <div class="d-md-none">
+            <div class="">
                 <div class="row offcanvasContainer">
 
                     <div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvasSidebar"
@@ -142,35 +89,500 @@
             </div>
 
             <!-- Main content column -->
-            <div class="col-md-8 col-lg-9">
-                 <div class="col-md-9 col-lg-9">
-                        <div class="card rounded-5" style="height: 100%;">
-                            <h4 role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar"
-                                aria-controls="offcanvasSidebar" style="cursor: pointer;">
-                               POS
-                            </h4>
+
+            <div class="container-fluid">
+                <div class="d-flex flex-column flex-lg-row pt-3">
+                    <!-- POS content -->
+                    <div class="flex-fill">
+                        <div class="card p-3 topcontainer mb-3">
+                            <div class="container-fluid">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="heading fw-bold" role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar"
+                                        aria-controls="offcanvasSidebar" style="cursor: pointer;">
+                                        Point of Sale System
+                                    </div>
+                                    <button class="btn btn-light position-relative" data-bs-toggle="offcanvas" data-bs-target="#orderNotif" aria-controls="orderNotif">
+                                        <i class="bi bi-bell-fill"></i>
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            3
+                                            <span class="visually-hidden">unread messages</span>
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="subtitle pb-3">Payment Management</div>
+                                <div class="subheading"><span style="font-weight: bold;">Menu</span> Category</div>
+                                <div class="category-scroll d-flex gap-3 overflow-auto pb-2" id="categories">
+                                    <!-- Categories -->
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="card overflow-auto p-3 maincontainer">
+                            <div class="subheading">
+                                <span style="font-weight: bold;">Menu</span> Items
+                            </div>
+                            <div class="row g-3 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6" id="maincontainer">
+                                <!-- Menu items -->
+                            </div>
                         </div>
                     </div>
+            
+                    <!-- Receipt -->
+                    <div class="flex-lg-shrink-0 ms-0 ms-lg-3 mt-3 mt-lg-0" style="min-width: 300px;">
+                        <div class="card p-3 overflow-auto" style="height: 100%;">
+                            <div class="category-title"><span style="font-weight: bold;">Menu</span> Receipt</div>
+                            <div class="container-fluid"><div class="line-divider"></div></div>
+                            <div id="receipt"><!-- receipt items --></div>
+                            <div class="container-fluid">
+                                <div class="line-divider" style="height: 1px;"></div>
+                                <div class="mt-4 d-flex flex-row justify-content-between">
+                                    <div><b>TOTAL</b></div>
+                                    <div><b id="totalValue">0</b></div>
+                                </div>
+                                <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mt-4">
+                                    <button class="btn btn-success w-100 w-md-auto">Order Now</button>
+                                    <button class="btn btn-danger w-100 w-md-auto">Cancel Order</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- notif part -->
+            <div class="offcanvas offcanvas-end " tabindex="-1" id="orderNotif" aria-labelledby="orderNotifLabel"
+                style="width: 500px;">
+                <div class="offcanvas-header">
+                    <h5 class="subheading fw-bold" id="orderNotifLabel">Order Notification</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="d-flex gap-2 mb-3">
+                        <button class="btn btn-outline-dark btn-sm lead rounded-4 fw-bold p-2">All Orders</button>
+                        <button class="btn btn-outline-dark btn-sm lead rounded-4 fw-bold">Preparing</button>
+                        <button class="btn btn-outline-dark btn-sm lead rounded-4 fw-bold">Ready</button>
+                        <button class="btn btn-outline-dark btn-sm lead rounded-4 fw-bold">Completed</button>
+                    </div>
+
+                    <div class="card mb-3 p-3 rounded-5" style="border-color: var(--text-color-dark);">
+                        <div class="fw-bold fs-5">Name</div>
+                        <div class="fs-6">1x Amerikano <br> ₱140</div>
+                        <div class="d-flex justify-content-end gap-2 mt-3">
+                            <button class="btn btn-dark btn-sm px-3 py-2 rounded-4">Accept</button>
+                            <button class="btn btn-outline-dark btn-sm px-3 py-2 rounded-4">Decline</button>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3 p-3 rounded-5" style="border-color: var(--text-color-dark);">
+                        <div class="fw-bold fs-5">Name</div>
+                        <div class="fs-6">1x Amerikano <br> ₱140</div>
+                        <div class="d-flex justify-content-end gap-2 mt-3">
+                            <button class="btn btn-dark btn-sm px-3 py-2 rounded-4">Accept</button>
+                            <button class="btn btn-outline-dark btn-sm px-3 py-2 rounded-4">Decline</button>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3 p-3 rounded-5" style="border-color: var(--text-color-dark);">
+                        <div class="fw-bold fs-5">Name</div>
+                        <div class="fs-6">1x Amerikano <br> ₱140</div>
+                        <div class="d-flex justify-content-end gap-2 mt-3">
+                            <button class="btn btn-dark btn-sm px-3 py-2 rounded-4">Accept</button>
+                            <button class="btn btn-outline-dark btn-sm px-3 py-2 rounded-4">Decline</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <script>
+                var products = [
+                    {
+                        "category": "Coffee",
+                        "img": "coffee.png",
+                        "contents": [
+                            {
+                                "isAvailable": true,
+                                "name": "Espresso",
+                                "code": "ESP",
+                                "img": "img-menu/espresso.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 60 },
+                                    { "name": "medium", "code": "M", "price": 80 },
+                                    { "name": "large", "code": "L", "price": 100 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Americano",
+                                "code": "AMR",
+                                "img": "img-menu/americano.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 70 },
+                                    { "name": "medium", "code": "M", "price": 90 },
+                                    { "name": "large", "code": "L", "price": 110 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Latte",
+                                "code": "LTT",
+                                "img": "img-menu/latte.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 80 },
+                                    { "name": "medium", "code": "M", "price": 100 },
+                                    { "name": "large", "code": "L", "price": 120 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Cappuccino",
+                                "code": "CPP",
+                                "img": "img-menu/cappuccino.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 85 },
+                                    { "name": "medium", "code": "M", "price": 105 },
+                                    { "name": "large", "code": "L", "price": 125 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Mocha",
+                                "code": "MCH",
+                                "img": "img-menu/mocha.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 90 },
+                                    { "name": "medium", "code": "M", "price": 110 },
+                                    { "name": "large", "code": "L", "price": 130 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Caramel Macchiato",
+                                "code": "CRM",
+                                "img": "img-menu/caramel_macchiato.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 95 },
+                                    { "name": "medium", "code": "M", "price": 115 },
+                                    { "name": "large", "code": "L", "price": 135 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Cold Brew",
+                                "code": "CLD",
+                                "img": "img-menu/cold_brew.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 85 },
+                                    { "name": "medium", "code": "M", "price": 105 },
+                                    { "name": "large", "code": "L", "price": 125 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Iced Coffee",
+                                "code": "ICF",
+                                "img": "img-menu/iced_coffee.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 75 },
+                                    { "name": "medium", "code": "M", "price": 95 },
+                                    { "name": "large", "code": "L", "price": 115 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Flat White",
+                                "code": "FLW",
+                                "img": "img-menu/flat_white.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 80 },
+                                    { "name": "medium", "code": "M", "price": 100 },
+                                    { "name": "large", "code": "L", "price": 120 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Affogato",
+                                "code": "AFF",
+                                "img": "img-menu/affogato.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 100 },
+                                    { "name": "medium", "code": "M", "price": 120 },
+                                    { "name": "large", "code": "L", "price": 140 }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "category": "Tea",
+                        "img": "tea.png",
+                        "contents": [
+                            {
+                                "isAvailable": true,
+                                "name": "Green Tea",
+                                "code": "GRN",
+                                "img": "img-menu/green_tea.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 50 },
+                                    { "name": "medium", "code": "M", "price": 70 },
+                                    { "name": "large", "code": "L", "price": 90 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Black Tea",
+                                "code": "BLK",
+                                "img": "img-menu/black_tea.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 50 },
+                                    { "name": "medium", "code": "M", "price": 70 },
+                                    { "name": "large", "code": "L", "price": 90 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Milk Tea",
+                                "code": "MLK",
+                                "img": "img-menu/milk_tea.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 65 },
+                                    { "name": "medium", "code": "M", "price": 85 },
+                                    { "name": "large", "code": "L", "price": 105 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Thai Tea",
+                                "code": "THI",
+                                "img": "img-menu/thai_tea.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 70 },
+                                    { "name": "medium", "code": "M", "price": 90 },
+                                    { "name": "large", "code": "L", "price": 110 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Matcha Latte",
+                                "code": "MCH",
+                                "img": "img-menu/matcha_latte.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 80 },
+                                    { "name": "medium", "code": "M", "price": 100 },
+                                    { "name": "large", "code": "L", "price": 120 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Earl Grey",
+                                "code": "EGL",
+                                "img": "img-menu/earl_grey.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 60 },
+                                    { "name": "medium", "code": "M", "price": 80 },
+                                    { "name": "large", "code": "L", "price": 100 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Chai Tea",
+                                "code": "CHI",
+                                "img": "img-menu/chai_tea.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 70 },
+                                    { "name": "medium", "code": "M", "price": 90 },
+                                    { "name": "large", "code": "L", "price": 110 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Oolong Tea",
+                                "code": "OOL",
+                                "img": "img-menu/oolong_tea.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 60 },
+                                    { "name": "medium", "code": "M", "price": 80 },
+                                    { "name": "large", "code": "L", "price": 100 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Herbal Tea",
+                                "code": "HRB",
+                                "img": "img-menu/herbal_tea.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 55 },
+                                    { "name": "medium", "code": "M", "price": 75 },
+                                    { "name": "large", "code": "L", "price": 95 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Fruit Tea",
+                                "code": "FRT",
+                                "img": "img-menu/fruit_tea.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 65 },
+                                    { "name": "medium", "code": "M", "price": 85 },
+                                    { "name": "large", "code": "L", "price": 105 }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "category": "Food",
+                        "img": "food.png",
+                        "contents": [
+                            { "isAvailable": true, "name": "Ham & Cheese Sandwich", "code": "HCS", "price": 85, "img": "img-menu/ham_cheese.png" },
+                            { "isAvailable": true, "name": "Tuna Sandwich", "code": "TNS", "price": 85, "img": "img-menu/tuna_sandwich.png" },
+                            { "isAvailable": true, "name": "Clubhouse", "code": "CLB", "price": 120, "img": "img-menu/clubhouse.png" },
+                            { "isAvailable": true, "name": "Breakfast Plate", "code": "BFP", "price": 150, "img": "img-menu/breakfast_plate.png" },
+                            { "isAvailable": true, "name": "Chicken Wings", "code": "WNG", "price": 140, "img": "img-menu/chicken_wings.png" },
+                            { "isAvailable": true, "name": "Fries", "code": "FRS", "price": 60, "img": "img-menu/fries.png" },
+                            { "isAvailable": true, "name": "Bacon & Egg", "code": "BNE", "price": 100, "img": "img-menu/bacon_egg.png" },
+                            { "isAvailable": true, "name": "Cheesy Nachos", "code": "NCH", "price": 90, "img": "img-menu/cheesy_nachos.png" },
+                            { "isAvailable": true, "name": "Garlic Bread", "code": "GRB", "price": 50, "img": "img-menu/garlic_bread.png" },
+                            { "isAvailable": true, "name": "Sausage Rice", "code": "SRC", "price": 110, "img": "img-menu/sausage_rice.png" }
+                        ]
+                    },
+                    {
+                        "category": "Dessert",
+                        "img": "dessert.png",
+                        "contents": [
+                            { "isAvailable": true, "name": "Chocolate Cake", "code": "CHK", "price": 90, "img": "img-menu/chocolate_cake.png" },
+                            { "isAvailable": true, "name": "Cheesecake", "code": "CSK", "price": 100, "img": "img-menu/cheesecake.png" },
+                            { "isAvailable": true, "name": "Brownie", "code": "BRW", "price": 70, "img": "img-menu/brownie.png" },
+                            { "isAvailable": true, "name": "Ice Cream Scoop", "code": "ICS", "price": 60, "img": "img-menu/ice_cream.png" },
+                            { "isAvailable": true, "name": "Tiramisu", "code": "TRM", "price": 95, "img": "img-menu/tiramisu.png" },
+                            { "isAvailable": true, "name": "Mango Float", "code": "MGF", "price": 85, "img": "img-menu/mango_float.png" },
+                            { "isAvailable": true, "name": "Leche Flan", "code": "LCF", "price": 70, "img": "img-menu/leche_flan.png" },
+                            { "isAvailable": true, "name": "Ube Halaya", "code": "UBE", "price": 80, "img": "img-menu/ube_halaya.png" },
+                            { "isAvailable": true, "name": "Cream Puff", "code": "CRP", "price": 75, "img": "img-menu/cream_puff.png" },
+                            { "isAvailable": true, "name": "Churros", "code": "CHR", "price": 85, "img": "img-menu/churros.png" }
+                        ]
+                    }
+                ];
+
+                var total = 0;
+
+                function loadCategories() {
+                    var categoriesContainer = document.getElementById("categories");
+                    products.forEach((product, index) => {
+                        categoriesContainer.innerHTML += `
+            <div onclick="selectCategory(this, '` + index + `')" 
+                 class="category-pill text-center">
+                ` + product.category + `
+            </div>`;
+                    });
+                }
+
+                function selectCategory(element, index) {
+                    // Remove active class from all category pills
+                    document.querySelectorAll('.category-pill').forEach(pill => {
+                        pill.classList.remove('active');
+                    });
+
+                    // Add active to the clicked one
+                    element.classList.add('active');
+
+                    // Load products
+                    loadProducts(index);
+                }
+
+                function loadProducts(categoryIndex) {
+                    var maincontainer = document.getElementById("maincontainer");
+                    maincontainer.innerHTML = "";
+
+                    if (categoryIndex == 0 || categoryIndex == 1) {
+                        products[categoryIndex].contents.forEach(content => {
+                            content.sizes.forEach(size => {
+                                maincontainer.innerHTML += `
+    <div class="col">
+        <div onclick="addToReceipt('` + size.price + `','` + content.code + size.code + `','` + content.name + `')" 
+             class="menu-item border p-3 rounded shadow-sm text-center width-auto card-hover" 
+             style="cursor: pointer;">
+            <img src="../assets/img/` + content.img + `" alt="` + content.name + `" class="img-fluid mb-2" style="max-height: 150px;">
+            <div class="lead menu-name fw-bold">` + content.name + ' ' + size.code + `</div>
+            <div class="d-flex justify-content-center align-items-center gap-2 my-2">
+                <span class="lead fw-bold menu-price">₱` + size.price + `</span>
+                <span class="lead menu-size">` + size.code + `</span>
             </div>
         </div>
+    </div>`;
 
-    </div>
+                            });
+                        });
+                    } else {
+                        products[categoryIndex].contents.forEach(content => {
+                            maincontainer.innerHTML += `
+    <div class="col">
+        <div onclick="addToReceipt('` + content.price + `','` + content.code + `','` + content.name + `')" 
+             class="menu-item border p-3 rounded shadow-sm text-center width-auto card-hover" 
+             style="cursor: pointer;">
+            <img src="../assets/img/` + content.img + `" alt="` + content.name + `" class="img-fluid mb-2" style="max-height: 150px;">
+            <div class="lead menu-name fw-bold">` + content.name + `</div>
+            <div class="d-flex justify-content-center align-items-center gap-2 my-2">
+                <span class="lead fw-bold menu-price">₱` + content.price + `</span>
+            </div>
+        </div>
+    </div>`;
 
-    <!-- Add this script at the bottom to initialize Bootstrap offcanvas -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const offcanvasElement = document.getElementById("offcanvasSidebar");
-            const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
 
-            // Open offcanvas by default on small screens
-            if (window.innerWidth < 768) {
-                bsOffcanvas.show();
-            }
-        });
-    </script>
-    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
-        </script>
+                        });
+                    }
+                }
+
+                function addToReceipt(price, code, name) {
+                    var receiptContainer = document.getElementById("receipt");
+                    total = parseFloat(total) + parseFloat(price);
+
+                    var totalValueElement = document.getElementById("totalValue");
+                    totalValueElement.innerHTML = total;
+
+                    receiptContainer.innerHTML += `
+        <div class="d-flex flex-row justify-content-between align-items-center mb-1">
+            <div class="flex-grow-1">
+                <small><span style="font-weight: bold;">` + name + ` | </span>` + code + `</small>
+            </div>
+            <div>
+                <small>₱ ` + price + `</small>
+            </div>
+        </div>`;
+                }
+
+
+
+                loadCategories();
+
+
+            </script>
+
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+                crossorigin="anonymous"></script>
+
+
+
+
+
+            <!-- Add this script at the bottom to initialize Bootstrap offcanvas -->
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const offcanvasElement = document.getElementById("offcanvasSidebar");
+                    const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
+
+                    // Open offcanvas by default on small screens
+                    if (window.innerWidth < 768) {
+                        bsOffcanvas.show();
+                    }
+                });
+            </script>
+            <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+                crossorigin="anonymous">
+                </script>
 </body>
 
 </html>
