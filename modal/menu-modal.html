@@ -1,0 +1,73 @@
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content">
+            <div class="modal-header border-0 d-flex flex-column align-items-center w-100 mt-2">
+                <div class="text-center w-100">
+                    <h5 class="modal-title fw-bold w-100" id="confirmModalLabel">Coffee Name</h5>
+                    <span>₱500</span>
+                </div>
+                <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+
+
+            <div class="modal-body mt-2">
+                <p class="fs-5 fw-semibold text-center">Temperature Preference:</p>
+
+                <form>
+                    <!-- Temperature Preference -->
+                    <div class="mb-4 text-center">
+                        <div class="d-flex justify-content-center gap-3">
+                            <div><input type="radio" name="temp" id="hot" class="form-check-input me-1"><label for="hot">Hot</label></div>
+                            <div><input type="radio" name="temp" id="warm" class="form-check-input me-1"><label for="warm">Warm</label></div>
+                            <div><input type="radio" name="temp" id="cold" class="form-check-input me-1"><label for="cold">Cold</label></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sugar Level -->
+                    <div class="mb-4 text-center">
+                        <label for="sugar" class="fw-semibold d-block mb-1">Sugar Level:</label>
+                        <div class="d-flex justify-content-center">
+                            <select id="sugar" class="form-select w-auto">
+                                <option>0%</option>
+                                <option>25%</option>
+                                <option>50%</option>
+                                <option>75%</option>
+                                <option>100%</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Size -->
+                    <div class="mb-4 text-center">
+                        <label for="size" class="fw-semibold d-block mb-1">Size:</label>
+                        <div class="d-flex justify-content-center">
+                            <select id="size" class="form-select w-auto">
+                                <option>S</option>
+                                <option>M</option>
+                                <option>L</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Add to Cart Button -->
+                    <button type="submit" class="btn w-100 addbtn rounded-3 fw-bold text-white" style="background-color: #C4A277;">
+                        ADD TO CART
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="orderToast" class="toast align-items-end text-bg-success position-fixed m-3 z-1" role="alert"
+    aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+        <div class="toast-body">
+             Order Added!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+            aria-label="Close"></button>
+    </div>
+</div>
