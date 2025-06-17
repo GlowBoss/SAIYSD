@@ -9,8 +9,7 @@
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/sales-and-report.css">
-    <link rel="stylesheet" href="../assets/css/sidebar.css">    
-    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
 </head>
 
 <body>
@@ -20,7 +19,7 @@
             <!-- Sidebar column for md+ screens -->
             <div class="col-12 col-md-4 col-lg-3 d-none d-md-block">
                 <div class="card sideBarLogo rounded-5 mb-2">
-                    <img src="../assets/img/round_logo.png" class="card-img-top" alt="logo" />
+                    <img src="../assets/img/logo.png" class="card-img-top" alt="logo" />
                 </div>
                 <div class="custom-sidebar rounded-5 p-4 bg-white border">
                     <!-- Sidebar content here -->
@@ -403,7 +402,7 @@
             }
         });
 
-        fetch("../modal/menu-modal.html")
+        fetch("../modal/inventory-management-modal.html")
             .then(res => res.text())
             .then(data => {
                 document.getElementById("modal-placeholder").innerHTML = data;
