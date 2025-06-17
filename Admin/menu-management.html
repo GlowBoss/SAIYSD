@@ -150,170 +150,323 @@
             <div class="col-12 col-md-8 col-lg-9">
                 <div class="card rounded-4 p-3">
                     <!-- Header Row -->
-                    <div class="align-items-center  pt-5 px-0 px-lg-5 pb-2 px-2">
+                    <div class="align-items-center  pt-5 px-0 px-lg-5 pb-3 px-2">
                         <div class=" fw-bold subheading" role="button" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar"
                             style="cursor: pointer;">
                             Menu Management
                         </div>
                     </div>
-                    <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-2 justify-content-end mb-3 px-0 px-lg-5">
-                        <input type="text" class="search form-control" placeholder="Search Product Name"
-                            aria-label="Enter product Name" id="item-input">
-                        <button class="btn btn-success " type="button">Add</button>
-                        <!-- <button class="btn btn-success " type="button">Search</button> -->
-                        <div class="d-flex align-items-center gap-2" role="button" style="cursor: pointer;"
-                            onclick="exportToExcel()">
-                            <span class="h6 m-0 text-dark">Export Excel</span>
-                            <div class="rounded-circle bg-dark d-flex justify-content-center align-items-center"
-                                style="width: 35px; height: 35px;">
-                                <i class="bi bi-file-earmark-excel text-white"></i>
-                            </div>
+                    <div class="row g-2 align-items-center mb-3 px-2 px-lg-3">
+                        <!-- search -->
+                        <div class="col-12 col-sm">
+                            <input type="text" class="form-control" placeholder="Search Product Name"
+                                aria-label="Enter product Name" id="item-input">
+                        </div>
+                        <!-- add button -->
+                        <div class="col-12 col-sm-auto">
+                            <button class="btn btn-success w-100" type="button"  data-bs-toggle="modal" data-bs-target="#confirmModal">
+                                Add
+                            </button>
+                        </div>
+                        <!-- category part  -->
+                        <div class="col-12 col-sm-auto">
+                            <select class="form-select w-100">
+                                <option selected>Sort by Category</option>
+                                <option value="coffee">Coffee</option>
+                                <option value="tea">Tea</option>
+                                <option value="juice">Food</option>
+                                <option value="juice">Beverage</option>
+                            </select>
                         </div>
                     </div>
-                    <!-- Table Section -->
+
+                    <!-- product -->
+                    <div class="container border p-4 rounded-4 shadow-sm product-container">
+                        <div class="row g-3 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6">
+
+                            <div class="col">
+                                <div class="menu-item border p-3 rounded shadow-sm text-center width-auto">
+                                    <img src="../assets/img/coffee.png" alt="Amerikano" class="img-fluid mb-2"
+                                        style="max-height: 150px;">
+                                    <div class="lead menu-name fw-bold">Amerikano</div>
+                                    <div class="d-flex justify-content-center align-items-center gap-2 my-2">
+                                        <span class="lead fw-bold menu-price">₱140</span>
+                                        <span class="lead menu-size">500ml</span>
+                                    </div>
+                                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                                        <button class="btn btn-warning btn-sm rounded-4 flex-grow-1 flex-sm-grow-0" data-bs-toggle="modal" data-bs-target="#editModal">
+                                            <i class="bi bi-pencil-square"></i> Edit
+                                        </button>
+                                        <button class="btn btn-danger btn-sm rounded-4 flex-grow-1 flex-sm-grow-0">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="menu-item border p-3 rounded shadow-sm text-center width-auto">
+                                    <img src="../assets/img/coffee.png" alt="Amerikano" class="img-fluid mb-2"
+                                        style="max-height: 150px;">
+                                    <div class="lead menu-name fw-bold">Amerikano</div>
+                                    <div class="d-flex justify-content-center align-items-center gap-2 my-2">
+                                        <span class="lead fw-bold menu-price">₱140</span>
+                                        <span class="lead menu-size">500ml</span>
+                                    </div>
+                                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                                        <button class="btn btn-warning btn-sm rounded-4 flex-grow-1 flex-sm-grow-0" data-bs-toggle="modal" data-bs-target="#editModal">
+                                            <i class="bi bi-pencil-square"></i> Edit
+                                        </button>
+                                        <button class="btn btn-danger btn-sm rounded-4 flex-grow-1 flex-sm-grow-0">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="menu-item border p-3 rounded shadow-sm text-center width-auto">
+                                    <img src="../assets/img/coffee.png" alt="Amerikano" class="img-fluid mb-2"
+                                        style="max-height: 150px;">
+                                    <div class="lead menu-name fw-bold">Amerikano</div>
+                                    <div class="d-flex justify-content-center align-items-center gap-2 my-2">
+                                        <span class="lead fw-bold menu-price">₱140</span>
+                                        <span class="lead menu-size">500ml</span>
+                                    </div>
+                                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                                        <button class="btn btn-warning btn-sm rounded-4 flex-grow-1 flex-sm-grow-0" data-bs-toggle="modal" data-bs-target="#editModal">
+                                            <i class="bi bi-pencil-square"></i> Edit
+                                        </button>
+                                        <button class="btn btn-danger btn-sm rounded-4 flex-grow-1 flex-sm-grow-0">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="menu-item border p-3 rounded shadow-sm text-center width-auto">
+                                    <img src="../assets/img/coffee.png" alt="Amerikano" class="img-fluid mb-2"
+                                        style="max-height: 150px;">
+                                    <div class="lead menu-name fw-bold">Amerikano</div>
+                                    <div class="d-flex justify-content-center align-items-center gap-2 my-2">
+                                        <span class="lead fw-bold menu-price">₱140</span>
+                                        <span class="lead menu-size">500ml</span>
+                                    </div>
+                                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                                        <button class="btn btn-warning btn-sm rounded-4 flex-grow-1 flex-sm-grow-0" data-bs-toggle="modal" data-bs-target="#editModal">
+                                            <i class="bi bi-pencil-square"></i> Edit
+                                        </button>
+                                        <button class="btn btn-danger btn-sm rounded-4 flex-grow-1 flex-sm-grow-0">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="menu-item border p-3 rounded shadow-sm text-center width-auto">
+                                    <img src="../assets/img/coffee.png" alt="Amerikano" class="img-fluid mb-2"
+                                        style="max-height: 150px;">
+                                    <div class="lead menu-name fw-bold">Amerikano</div>
+                                    <div class="d-flex justify-content-center align-items-center gap-2 my-2">
+                                        <span class="lead fw-bold menu-price">₱140</span>
+                                        <span class="lead menu-size">500ml</span>
+                                    </div>
+                                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                                        <button class="btn btn-warning btn-sm rounded-4 flex-grow-1 flex-sm-grow-0" data-bs-toggle="modal" data-bs-target="#editModal">
+                                            <i class="bi bi-pencil-square"></i> Edit
+                                        </button>
+                                        <button class="btn btn-danger btn-sm rounded-4 flex-grow-1 flex-sm-grow-0">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="menu-item border p-3 rounded shadow-sm text-center width-auto">
+                                    <img src="../assets/img/coffee.png" alt="Amerikano" class="img-fluid mb-2"
+                                        style="max-height: 150px;">
+                                    <div class="lead menu-name fw-bold">Amerikano</div>
+                                    <div class="d-flex justify-content-center align-items-center gap-2 my-2">
+                                        <span class="lead fw-bold menu-price">₱140</span>
+                                        <span class="lead menu-size">500ml</span>
+                                    </div>
+                                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                                        <button class="btn btn-warning btn-sm rounded-4 flex-grow-1 flex-sm-grow-0" data-bs-toggle="modal" data-bs-target="#editModal">
+                                            <i class="bi bi-pencil-square"></i> Edit
+                                        </button>
+                                        <button class="btn btn-danger btn-sm rounded-4 flex-grow-1 flex-sm-grow-0">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="menu-item border p-3 rounded shadow-sm text-center width-auto">
+                                    <img src="../assets/img/coffee.png" alt="Amerikano" class="img-fluid mb-2"
+                                        style="max-height: 150px;">
+                                    <div class="lead menu-name fw-bold">Amerikano</div>
+                                    <div class="d-flex justify-content-center align-items-center gap-2 my-2">
+                                        <span class="lead fw-bold menu-price">₱140</span>
+                                        <span class="lead menu-size">500ml</span>
+                                    </div>
+                                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                                        <button class="btn btn-warning btn-sm rounded-4 flex-grow-1 flex-sm-grow-0" data-bs-toggle="modal" data-bs-target="#editModal">
+                                            <i class="bi bi-pencil-square"></i> Edit
+                                        </button>
+                                        <button class="btn btn-danger btn-sm rounded-4 flex-grow-1 flex-sm-grow-0">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="menu-item border p-3 rounded shadow-sm text-center width-auto">
+                                    <img src="../assets/img/coffee.png" alt="Amerikano" class="img-fluid mb-2"
+                                        style="max-height: 150px;">
+                                    <div class="lead menu-name fw-bold">Amerikano</div>
+                                    <div class="d-flex justify-content-center align-items-center gap-2 my-2">
+                                        <span class="lead fw-bold menu-price">₱140</span>
+                                        <span class="lead menu-size">500ml</span>
+                                    </div>
+                                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                                        <button class="btn btn-warning btn-sm rounded-4 flex-grow-1 flex-sm-grow-0" data-bs-toggle="modal" data-bs-target="#editModal">
+                                            <i class="bi bi-pencil-square"></i> Edit
+                                        </button>
+                                        <button class="btn btn-danger btn-sm rounded-4 flex-grow-1 flex-sm-grow-0">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <!-- repeat card dito  -->
+                        </div>
+                    </div>
 
 
-                    <div class="card mb-5 overflow-scroll " style="height: 65vh">
-                        <table class="table overflow-hidden">
-                            <thead class="table-secondary">
-                                <tr>
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Images</th>
-                                    <th scope="col">Product Name</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Available</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>latte.jpg</td>
-                                    <td>Café Latte</td>
-                                    <td>Espresso with steamed milk</td>
-                                    <td>Drinks</td>
-                                    <td>Yes</td>
-                                    <td>
-                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
-                                        <a class="btn"><i class="ri-more-line"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>americano.jpg</td>
-                                    <td>Americano</td>
-                                    <td>Espresso with hot water</td>
-                                    <td>Drinks</td>
-                                    <td>Yes</td>
-                                    <td>
-                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
-                                        <a class="btn"><i class="ri-more-line"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>matcha.jpg</td>
-                                    <td>Iced Matcha Latte</td>
-                                    <td>Japanese green tea with milk</td>
-                                    <td>Drinks</td>
-                                    <td>Yes</td>
-                                    <td>
-                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
-                                        <a class="btn"><i class="ri-more-line"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>choco.jpg</td>
-                                    <td>Hot Chocolate</td>
-                                    <td>Rich chocolate drink with cream</td>
-                                    <td>Drinks</td>
-                                    <td>Yes</td>
-                                    <td>
-                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
-                                        <a class="btn"><i class="ri-more-line"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>croissant.jpg</td>
-                                    <td>Butter Croissant</td>
-                                    <td>Flaky French pastry</td>
-                                    <td>Pastries</td>
-                                    <td>Yes</td>
-                                    <td>
-                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
-                                        <a class="btn"><i class="ri-more-line"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">6</th>
-                                    <td>hamcheese.jpg</td>
-                                    <td>Ham & Cheese Sandwich</td>
-                                    <td>Toasted sandwich with ham and cheese</td>
-                                    <td>Sandwiches</td>
-                                    <td>Yes</td>
-                                    <td>
-                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
-                                        <a class="btn"><i class="ri-more-line"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">7</th>
-                                    <td>carbonara.jpg</td>
-                                    <td>Carbonara Pasta</td>
-                                    <td>Creamy pasta with bacon</td>
-                                    <td>Meals</td>
-                                    <td>Yes</td>
-                                    <td>
-                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
-                                        <a class="btn"><i class="ri-more-line"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">8</th>
-                                    <td>pancakes.jpg</td>
-                                    <td>Fluffy Pancakes</td>
-                                    <td>Stack of soft pancakes with syrup</td>
-                                    <td>Breakfast</td>
-                                    <td>Yes</td>
-                                    <td>
-                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
-                                        <a class="btn"><i class="ri-more-line"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">9</th>
-                                    <td>fries.jpg</td>
-                                    <td>French Fries</td>
-                                    <td>Crispy potato fries</td>
-                                    <td>Snacks</td>
-                                    <td>Yes</td>
-                                    <td>
-                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
-                                        <a class="btn"><i class="ri-more-line"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">10</th>
-                                    <td>blueberry.jpg</td>
-                                    <td>Blueberry Cheesecake</td>
-                                    <td>Rich cheesecake topped with blueberry</td>
-                                    <td>Desserts</td>
-                                    <td>Yes</td>
-                                    <td>
-                                        <a class="btn"><i class="ri-edit-box-line"></i></a>
-                                        <a class="btn"><i class="ri-more-line"></i></a>
-                                    </td>
-                                </tr>
 
-                            </tbody>
-                        </table>
+
+
+
+
+                </div>
+            </div>
+
+            <!-- MODALLLL FOR PRODUCTTT -->
+            <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content text-center">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmModalLabel">Add Product</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Item Name</label>
+                                            <input type="text" class="form-control" name="item_name"
+                                                placeholder="Enter item name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Item Group</label>
+                                            <select class="form-select" name="item_group">
+                                                <option disabled selected>Select Category</option>
+                                                <option value="coffee">Coffee</option>
+                                                <option value="tea">Tea</option>
+                                                <option value="juice">Food</option>
+                                                <option value="juice">Beverage</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Price</label>
+                                            <input type="text" class="form-control" name="menu_price"
+                                                placeholder="Enter price">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Size</label>
+                                            <input type="text" class="form-control" name="menu_size"
+                                                placeholder="Enter size">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Attachment</label>
+                                            <input type="file" class="form-control" name="attachment">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end mt-3">
+                                    <button type="button" class="btn btn-danger me-2"
+                                        data-bs-dismiss="modal">CANCEL</button>
+                                    <button type="submit" class="btn btn-success">ADD ITEM</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
+            <!-- EDITT MODALLLLL -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Item name</label>
+                                <input type="text" class="form-control" name="item_name" value="Amerikano">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Select Category</label>
+                                <select class="form-select" name="item_group">
+                                    <option selected value="coffee">Coffee</option>
+                                    <option value="tea">Tea</option>
+                                    <option value="juice">Food</option>
+                                    <option value="juice">Beverage</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Price</label>
+                                <input type="text" class="form-control" name="menu_price" value="140">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Size</label>
+                                <input type="text" class="form-control" name="menu_size" value="500ml">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Attachment</label>
+                                <input type="file" class="form-control" name="attachment">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mt-3">
+                        <button type="button" class="btn btn-danger me-2" data-bs-dismiss="modal">CANCEL</button>
+                        <button type="submit" class="btn btn-success">SAVE CHANGES</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
             <!-- Add this script at the bottom to initialize Bootstrap offcanvas -->
