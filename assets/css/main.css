@@ -47,7 +47,6 @@ body {
     background-color: var(--btn-hover1);
 }
 
-
 .icon-bag {
     width: 24px;
     height: 24px;
@@ -166,6 +165,7 @@ footer .fab:not(.fa-tiktok):hover {
     }
 }
 
+
 .circle-icon {
     width: 40px;
     height: 40px;
@@ -232,7 +232,7 @@ footer .fab:not(.fa-tiktok):hover {
 
 .menu-name {
     font-family: var(--primaryFont);
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1.1rem;
     margin-top: 0.5rem;
     color: var(--text-color-dark);
