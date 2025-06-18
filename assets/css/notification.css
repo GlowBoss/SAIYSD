@@ -4,6 +4,14 @@
     -ms-overflow-style: none;
 }
 
+.mainContainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card-bg-color)
+}
+
 .scroll-hidden::-webkit-scrollbar {
     display: none;
 }
