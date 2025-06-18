@@ -1,0 +1,41 @@
+.scroll-hidden {
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scroll-hidden::-webkit-scrollbar {
+    display: none;
+}
+
+.categorybtn,
+.categorybtn-active {
+    border: 2px solid #C4A277;
+    color: #C4A277;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+    padding: 6px 16px;
+}
+
+.categorybtn-active {
+    background-color: #C4A277;
+    color: white;
+}
+
+
+.categorybtn:hover {
+    background-color: #C4A277;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-accept {
+    background-color: #C4A277;
+    color: white;
+    border: none;
+}
+
+.btn-decline {
+    color: #C4A277;
+    border: 2px solid #C4A277;
+}
