@@ -36,34 +36,57 @@
 </style>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container-fluid">
+   
+       <!-- NAVBAR -->
+       <nav class="navbar navbar-expand-lg navbar-custom fixed-top py-2" style="background-color: white;">
+        <div class="container-fluid p-0">
             <!-- Left: Logo -->
-            <a class="navbar-brand fw-bold">SAISYD LOGO</a>
-            <!-- Toggle button for small screens -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#saisydNavbar"
-                aria-controls="saisydNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Center: Nav links | Right: Icon + Button -->
+            <a class="navbar-brand fw-bold" href="#">
+                <img src="assets/img/saisydLogo.png" alt="SAISYD Logo" style="height: 50px;">
+            </a>
+
+
+            <!-- Right: Toggle + Icon (for small screens) -->
+            <div class="d-flex align-items-center">
+                <!-- Icon visible only on small screens -->
+                <a href="cart.html" class="d-block d-lg-none ">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png" class="icon-bag" />
+                </a>
+
+                <!-- Toggle button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#saisydNavbar"
+                    aria-controls="saisydNavbar" aria-expanded="false" aria-label="Toggle navigation"
+                    style="background: none; border: none; box-shadow: none; padding: 0;">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <!-- Center: Nav links | Right: Icon + Button for large screens -->
             <div class="collapse navbar-collapse" id="saisydNavbar">
                 <!-- Centered Nav Links -->
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 d-flex align-items-lg-center gap-lg-4 ">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Coffee</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Location</a></li>
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 d-flex align-items-lg-center gap-lg-4">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="menu.html">Coffee</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#location">Location</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Track Order</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Help Center</a></li>
                 </ul>
-                <!-- Shopping bag + Contact Us -->
+
+                <!-- Only the icon will hide on small screens -->
                 <div class="d-flex align-items-center mt-lg-0">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png" class="icon-bag" />
-                    <button class="contact-btn ms-2">Contact Us</button>
+                    <!-- Large screen icon only -->
+                    <a href="cart.html" class="d-none d-lg-block">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png" class="icon-bag" />
+                    </a>
+
+                    <!-- Contact Us should always be visible -->
+                    <button class="contact-btn ms-0 ms-lg-2">Contact Us</button>
                 </div>
             </div>
         </div>
     </nav>
+
 
 <div class="container-fluid mt-5">
     <div class="row justify-content-center">

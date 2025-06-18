@@ -49,7 +49,7 @@
                                         <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
                                         <a class="nav-link active ms-2" href="notification.html">Notification</a>
                                     </div>
-                                     <div class="nav-item d-flex justify-content-start align-items-center">
+                                    <div class="nav-item d-flex justify-content-start align-items-center">
                                         <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
                                         <a class="nav-link active ms-2" href="point-of-sales.html">POS</a>
                                     </div>
@@ -71,7 +71,8 @@
                                     <p>FINANCIAL</p>
                                     <div class="nav-item d-flex justify-content-start align-items-center">
                                         <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="sales-and-report.html">Sales and Report</a>
+                                        <a class="nav-link active ms-2" href="sales-and-report.html">Sales and
+                                            Report</a>
                                     </div>
                                 </div>
 
@@ -101,13 +102,16 @@
                         <div class="card p-3 topcontainer mb-3">
                             <div class="container-fluid">
                                 <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <div class="heading fw-bold" role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar"
-                                        aria-controls="offcanvasSidebar" style="cursor: pointer;">
+                                    <div class="heading fw-bold" role="button" data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar"
+                                        style="cursor: pointer;">
                                         Point of Sale System
                                     </div>
-                                    <button class="btn btn-light position-relative" data-bs-toggle="offcanvas" data-bs-target="#orderNotif" aria-controls="orderNotif">
+                                    <button class="btn btn-light position-relative" data-bs-toggle="offcanvas"
+                                        data-bs-target="#orderNotif" aria-controls="orderNotif">
                                         <i class="bi bi-bell-fill"></i>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        <span
+                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                             3
                                             <span class="visually-hidden">unread messages</span>
                                         </span>
@@ -120,22 +124,25 @@
                                 </div>
                             </div>
                         </div>
-            
+
                         <div class="card overflow-auto p-3 maincontainer">
                             <div class="subheading">
                                 <span style="font-weight: bold;">Menu</span> Items
                             </div>
-                            <div class="row g-3 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6" id="maincontainer">
+                            <div class="row g-3 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6"
+                                id="maincontainer">
                                 <!-- Menu items -->
                             </div>
                         </div>
                     </div>
-            
+
                     <!-- Receipt -->
                     <div class="flex-lg-shrink-0 ms-0 ms-lg-3 mt-3 mt-lg-0" style="min-width: 300px;">
                         <div class="card p-3 overflow-auto" style="height: 100%;">
                             <div class="category-title"><span style="font-weight: bold;">Menu</span> Receipt</div>
-                            <div class="container-fluid"><div class="line-divider"></div></div>
+                            <div class="container-fluid">
+                                <div class="line-divider"></div>
+                            </div>
                             <div id="receipt"><!-- receipt items --></div>
                             <div class="container-fluid">
                                 <div class="line-divider" style="height: 1px;"></div>
@@ -144,7 +151,8 @@
                                     <div><b id="totalValue">0</b></div>
                                 </div>
                                 <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mt-4">
-                                    <button class="btn btn-success w-100 w-md-auto">Order Now</button>
+                                    <button class="btn btn-success w-100 w-md-auto" onclick="openPopup()">Order
+                                        Now</button>
                                     <button class="btn btn-danger w-100 w-md-auto">Cancel Order</button>
                                 </div>
                             </div>
@@ -152,7 +160,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- notif part -->
             <div class="offcanvas offcanvas-end " tabindex="-1" id="orderNotif" aria-labelledby="orderNotifLabel"
                 style="width: 500px;">
@@ -200,6 +208,12 @@
             </div>
 
 
+            <!-- Order Confirmation Modal -->
+            <div id="modal-placeholder"></div>
+  
+
+
+
             <script>
                 var products = [
                     {
@@ -225,7 +239,7 @@
                                 "sizes": [
                                     { "name": "small", "code": "S", "price": 70 },
                                     { "name": "medium", "code": "M", "price": 90 },
-                                    { "name": "large", "code": "L", "price": 110 }
+                                    { "name": "large", "code": "L", "price": 140 }
                                 ]
                             },
                             {
@@ -553,6 +567,41 @@
                 <small>₱ ` + price + `</small>
             </div>
         </div>`;
+        document.addEventListener("DOMContentLoaded", function () {
+            const offcanvasElement = document.getElementById("offcanvasSidebar");
+            const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
+
+            // Open offcanvas by default on small screens
+            if (window.innerWidth < 768) {
+                bsOffcanvas.show();
+            }
+        });
+
+        fetch("../modal/pos-modal.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("modal-placeholder").innerHTML = data;
+                document.querySelector('.addbtn').addEventListener('click', function (e) {
+                    e.preventDefault();
+                    confirmOrder();
+                });
+            });
+
+
+                }
+
+                function openPopup() {
+                    const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+                    modal.show();
+                }
+
+                function confirmOrder() {
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('confirmModal'));
+                    modal.hide();
+
+                    const toastElement = document.getElementById('orderToast');
+                    const toast = new bootstrap.Toast(toastElement);
+                    toast.show();
                 }
 
 
