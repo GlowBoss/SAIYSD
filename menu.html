@@ -128,8 +128,8 @@
                             <span class="subheading menu-price me-4">₱140</span>
                             <span class="lead menu-size">500ml</span>
                         </div>
-                        <button class="lead buy-btn" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop">Buy</button>
+                        <button type="button" class="lead buy-btn" onclick="openPopup()">Buy</button>
+
                     </div>
                 </div>
 
@@ -252,119 +252,8 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content rounded-5 shadow">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Customize Order</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h2 class="itemName text-center">Amerikano</h2>
-                    <h4 class="itemPrice text-center mb-5">Php 140.00</h4>
-
-                    <!-- Size Options -->
-                    <div class="mx-3 mb-3">
-                        <p class="lead h5 fw-bold">Pick Size:</p>
-                        <div class="row row-cols-2 gx-2">
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="priceOptions" id="12oz">
-                                    <label class="form-check-label h6" for="dinein">12 oz</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="priceOptions" id="16oz">
-                                    <label class="form-check-label h6" for="delivery">16 oz</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Sugar Options -->
-                    <div class="mx-3 mb-3">
-                        <p class="lead h5 fw-bold">Choose sugar level:</p>
-                        <div class="row row-cols-2 gx-2">
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sugarOption" id="100%">
-                                    <label class="form-check-label h6" for="dinein">100%</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sugarOption" id="75%">
-                                    <label class="form-check-label h6" for="delivery">75%</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sugarOption" id="50%">
-                                    <label class="form-check-label h6" for="takeout">50%</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sugarOption" id="25%">
-                                    <label class="form-check-label h6" for="pickup">25%</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sugarOption" id="zeroSugar">
-                                    <label class="form-check-label h6" for="pickup">Zero Sugar</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Ice Options -->
-                    <div class="mx-3 mb-3">
-                        <p class="lead h5 fw-bold">Ice Options:</p>
-                        <div class="row row-cols-2 gx-2">
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="iceOptions" id="extraIce">
-                                    <label class="form-check-label h6" for="dinein">Extra Ice</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="iceOptions" id="lessIce">
-                                    <label class="form-check-label h6" for="delivery">Less Ice</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="iceOptions" id="default" checked>
-                                    <label class="form-check-label h6" for="takeout">Default</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="iceOptions" id="noIce">
-                                    <label class="form-check-label h6" for="pickup">No Ice</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Customer notes -->
-                    <div class="row mt-4">
-                        <h5 class="mb-3">Customer Notes</h5>
-                        <div class="col-12">
-                            <textarea class="form-control" name="customer_notes" id="customer_notes" rows="4"
-                                placeholder="Add any notes or instructions here..."></textarea>
-                        </div>
-                    </div>
-
-
-                    <!-- Add to cart button -->
-                    <button class="btn buy-btn rounded-4 mx-auto px-4 d-block mb-2">ADD TO CART</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Confirm Item Customization Modal -->
+    <div id="modal-placeholder"></div>
 
     <!-- Footer -->
     <footer class="bg-footer text-dark pt-5 pb-3">
@@ -514,7 +403,35 @@
 
     </script> -->
 
+
     <script>
+
+        fetch("modal/item-customization.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("modal-placeholder").innerHTML = data;
+                document.querySelector('.addbtn').addEventListener('click', function (e) {
+                    e.preventDefault();
+                    confirmOrder();
+                });
+            });
+
+
+        function openPopup() {
+            const modal = new bootstrap.Modal(document.getElementById('item-customization'));
+            modal.show();
+        }
+
+        function confirmOrder() {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('item-customization'));
+            modal.hide();
+
+            const toastElement = document.getElementById('orderToast');
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
+        }
+
+ 
         document.querySelectorAll('.category-pill').forEach(item => {
             item.addEventListener('click', () => {
                 document.querySelectorAll('.category-pill').forEach(el => el.classList.remove('active'));
