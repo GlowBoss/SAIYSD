@@ -1,0 +1,89 @@
+[
+    {
+        "category": "Coffee",
+        "img": "coffee.png",
+        "contents": [
+            {
+                "isAvailable": true,
+                "name": "Espresso",
+                "code": "ESP",
+                "img": "img-menu/espresso.png",
+                "sizes": [
+                    { "name": "small", "code": "S", "price": 60 },
+                    { "name": "medium", "code": "M", "price": 80 },
+                    { "name": "large", "code": "L", "price": 100 }
+                ]
+            },
+            {
+                "isAvailable": true,
+                "name": "Americano",
+                "code": "AMR",
+                "img": "img-menu/americano.png",
+                "sizes": [
+                    { "name": "small", "code": "S", "price": 70 },
+                    { "name": "medium", "code": "M", "price": 90 },
+                    { "name": "large", "code": "L", "price": 140 }
+                ]
+            },
+            {
+                "isAvailable": true,
+                "name": "Latte",
+                "code": "LTT",
+                "img": "img-menu/latte.png",
+                "sizes": [
+                    { "name": "small", "code": "S", "price": 80 },
+                    { "name": "medium", "code": "M", "price": 100 },
+                    { "name": "large", "code": "L", "price": 120 }
+                ]
+            }
+        ]
+    },
+    {
+        "category": "Tea",
+        "img": "tea.png",
+        "contents": [
+            {
+                "isAvailable": true,
+                "name": "Green Tea",
+                "code": "GRN",
+                "img": "img-menu/green_tea.png",
+                "sizes": [
+                    { "name": "small", "code": "S", "price": 50 },
+                    { "name": "medium", "code": "M", "price": 70 },
+                    { "name": "large", "code": "L", "price": 90 }
+                ]
+            },
+            {
+                "isAvailable": true,
+                "name": "Milk Tea",
+                "code": "MLK",
+                "img": "img-menu/milk_tea.png",
+                "sizes": [
+                    { "name": "small", "code": "S", "price": 65 },
+                    { "name": "medium", "code": "M", "price": 85 },
+                    { "name": "large", "code": "L", "price": 105 }
+                ]
+            },
+            {
+                "isAvailable": true,
+                "name": "Matcha Latte",
+                "code": "MCH",
+                "img": "img-menu/matcha_latte.png",
+                "sizes": [
+                    { "name": "small", "code": "S", "price": 80 },
+                    { "name": "medium", "code": "M", "price": 100 },
+                    { "name": "large", "code": "L", "price": 120 }
+                ]
+            }
+        ]
+    },
+    {
+        "category": "Food",
+        "img": "food.png",
+        "contents": [
+            { "isAvailable": true, "name": "Ham & Cheese Sandwich", "code": "HCS", "price": 85, "img": "img-menu/ham_cheese.png" },
+            { "isAvailable": true, "name": "Chicken Wings", "code": "WNG", "price": 140, "img": "img-menu/chicken_wings.png" },
+            { "isAvailable": true, "name": "Fries", "code": "FRS", "price": 60, "img": "img-menu/fries.png" }
+        ]
+    }
+]
