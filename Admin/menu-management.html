@@ -133,7 +133,8 @@
                                     <p>FINANCIAL</p>
                                     <div class="nav-item d-flex justify-content-start align-items-center">
                                         <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="sales-and-report.html">Sales and Report</a>
+                                        <a class="nav-link active ms-2" href="sales-and-report.html">Sales and
+                                            Report</a>
                                     </div>
                                 </div>
 
@@ -192,7 +193,7 @@
 
                     <!-- product -->
                     <div class="container border p-4 rounded-4 shadow-sm product-container">
-                        <div class="row g-3 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6">
+                        <div id="productGrid" class="row g-3 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6">
 
                             <div class="col">
                                 <div class="menu-item border p-3 rounded shadow-sm text-center width-auto">
@@ -425,7 +426,8 @@
                                 <div class="d-flex justify-content-end mt-3">
                                     <button type="button" class="btn btn-danger me-2"
                                         data-bs-dismiss="modal">CANCEL</button>
-                                    <button type="submit" class="btn btn-success">ADD ITEM</button>
+                                    <button type="submit" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#confirmModal">ADD ITEM</button>
                                 </div>
                             </form>
                         </div>
@@ -497,6 +499,99 @@
                     if (window.innerWidth < 768) {
                         bsOffcanvas.show();
                     }
+                });
+
+
+
+                let currentEditingCard = null;
+
+                document.addEventListener('click', function (e) {
+                    if (e.target.closest('.btn-warning')) {
+                        const card = e.target.closest('.menu-item');
+                        currentEditingCard = card;
+
+                        const name = card.querySelector('.menu-name').textContent;
+                        const price = card.querySelector('.menu-price').textContent.replace('₱', '');
+                        const size = card.querySelector('.menu-size').textContent;
+                        const category = 'coffee'; 
+
+                        const editForm = document.querySelector('#editModal form');
+                        editForm.item_name.value = name;
+                        editForm.menu_price.value = price;
+                        editForm.menu_size.value = size;
+                        editForm.item_group.value = category;
+                    }
+                });
+
+                document.querySelector('#editModal form').addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    if (!currentEditingCard) return;
+
+                    const name = this.item_name.value.trim();
+                    const price = this.menu_price.value.trim();
+                    const size = this.menu_size.value.trim();
+
+                    currentEditingCard.querySelector('.menu-name').textContent = name;
+                    currentEditingCard.querySelector('.menu-price').textContent = `₱${price}`;
+                    currentEditingCard.querySelector('.menu-size').textContent = size;
+
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('editModal'));
+                    modal.hide();
+                });
+
+// eto ay for adding 
+                document.querySelector('#confirmModal form').addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    const name = this.item_name.value.trim();
+                    const category = this.item_group.value;
+                    const price = this.menu_price.value.trim();
+                    const size = this.menu_size.value.trim();
+
+                    if (!name || !category || !price || !size) {
+                        alert('Please fill in all required fields.');
+                        return;
+                    }
+
+                    const productHTML = `
+      <div class="col">
+        <div class="menu-item border p-3 rounded shadow-sm text-center width-auto">
+          <img src="../assets/img/coffee.png" alt="${name}" class="img-fluid mb-2" style="max-height: 150px;">
+          <div class="lead menu-name fw-bold">${name}</div>
+          <div class="d-flex justify-content-center align-items-center gap-2 my-2">
+            <span class="lead fw-bold menu-price">₱${price}</span>
+            <span class="lead menu-size">${size}</span>
+          </div>
+          <div class="d-flex flex-wrap justify-content-center gap-2">
+            <button class="btn btn-warning btn-sm rounded-4 flex-grow-1 flex-sm-grow-0" data-bs-toggle="modal" data-bs-target="#editModal">
+              <i class="bi bi-pencil-square"></i> Edit
+            </button>
+            <button class="btn btn-danger btn-sm rounded-4 flex-grow-1 flex-sm-grow-0 delete-btn">
+              <i class="bi bi-trash"></i> Delete
+            </button>
+          </div>
+        </div>
+      </div>`;
+
+                    document.getElementById('productGrid').insertAdjacentHTML('beforeend', productHTML);
+
+                    // Re-attach delete event to the new button
+                    document.querySelectorAll('.delete-btn').forEach(button => {
+                        button.onclick = function () {
+                            const card = this.closest('.col');
+                            if (confirm('Are you sure you want to delete this item?')) {
+                                card.remove();
+                            }
+                        };
+                    });
+
+                    // Close the modal
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('confirmModal'));
+                    modal.hide();
+
+                    // Clear form
+                    this.reset();
                 });
             </script>
             <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"

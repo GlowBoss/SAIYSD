@@ -210,277 +210,18 @@
 
             <!-- Order Confirmation Modal -->
             <div id="modal-placeholder"></div>
-  
+
 
 
 
             <script>
-                var products = [
-                    {
-                        "category": "Coffee",
-                        "img": "coffee.png",
-                        "contents": [
-                            {
-                                "isAvailable": true,
-                                "name": "Espresso",
-                                "code": "ESP",
-                                "img": "img-menu/espresso.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 60 },
-                                    { "name": "medium", "code": "M", "price": 80 },
-                                    { "name": "large", "code": "L", "price": 100 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Americano",
-                                "code": "AMR",
-                                "img": "img-menu/americano.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 70 },
-                                    { "name": "medium", "code": "M", "price": 90 },
-                                    { "name": "large", "code": "L", "price": 140 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Latte",
-                                "code": "LTT",
-                                "img": "img-menu/latte.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 80 },
-                                    { "name": "medium", "code": "M", "price": 100 },
-                                    { "name": "large", "code": "L", "price": 120 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Cappuccino",
-                                "code": "CPP",
-                                "img": "img-menu/cappuccino.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 85 },
-                                    { "name": "medium", "code": "M", "price": 105 },
-                                    { "name": "large", "code": "L", "price": 125 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Mocha",
-                                "code": "MCH",
-                                "img": "img-menu/mocha.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 90 },
-                                    { "name": "medium", "code": "M", "price": 110 },
-                                    { "name": "large", "code": "L", "price": 130 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Caramel Macchiato",
-                                "code": "CRM",
-                                "img": "img-menu/caramel_macchiato.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 95 },
-                                    { "name": "medium", "code": "M", "price": 115 },
-                                    { "name": "large", "code": "L", "price": 135 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Cold Brew",
-                                "code": "CLD",
-                                "img": "img-menu/cold_brew.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 85 },
-                                    { "name": "medium", "code": "M", "price": 105 },
-                                    { "name": "large", "code": "L", "price": 125 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Iced Coffee",
-                                "code": "ICF",
-                                "img": "img-menu/iced_coffee.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 75 },
-                                    { "name": "medium", "code": "M", "price": 95 },
-                                    { "name": "large", "code": "L", "price": 115 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Flat White",
-                                "code": "FLW",
-                                "img": "img-menu/flat_white.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 80 },
-                                    { "name": "medium", "code": "M", "price": 100 },
-                                    { "name": "large", "code": "L", "price": 120 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Affogato",
-                                "code": "AFF",
-                                "img": "img-menu/affogato.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 100 },
-                                    { "name": "medium", "code": "M", "price": 120 },
-                                    { "name": "large", "code": "L", "price": 140 }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "category": "Tea",
-                        "img": "tea.png",
-                        "contents": [
-                            {
-                                "isAvailable": true,
-                                "name": "Green Tea",
-                                "code": "GRN",
-                                "img": "img-menu/green_tea.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 50 },
-                                    { "name": "medium", "code": "M", "price": 70 },
-                                    { "name": "large", "code": "L", "price": 90 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Black Tea",
-                                "code": "BLK",
-                                "img": "img-menu/black_tea.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 50 },
-                                    { "name": "medium", "code": "M", "price": 70 },
-                                    { "name": "large", "code": "L", "price": 90 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Milk Tea",
-                                "code": "MLK",
-                                "img": "img-menu/milk_tea.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 65 },
-                                    { "name": "medium", "code": "M", "price": 85 },
-                                    { "name": "large", "code": "L", "price": 105 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Thai Tea",
-                                "code": "THI",
-                                "img": "img-menu/thai_tea.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 70 },
-                                    { "name": "medium", "code": "M", "price": 90 },
-                                    { "name": "large", "code": "L", "price": 110 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Matcha Latte",
-                                "code": "MCH",
-                                "img": "img-menu/matcha_latte.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 80 },
-                                    { "name": "medium", "code": "M", "price": 100 },
-                                    { "name": "large", "code": "L", "price": 120 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Earl Grey",
-                                "code": "EGL",
-                                "img": "img-menu/earl_grey.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 60 },
-                                    { "name": "medium", "code": "M", "price": 80 },
-                                    { "name": "large", "code": "L", "price": 100 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Chai Tea",
-                                "code": "CHI",
-                                "img": "img-menu/chai_tea.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 70 },
-                                    { "name": "medium", "code": "M", "price": 90 },
-                                    { "name": "large", "code": "L", "price": 110 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Oolong Tea",
-                                "code": "OOL",
-                                "img": "img-menu/oolong_tea.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 60 },
-                                    { "name": "medium", "code": "M", "price": 80 },
-                                    { "name": "large", "code": "L", "price": 100 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Herbal Tea",
-                                "code": "HRB",
-                                "img": "img-menu/herbal_tea.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 55 },
-                                    { "name": "medium", "code": "M", "price": 75 },
-                                    { "name": "large", "code": "L", "price": 95 }
-                                ]
-                            },
-                            {
-                                "isAvailable": true,
-                                "name": "Fruit Tea",
-                                "code": "FRT",
-                                "img": "img-menu/fruit_tea.png",
-                                "sizes": [
-                                    { "name": "small", "code": "S", "price": 65 },
-                                    { "name": "medium", "code": "M", "price": 85 },
-                                    { "name": "large", "code": "L", "price": 105 }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "category": "Food",
-                        "img": "food.png",
-                        "contents": [
-                            { "isAvailable": true, "name": "Ham & Cheese Sandwich", "code": "HCS", "price": 85, "img": "img-menu/ham_cheese.png" },
-                            { "isAvailable": true, "name": "Tuna Sandwich", "code": "TNS", "price": 85, "img": "img-menu/tuna_sandwich.png" },
-                            { "isAvailable": true, "name": "Clubhouse", "code": "CLB", "price": 120, "img": "img-menu/clubhouse.png" },
-                            { "isAvailable": true, "name": "Breakfast Plate", "code": "BFP", "price": 150, "img": "img-menu/breakfast_plate.png" },
-                            { "isAvailable": true, "name": "Chicken Wings", "code": "WNG", "price": 140, "img": "img-menu/chicken_wings.png" },
-                            { "isAvailable": true, "name": "Fries", "code": "FRS", "price": 60, "img": "img-menu/fries.png" },
-                            { "isAvailable": true, "name": "Bacon & Egg", "code": "BNE", "price": 100, "img": "img-menu/bacon_egg.png" },
-                            { "isAvailable": true, "name": "Cheesy Nachos", "code": "NCH", "price": 90, "img": "img-menu/cheesy_nachos.png" },
-                            { "isAvailable": true, "name": "Garlic Bread", "code": "GRB", "price": 50, "img": "img-menu/garlic_bread.png" },
-                            { "isAvailable": true, "name": "Sausage Rice", "code": "SRC", "price": 110, "img": "img-menu/sausage_rice.png" }
-                        ]
-                    },
-                    {
-                        "category": "Dessert",
-                        "img": "dessert.png",
-                        "contents": [
-                            { "isAvailable": true, "name": "Chocolate Cake", "code": "CHK", "price": 90, "img": "img-menu/chocolate_cake.png" },
-                            { "isAvailable": true, "name": "Cheesecake", "code": "CSK", "price": 100, "img": "img-menu/cheesecake.png" },
-                            { "isAvailable": true, "name": "Brownie", "code": "BRW", "price": 70, "img": "img-menu/brownie.png" },
-                            { "isAvailable": true, "name": "Ice Cream Scoop", "code": "ICS", "price": 60, "img": "img-menu/ice_cream.png" },
-                            { "isAvailable": true, "name": "Tiramisu", "code": "TRM", "price": 95, "img": "img-menu/tiramisu.png" },
-                            { "isAvailable": true, "name": "Mango Float", "code": "MGF", "price": 85, "img": "img-menu/mango_float.png" },
-                            { "isAvailable": true, "name": "Leche Flan", "code": "LCF", "price": 70, "img": "img-menu/leche_flan.png" },
-                            { "isAvailable": true, "name": "Ube Halaya", "code": "UBE", "price": 80, "img": "img-menu/ube_halaya.png" },
-                            { "isAvailable": true, "name": "Cream Puff", "code": "CRP", "price": 75, "img": "img-menu/cream_puff.png" },
-                            { "isAvailable": true, "name": "Churros", "code": "CHR", "price": 85, "img": "img-menu/churros.png" }
-                        ]
-                    }
-                ];
+                fetch('products.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        products = data;
+                        loadCategories();
+                    });
+
 
                 var total = 0;
 
@@ -567,25 +308,92 @@
                 <small>₱ ` + price + `</small>
             </div>
         </div>`;
-        document.addEventListener("DOMContentLoaded", function () {
-            const offcanvasElement = document.getElementById("offcanvasSidebar");
-            const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
 
-            // Open offcanvas by default on small screens
-            if (window.innerWidth < 768) {
-                bsOffcanvas.show();
+         let orderData = []; // To store all confirmed orders
+
+    function openPopup() {
+        const receiptItems = document.querySelectorAll('#receipt .receipt-item');
+        const summaryList = document.getElementById('orderSummaryList');
+        summaryList.innerHTML = '';
+
+        const currentOrder = [];
+
+        receiptItems.forEach(item => {
+            const name = item.querySelector('.item-name')?.textContent || '';
+            const qty = item.querySelector('.item-qty')?.textContent || '';
+            const price = item.querySelector('.item-price')?.textContent || '';
+
+            if (name && qty) {
+                summaryList.innerHTML += `<li>${qty}x ${name}</li>`;
+                currentOrder.push({ name, quantity: qty, price });
             }
         });
 
-        fetch("../modal/pos-modal.html")
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById("modal-placeholder").innerHTML = data;
-                document.querySelector('.addbtn').addEventListener('click', function (e) {
-                    e.preventDefault();
-                    confirmOrder();
-                });
-            });
+        // Store in modal's data attribute
+        document.getElementById('confirmModal').dataset.currentOrder = JSON.stringify(currentOrder);
+
+        // Show the modal
+        const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+        modal.show();
+    }
+
+    // Confirm button event
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('.confirm-order-btn').addEventListener('click', () => {
+            const modalEl = document.getElementById('confirmModal');
+            const confirmedOrder = JSON.parse(modalEl.dataset.currentOrder || '[]');
+            orderData.push(confirmedOrder); // Save to array
+
+            // Add to notification area
+            const notifContainer = document.querySelector('#orderNotif .offcanvas-body');
+            const notifHTML = `
+                <div class="card mb-3 p-3 rounded-5" style="border-color: var(--text-color-dark);">
+                    <div class="fw-bold fs-5">Customer</div>
+                    <div class="fs-6">
+                        ${confirmedOrder.map(item => `${item.quantity}x ${item.name}`).join('<br>')}
+                    </div>
+                    <div class="d-flex justify-content-end gap-2 mt-3">
+                        <button class="btn btn-dark btn-sm px-3 py-2 rounded-4">Accept</button>
+                        <button class="btn btn-outline-dark btn-sm px-3 py-2 rounded-4">Decline</button>
+                    </div>
+                </div>`;
+            notifContainer.insertAdjacentHTML('beforeend', notifHTML);
+
+            // Clear receipt and total
+            document.getElementById('receipt').innerHTML = '';
+            document.getElementById('totalValue').textContent = '0';
+
+            // Close modal
+            bootstrap.Modal.getInstance(modalEl).hide();
+        });
+    });
+
+
+
+
+
+
+
+
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const offcanvasElement = document.getElementById("offcanvasSidebar");
+                        const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
+
+                        // Open offcanvas by default on small screens
+                        if (window.innerWidth < 768) {
+                            bsOffcanvas.show();
+                        }
+                    });
+
+                    fetch("../modal/pos-modal.html")
+                        .then(res => res.text())
+                        .then(data => {
+                            document.getElementById("modal-placeholder").innerHTML = data;
+                            document.querySelector('.addbtn').addEventListener('click', function (e) {
+                                e.preventDefault();
+                                confirmOrder();
+                            });
+                        });
 
 
                 }
@@ -607,6 +415,8 @@
 
 
                 loadCategories();
+
+
 
 
             </script>
