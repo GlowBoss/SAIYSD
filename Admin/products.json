@@ -12,7 +12,7 @@
                     { "name": "12oz", "code": "12", "price": 60 },
                     { "name": "16oz", "code": "16", "price": 80 }
                 ],
-                "sugarLevels": [0, 50, 75, 100]
+                "sugarLevels": [0, 25, 50, 75, 100]
             },
             {
                 "isAvailable": true,
@@ -23,7 +23,7 @@
                     { "name": "12oz", "code": "12", "price": 70 },
                     { "name": "16oz", "code": "16", "price": 90 }
                 ],
-                "sugarLevels": [0, 50, 75, 100]
+                "sugarLevels": [0, 25, 50, 75, 100]
             },
             {
                 "isAvailable": true,
@@ -34,7 +34,7 @@
                     { "name": "12oz", "code": "12", "price": 80 },
                     { "name": "16oz", "code": "16", "price": 100 }
                 ],
-                "sugarLevels": [0, 50, 75, 100]
+                "sugarLevels": [0, 25, 50, 75, 100]
             }
         ]
     },
@@ -51,7 +51,7 @@
                     { "name": "12oz", "code": "12", "price": 50 },
                     { "name": "16oz", "code": "16", "price": 70 }
                 ],
-                "sugarLevels": [0, 50, 75, 100]
+                "sugarLevels": [0, 25, 50, 75, 100]
             },
             {
                 "isAvailable": true,
@@ -62,7 +62,7 @@
                     { "name": "12oz", "code": "12", "price": 65 },
                     { "name": "16oz", "code": "16", "price": 85 }
                 ],
-                "sugarLevels": [0, 50, 75, 100]
+                "sugarLevels": [0, 25, 50, 75, 100]
             },
             {
                 "isAvailable": true,
@@ -73,7 +73,7 @@
                     { "name": "12oz", "code": "12", "price": 80 },
                     { "name": "16oz", "code": "16", "price": 100 }
                 ],
-                "sugarLevels": [0, 50, 75, 100]
+                "sugarLevels": [0, 25, 50, 75, 100]
             }
         ]
     },
