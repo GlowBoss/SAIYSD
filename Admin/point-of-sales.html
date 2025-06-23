@@ -14,6 +14,7 @@
     <!-- bootstrap icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="icon" href="../assets/img/round_logo.png" type="image/png">
 </head>
 
 <body>
@@ -153,8 +154,7 @@
                                 <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mt-4">
                                     <button class="btn btn-success w-100 w-md-auto" onclick="openPopup()">Order
                                         Now</button>
-                                    <button class="btn btn-danger w-100 w-md-auto" onclick="cancelOrder()">Cancel
-                                        Order</button>
+                                    <button class="btn btn-danger w-100 w-md-auto">Cancel Order</button>
                                 </div>
                             </div>
                         </div>
@@ -214,214 +214,403 @@
 
 
 
+
             <script>
-                var products = [];
+                var products = [
+                    {
+                        "category": "Coffee",
+                        "img": "coffee.png",
+                        "contents": [
+                            {
+                                "isAvailable": true,
+                                "name": "Espresso",
+                                "code": "ESP",
+                                "img": "img-menu/espresso.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 60 },
+                                    { "name": "medium", "code": "M", "price": 80 },
+                                    { "name": "large", "code": "L", "price": 100 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Americano",
+                                "code": "AMR",
+                                "img": "img-menu/americano.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 70 },
+                                    { "name": "medium", "code": "M", "price": 90 },
+                                    { "name": "large", "code": "L", "price": 140 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Latte",
+                                "code": "LTT",
+                                "img": "img-menu/latte.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 80 },
+                                    { "name": "medium", "code": "M", "price": 100 },
+                                    { "name": "large", "code": "L", "price": 120 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Cappuccino",
+                                "code": "CPP",
+                                "img": "img-menu/cappuccino.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 85 },
+                                    { "name": "medium", "code": "M", "price": 105 },
+                                    { "name": "large", "code": "L", "price": 125 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Mocha",
+                                "code": "MCH",
+                                "img": "img-menu/mocha.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 90 },
+                                    { "name": "medium", "code": "M", "price": 110 },
+                                    { "name": "large", "code": "L", "price": 130 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Caramel Macchiato",
+                                "code": "CRM",
+                                "img": "img-menu/caramel_macchiato.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 95 },
+                                    { "name": "medium", "code": "M", "price": 115 },
+                                    { "name": "large", "code": "L", "price": 135 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Cold Brew",
+                                "code": "CLD",
+                                "img": "img-menu/cold_brew.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 85 },
+                                    { "name": "medium", "code": "M", "price": 105 },
+                                    { "name": "large", "code": "L", "price": 125 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Iced Coffee",
+                                "code": "ICF",
+                                "img": "img-menu/iced_coffee.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 75 },
+                                    { "name": "medium", "code": "M", "price": 95 },
+                                    { "name": "large", "code": "L", "price": 115 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Flat White",
+                                "code": "FLW",
+                                "img": "img-menu/flat_white.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 80 },
+                                    { "name": "medium", "code": "M", "price": 100 },
+                                    { "name": "large", "code": "L", "price": 120 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Affogato",
+                                "code": "AFF",
+                                "img": "img-menu/affogato.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 100 },
+                                    { "name": "medium", "code": "M", "price": 120 },
+                                    { "name": "large", "code": "L", "price": 140 }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "category": "Tea",
+                        "img": "tea.png",
+                        "contents": [
+                            {
+                                "isAvailable": true,
+                                "name": "Green Tea",
+                                "code": "GRN",
+                                "img": "img-menu/green_tea.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 50 },
+                                    { "name": "medium", "code": "M", "price": 70 },
+                                    { "name": "large", "code": "L", "price": 90 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Black Tea",
+                                "code": "BLK",
+                                "img": "img-menu/black_tea.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 50 },
+                                    { "name": "medium", "code": "M", "price": 70 },
+                                    { "name": "large", "code": "L", "price": 90 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Milk Tea",
+                                "code": "MLK",
+                                "img": "img-menu/milk_tea.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 65 },
+                                    { "name": "medium", "code": "M", "price": 85 },
+                                    { "name": "large", "code": "L", "price": 105 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Thai Tea",
+                                "code": "THI",
+                                "img": "img-menu/thai_tea.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 70 },
+                                    { "name": "medium", "code": "M", "price": 90 },
+                                    { "name": "large", "code": "L", "price": 110 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Matcha Latte",
+                                "code": "MCH",
+                                "img": "img-menu/matcha_latte.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 80 },
+                                    { "name": "medium", "code": "M", "price": 100 },
+                                    { "name": "large", "code": "L", "price": 120 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Earl Grey",
+                                "code": "EGL",
+                                "img": "img-menu/earl_grey.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 60 },
+                                    { "name": "medium", "code": "M", "price": 80 },
+                                    { "name": "large", "code": "L", "price": 100 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Chai Tea",
+                                "code": "CHI",
+                                "img": "img-menu/chai_tea.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 70 },
+                                    { "name": "medium", "code": "M", "price": 90 },
+                                    { "name": "large", "code": "L", "price": 110 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Oolong Tea",
+                                "code": "OOL",
+                                "img": "img-menu/oolong_tea.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 60 },
+                                    { "name": "medium", "code": "M", "price": 80 },
+                                    { "name": "large", "code": "L", "price": 100 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Herbal Tea",
+                                "code": "HRB",
+                                "img": "img-menu/herbal_tea.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 55 },
+                                    { "name": "medium", "code": "M", "price": 75 },
+                                    { "name": "large", "code": "L", "price": 95 }
+                                ]
+                            },
+                            {
+                                "isAvailable": true,
+                                "name": "Fruit Tea",
+                                "code": "FRT",
+                                "img": "img-menu/fruit_tea.png",
+                                "sizes": [
+                                    { "name": "small", "code": "S", "price": 65 },
+                                    { "name": "medium", "code": "M", "price": 85 },
+                                    { "name": "large", "code": "L", "price": 105 }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "category": "Food",
+                        "img": "food.png",
+                        "contents": [
+                            { "isAvailable": true, "name": "Ham & Cheese Sandwich", "code": "HCS", "price": 85, "img": "img-menu/ham_cheese.png" },
+                            { "isAvailable": true, "name": "Tuna Sandwich", "code": "TNS", "price": 85, "img": "img-menu/tuna_sandwich.png" },
+                            { "isAvailable": true, "name": "Clubhouse", "code": "CLB", "price": 120, "img": "img-menu/clubhouse.png" },
+                            { "isAvailable": true, "name": "Breakfast Plate", "code": "BFP", "price": 150, "img": "img-menu/breakfast_plate.png" },
+                            { "isAvailable": true, "name": "Chicken Wings", "code": "WNG", "price": 140, "img": "img-menu/chicken_wings.png" },
+                            { "isAvailable": true, "name": "Fries", "code": "FRS", "price": 60, "img": "img-menu/fries.png" },
+                            { "isAvailable": true, "name": "Bacon & Egg", "code": "BNE", "price": 100, "img": "img-menu/bacon_egg.png" },
+                            { "isAvailable": true, "name": "Cheesy Nachos", "code": "NCH", "price": 90, "img": "img-menu/cheesy_nachos.png" },
+                            { "isAvailable": true, "name": "Garlic Bread", "code": "GRB", "price": 50, "img": "img-menu/garlic_bread.png" },
+                            { "isAvailable": true, "name": "Sausage Rice", "code": "SRC", "price": 110, "img": "img-menu/sausage_rice.png" }
+                        ]
+                    },
+                    {
+                        "category": "Dessert",
+                        "img": "dessert.png",
+                        "contents": [
+                            { "isAvailable": true, "name": "Chocolate Cake", "code": "CHK", "price": 90, "img": "img-menu/chocolate_cake.png" },
+                            { "isAvailable": true, "name": "Cheesecake", "code": "CSK", "price": 100, "img": "img-menu/cheesecake.png" },
+                            { "isAvailable": true, "name": "Brownie", "code": "BRW", "price": 70, "img": "img-menu/brownie.png" },
+                            { "isAvailable": true, "name": "Ice Cream Scoop", "code": "ICS", "price": 60, "img": "img-menu/ice_cream.png" },
+                            { "isAvailable": true, "name": "Tiramisu", "code": "TRM", "price": 95, "img": "img-menu/tiramisu.png" },
+                            { "isAvailable": true, "name": "Mango Float", "code": "MGF", "price": 85, "img": "img-menu/mango_float.png" },
+                            { "isAvailable": true, "name": "Leche Flan", "code": "LCF", "price": 70, "img": "img-menu/leche_flan.png" },
+                            { "isAvailable": true, "name": "Ube Halaya", "code": "UBE", "price": 80, "img": "img-menu/ube_halaya.png" },
+                            { "isAvailable": true, "name": "Cream Puff", "code": "CRP", "price": 75, "img": "img-menu/cream_puff.png" },
+                            { "isAvailable": true, "name": "Churros", "code": "CHR", "price": 85, "img": "img-menu/churros.png" }
+                        ]
+                    }
+                ];
+
                 var total = 0;
-                var orderData = [];
 
-                // Fetch products from JSON file
-                fetch('products.json')
-                    .then(response => response.json())
-                    .then(data => {
-                        products = data;
-                        loadCategories();
-                    });
-
-                // Load product categories
                 function loadCategories() {
                     var categoriesContainer = document.getElementById("categories");
                     products.forEach((product, index) => {
                         categoriesContainer.innerHTML += `
-                    <div onclick="selectCategory(this, '${index}')" class="category-pill text-center">
-                        ${product.category}
-                    </div>`;
+            <div onclick="selectCategory(this, '` + index + `')" 
+                 class="category-pill text-center">
+                ` + product.category + `
+            </div>`;
                     });
                 }
 
-                // Select a category and load products
                 function selectCategory(element, index) {
-                    document.querySelectorAll('.category-pill').forEach(pill => pill.classList.remove('active'));
+                    // Remove active class from all category pills
+                    document.querySelectorAll('.category-pill').forEach(pill => {
+                        pill.classList.remove('active');
+                    });
+
+                    // Add active to the clicked one
                     element.classList.add('active');
+
+                    // Load products
                     loadProducts(index);
                 }
 
-                // Load products based on selected category
                 function loadProducts(categoryIndex) {
                     var maincontainer = document.getElementById("maincontainer");
                     maincontainer.innerHTML = "";
 
                     if (categoryIndex == 0 || categoryIndex == 1) {
-                        products[categoryIndex].contents.forEach((content, contentIndex) => {
-                            content.sizes.forEach((size, sizeIndex) => {
-                                const sugarSelectId = `sugar-${categoryIndex}-${contentIndex}-${sizeIndex}`;
-                                const sugarOptions = (content.sugarLevels || [])
-                                    .map(level => `<option value="${level}">${level}% Sugar</option>`)
-                                    .join('');
-
+                        products[categoryIndex].contents.forEach(content => {
+                            content.sizes.forEach(size => {
                                 maincontainer.innerHTML += `
-                            <div class="col">
-                                <div class="menu-item border p-3 rounded shadow-sm text-center width-auto card-hover" style="cursor: pointer;">
-                                    <img src="../assets/img/${content.img}" alt="${content.name}" class="img-fluid mb-2" style="max-height: 150px;">
-                                    <div class="lead menu-name fw-bold">${content.name}</div>
-                                    <div class="d-flex justify-content-center align-items-center gap-2 my-2">
-                                        <span class="lead fw-bold menu-price">₱${size.price}</span>
-                                        <span class="lead menu-size">${size.name}</span>
-                                    </div>
-                                    <select class="form-select mb-2" id="${sugarSelectId}">
-                                        ${sugarOptions}
-                                    </select>
-                                    <button class="btn btn-dark btn-sm mt-1"
-                                        onclick="showQuantityModal('${size.price}','${content.code + size.code}','${content.name} ${size.name}', '${sugarSelectId}')">
-                                        Add to Order
-                                    </button>
-                                </div>
-                            </div>`;
+    <div class="col">
+        <div onclick="addToReceipt('` + size.price + `','` + content.code + size.code + `','` + content.name + `')" 
+             class="menu-item border p-3 rounded shadow-sm text-center width-auto card-hover" 
+             style="cursor: pointer;">
+            <img src="../assets/img/` + content.img + `" alt="` + content.name + `" class="img-fluid mb-2" style="max-height: 150px;">
+            <div class="lead menu-name fw-bold">` + content.name + ' ' + size.code + `</div>
+            <div class="d-flex justify-content-center align-items-center gap-2 my-2">
+                <span class="lead fw-bold menu-price">₱` + size.price + `</span>
+                <span class="lead menu-size">` + size.code + `</span>
+            </div>
+        </div>
+    </div>`;
+
                             });
                         });
                     } else {
                         products[categoryIndex].contents.forEach(content => {
                             maincontainer.innerHTML += `
-                        <div class="col">
-                            <div onclick="showQuantityModal('${content.price}','${content.code}','${content.name}')" 
-                                 class="menu-item border p-3 rounded shadow-sm text-center width-auto card-hover" 
-                                 style="cursor: pointer;">
-                                <img src="../assets/img/${content.img}" alt="${content.name}" class="img-fluid mb-2" style="max-height: 150px;">
-                                <div class="lead menu-name fw-bold">${content.name}</div>
-                                <div class="d-flex justify-content-center align-items-center gap-2 my-2">
-                                    <span class="lead fw-bold menu-price">₱${content.price}</span>
-                                </div>
-                            </div>
-                        </div>`;
+    <div class="col">
+        <div onclick="addToReceipt('` + content.price + `','` + content.code + `','` + content.name + `')" 
+             class="menu-item border p-3 rounded shadow-sm text-center width-auto card-hover" 
+             style="cursor: pointer;">
+            <img src="../assets/img/` + content.img + `" alt="` + content.name + `" class="img-fluid mb-2" style="max-height: 150px;">
+            <div class="lead menu-name fw-bold">` + content.name + `</div>
+            <div class="d-flex justify-content-center align-items-center gap-2 my-2">
+                <span class="lead fw-bold menu-price">₱` + content.price + `</span>
+            </div>
+        </div>
+    </div>`;
+
+
                         });
                     }
                 }
 
-                // Show quantity modal
-                function showQuantityModal(price, code, name, sugarSelectId = null) {
-                    const quantityModal = document.getElementById('quantityModal');
-                    const quantityInput = document.getElementById('quantityInput');
-                    const addButton = document.getElementById('addToReceiptButton');
+                function addToReceipt(price, code, name) {
+                    var receiptContainer = document.getElementById("receipt");
+                    total = parseFloat(total) + parseFloat(price);
 
-                    // Set the data attributes for the button
-                    addButton.setAttribute('data-price', price);
-                    addButton.setAttribute('data-code', code);
-                    addButton.setAttribute('data-name', name);
-                    addButton.setAttribute('data-sugarSelectId', sugarSelectId);
+                    var totalValueElement = document.getElementById("totalValue");
+                    totalValueElement.innerHTML = total;
 
-                    // Show the modal
-                    const modal = new bootstrap.Modal(quantityModal);
-                    modal.show();
-                }
-
-                function cancelOrder() {
-                    // Clear receipt UI
-                    document.getElementById("receipt").innerHTML = "";
-                    // Reset total
-                    total = 0;
-                    document.getElementById("totalValue").innerHTML = "0.00";
-                    // Optionally clear stored data
-                    localStorage.removeItem('orderData');
-                }
-
-
-                // Add item to receipt
-                function addToReceipt() {
-                    const addButton = document.getElementById('addToReceiptButton');
-                    const price = addButton.getAttribute('data-price');
-                    const code = addButton.getAttribute('data-code');
-                    const name = addButton.getAttribute('data-name');
-                    const sugarSelectId = addButton.getAttribute('data-sugarSelectId');
-                    const quantity = parseInt(document.getElementById('quantityInput').value) || 1;
-
-                    total += parseFloat(price) * quantity;
-                    document.getElementById("totalValue").innerHTML = total.toFixed(2);
-
-                    let sugarNote = '';
-                    if (sugarSelectId) {
-                        const sugarDropdown = document.getElementById(sugarSelectId);
-                        if (sugarDropdown) {
-                            sugarNote = ` | ${sugarDropdown.value}% Sugar`;
-                        }
-                    }
-
-                    const receiptContainer = document.getElementById("receipt");
                     receiptContainer.innerHTML += `
-                <div class="d-flex flex-row justify-content-between align-items-center mb-1 receipt-item">
-                  <div class="flex-grow-1 item-name">
-                    <small><span style="font-weight: bold;">${name}${sugarNote} | ${quantity}x</span> ${code}</small>
-                  </div>
-                  <div class="item-price">
-                    <small>₱ ${(parseFloat(price) * quantity).toFixed(2)}</small>
-                  </div>
-                </div>`;
+        <div class="d-flex flex-row justify-content-between align-items-center mb-1">
+            <div class="flex-grow-1">
+                <small><span style="font-weight: bold;">` + name + ` | </span>` + code + `</small>
+            </div>
+            <div>
+                <small>₱ ` + price + `</small>
+            </div>
+        </div>`;
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const offcanvasElement = document.getElementById("offcanvasSidebar");
+                        const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
 
-                    // Hide the quantity modal
-                    const quantityModal = bootstrap.Modal.getInstance(document.getElementById('quantityModal'));
-                    quantityModal.hide();
-                }
-
-                // Open confirmation popup
-                function openPopup() {
-                    const receiptItems = document.querySelectorAll('#receipt .receipt-item');
-                    const summaryList = document.getElementById('orderSummaryList');
-                    summaryList.innerHTML = '';
-
-                    const currentOrder = [];
-                    let totalPrice = 0;
-
-                    receiptItems.forEach(item => {
-                        const name = item.querySelector('.item-name')?.textContent || '';
-                        const price = parseFloat(item.querySelector('.item-price')?.textContent.replace('₱ ', '')) || 0;
-                        if (name) {
-                            summaryList.innerHTML += `<li>${name}</li>`;
-                            currentOrder.push({ name, price });
-                            totalPrice += price;
+                        // Open offcanvas by default on small screens
+                        if (window.innerWidth < 768) {
+                            bsOffcanvas.show();
                         }
                     });
-
-                    // Get selected payment mode
-                    const paymentMode = document.getElementById('paymentMode').value;
-
-                    // Display total price and payment mode
-                    summaryList.innerHTML += `<li class="fw-bold">Total: ₱${totalPrice.toFixed(2)}</li>`;
-                    summaryList.innerHTML += `<li class="fw-bold">Payment Mode: ${paymentMode}</li>`;
-
-                    document.getElementById('confirmModal').dataset.currentOrder = JSON.stringify(currentOrder);
-                    const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
-                    modal.show();
-                }
-
-                // Confirm order and save to localStorage
-                function confirmOrder() {
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('confirmModal'));
-                    modal.hide();
-
-                    const toastElement = document.getElementById('orderToast');
-                    const toast = new bootstrap.Toast(toastElement, { delay: 3000 });
-                    toast.show();
-
-                    // Save order to localStorage for use on notification.html
-                    const confirmedOrder = JSON.parse(document.getElementById('confirmModal').dataset.currentOrder || '[]');
-                    localStorage.setItem('orderData', JSON.stringify(confirmedOrder));
-                }
-
-                // Initialize the application
-                document.addEventListener("DOMContentLoaded", function () {
-                    const offcanvasElement = document.getElementById("offcanvasSidebar");
-                    const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
-                    if (window.innerWidth < 768) {
-                        bsOffcanvas.show();
-                    }
 
                     fetch("../modal/pos-modal.html")
                         .then(res => res.text())
                         .then(data => {
                             document.getElementById("modal-placeholder").innerHTML = data;
-                            document.querySelector('.confirm-order-btn').addEventListener('click', confirmOrder);
+                            document.querySelector('.addbtn').addEventListener('click', function (e) {
+                                e.preventDefault();
+                                confirmOrder();
+                            });
                         });
-                });
-            </script>
 
+
+                }
+
+                function openPopup() {
+                    const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+                    modal.show();
+                }
+
+                function confirmOrder() {
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('confirmModal'));
+                    modal.hide();
+
+                    const toastElement = document.getElementById('orderToast');
+                    const toast = new bootstrap.Toast(toastElement);
+                    toast.show();
+                }
+
+
+
+                loadCategories();
+
+
+            </script>
 
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
@@ -444,10 +633,6 @@
                     }
                 });
             </script>
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-                crossorigin="anonymous"></script>
-
             <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
                 crossorigin="anonymous">
