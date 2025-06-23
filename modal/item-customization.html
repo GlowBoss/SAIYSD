@@ -1,123 +1,91 @@
-<!-- Modal -->
-<div class="modal fade" id="item-customization" data-bs-keyboard="false" tabindex="-1" aria-labelledby="itemCustomizationLabel" aria-hidden="true">
+<!-- Customize Order Modal -->
+<div class="modal fade" id="item-customization" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="itemCustomizationLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content rounded-5 shadow">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="itemCustomizationLabel">Customize Order</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header justify-content-center position-relative">
+                <h1 class="modal-title fs-5 text-center w-100" id="itemCustomizationLabel">Customize Order</h1>
+                <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
             </div>
+
             <div class="modal-body">
-                <h2 class="itemName text-center">Amerikano</h2>
-                <h4 class="itemPrice text-center mb-5">Php 140.00</h4>
+                <!-- Item name and price -->
+                <h2 class="itemName text-center">Product Name</h2>
+                <h4 class="itemPrice text-center mb-5">₱0.00</h4>
 
                 <!-- Size Options -->
-                <div class="mx-3 mb-3">
+                <div class="mx-3 mb-3" id="size-section">
                     <p class="lead h5 fw-bold">Pick Size:</p>
-                    <div class="row row-cols-2 gx-2">
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="priceOptions" id="size12oz">
-                                <label class="form-check-label h6" for="size12oz">12 oz</label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="priceOptions" id="size16oz">
-                                <label class="form-check-label h6" for="size16oz">16 oz</label>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="row row-cols-2 gx-2" id="size-options"></div>
                 </div>
 
-                <!-- Sugar Options -->
-                <div class="mx-3 mb-3">
+                <!-- Sugar Level -->
+                <div class="mx-3 mb-3" id="sugar-section">
                     <p class="lead h5 fw-bold">Choose sugar level:</p>
-                    <div class="row row-cols-2 gx-2">
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="sugarOption" id="sugar100">
-                                <label class="form-check-label h6" for="sugar100">100%</label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="sugarOption" id="sugar75">
-                                <label class="form-check-label h6" for="sugar75">75%</label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="sugarOption" id="sugar50">
-                                <label class="form-check-label h6" for="sugar50">50%</label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="sugarOption" id="sugar25">
-                                <label class="form-check-label h6" for="sugar25">25%</label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="sugarOption" id="sugar0">
-                                <label class="form-check-label h6" for="sugar0">Zero Sugar</label>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="row row-cols-2 gx-2" id="sugar-options"></div>
                 </div>
 
                 <!-- Ice Options -->
-                <div class="mx-3 mb-3">
+                <div class="mx-3 mb-3" id="ice-section" style="display: none;">
+
                     <p class="lead h5 fw-bold">Ice Options:</p>
                     <div class="row row-cols-2 gx-2">
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="iceOptions" id="iceExtra">
+                                <input class="form-check-input" type="radio" name="iceOptions" id="iceExtra"
+                                    value="Extra Ice">
                                 <label class="form-check-label h6" for="iceExtra">Extra Ice</label>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="iceOptions" id="iceLess">
+                                <input class="form-check-input" type="radio" name="iceOptions" id="iceLess"
+                                    value="Less Ice">
                                 <label class="form-check-label h6" for="iceLess">Less Ice</label>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="iceOptions" id="iceDefault" checked>
+                                <input class="form-check-input" type="radio" name="iceOptions" id="iceDefault"
+                                    value="Default" checked>
                                 <label class="form-check-label h6" for="iceDefault">Default</label>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="iceOptions" id="iceNone">
+                                <input class="form-check-input" type="radio" name="iceOptions" id="iceNone"
+                                    value="No Ice">
                                 <label class="form-check-label h6" for="iceNone">No Ice</label>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Customer Notes -->
+                <!-- Notes -->
                 <div class="row mt-4">
                     <h5 class="mb-3">Customer Notes</h5>
                     <div class="col-12">
-                        <textarea class="form-control" name="customer_notes" id="customer_notes" rows="4" placeholder="Add any notes or instructions here..."></textarea>
+                        <textarea class="form-control" name="customer_notes" id="customer_notes" rows="4"
+                            placeholder="Add any notes or instructions here..."></textarea>
                     </div>
                 </div>
 
                 <!-- Add to Cart Button -->
-                <button class="btn buy-btn addbtn rounded-4 mx-auto px-4 d-block mb-2 mt-4">ADD TO CART</button>
+                <button class="btn buy-btn addbtn rounded-2 mx-auto px-4 d-block mb-2 mt-4">ADD TO CART</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Toast -->
-<div id="orderToast" class="toast align-items-center text-bg-success position-fixed bottom-0 end-0 m-3 z-3" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
-        <div class="toast-body">
-            Added to Cart!
+<!-- Toast Notification -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3 z-3">
+    <div id="orderToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive"
+        aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">Added to Cart!</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
         </div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
 </div>
