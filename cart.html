@@ -36,24 +36,20 @@
 </style>
 
 <body>
-   
-       <!-- NAVBAR -->
-       <nav class="navbar navbar-expand-lg navbar-custom fixed-top py-2" style="background-color: white;">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top py-2" style="background-color: white;">
         <div class="container-fluid p-0">
             <!-- Left: Logo -->
             <a class="navbar-brand fw-bold" href="#">
                 <img src="assets/img/saisydLogo.png" alt="SAISYD Logo" style="height: 50px;">
             </a>
 
-
             <!-- Right: Toggle + Icon (for small screens) -->
             <div class="d-flex align-items-center">
-                <!-- Icon visible only on small screens -->
-                <a href="cart.html" class="d-block d-lg-none ">
+                <a href="cart.html" class="d-block d-lg-none">
                     <img src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png" class="icon-bag" />
                 </a>
-
-                <!-- Toggle button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#saisydNavbar"
                     aria-controls="saisydNavbar" aria-expanded="false" aria-label="Toggle navigation"
                     style="background: none; border: none; box-shadow: none; padding: 0;">
@@ -61,9 +57,8 @@
                 </button>
             </div>
 
-            <!-- Center: Nav links | Right: Icon + Button for large screens -->
+            <!-- Center Nav Links and Right Icons -->
             <div class="collapse navbar-collapse" id="saisydNavbar">
-                <!-- Centered Nav Links -->
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 d-flex align-items-lg-center gap-lg-4">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="menu.html">Coffee</a></li>
@@ -72,136 +67,205 @@
                     <li class="nav-item"><a class="nav-link" href="#">Track Order</a></li>
                 </ul>
 
-                <!-- Only the icon will hide on small screens -->
                 <div class="d-flex align-items-center mt-lg-0">
-                    <!-- Large screen icon only -->
                     <a href="cart.html" class="d-none d-lg-block">
                         <img src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png" class="icon-bag" />
                     </a>
-
-                    <!-- Contact Us should always be visible -->
                     <button class="contact-btn ms-0 ms-lg-2">Contact Us</button>
                 </div>
             </div>
         </div>
     </nav>
 
-
-<div class="container-fluid mt-5">
-    <div class="row justify-content-center">
-        <!-- Cart Card -->
-        <div class="col-12 col-lg-5 mb-4">
-            <div class="card rounded-5 cart-section p-3" style="height: 75vh;">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <div class="d-flex align-items-center">
-                        <div class="icon me-2">
-                        </div>
-                        <div class="subheading2 fw-bold cart-title">Cart</div>
-                    </div>
-                    <button class="btn btn-outline-danger btn-sm h6">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </div>
-
-                <div class="overflow-auto" style="max-height: 75vh;">
-                    <!-- Cart Item -->
-                    <div class="d-flex justify-content-between align-items-center mb-2">
+    <!-- CART & SUMMARY SECTION -->
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-center">
+            <!-- Cart Card -->
+            <div class="col-12 col-lg-5 mb-4">
+                <div class="card rounded-5 cart-section p-3" style="height: 75vh;">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="d-flex align-items-center">
-                            <button class="btn btn-sm btn-outline-secondary me-2">-</button>
-                            <div class="quantity subheading fw-bold mx-1">1x</div>
-                            <button class="btn btn-sm btn-outline-secondary ms-2">+</button>
+                            <div class="icon me-2"></div>
+                            <div class="subheading2 fw-bold cart-title">Cart</div>
                         </div>
-                        <div class="product subheading fw-bold ms-3">Amerikano</div>
-                        <div class="price subheading fw-bold ms-2">₱120</div>
+                        <button class="btn btn-outline-danger btn-sm h6">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+
+                    <div class="overflow-auto" style="max-height: 75vh;">
+                        <!-- Cart Item -->
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-sm btn-outline-secondary me-2">-</button>
+                                <div class="quantity subheading fw-bold mx-1">1x</div>
+                                <button class="btn btn-sm btn-outline-secondary ms-2">+</button>
+                            </div>
+                            <div class="product subheading fw-bold ms-3">Amerikano</div>
+                            <div class="price subheading fw-bold ms-2">₱120</div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Card -->
+            <div class="col-12 col-lg-6 mb-4">
+                <div class="card rounded-5 p-3 h-100">
+                    <h3 class="subheading2 text-start ms-2 pt-2 pb-3">Summary</h3>
+                    <div class="d-flex justify-content-evenly mb-2">
+                        <p class="lead mb-0">Items: 1</p>
+                        <p class="lead mb-0">Total: ₱120</p>
                     </div>
                     <hr>
+
+                    <!-- Order Method -->
+                    <div class="mx-3 mb-3">
+                        <p class="lead">Choose your order method:</p>
+                        <div class="row row-cols-2 gx-2">
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" onclick="updateOrderDataWithSelections()"
+                                        type="radio" name="orderType" id="dinein">
+                                    <label class="form-check-label" onclick="updateOrderDataWithSelections()"
+                                        for="dinein">Dine-in</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <!-- Placeholder for possible future method -->
+                            </div>
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" onclick="updateOrderDataWithSelections()"
+                                        type="radio" name="orderType" id="takeout">
+                                    <label class="form-check-label" onclick="updateOrderDataWithSelections()"
+                                        for="takeout">Takeout</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" onclick="updateOrderDataWithSelections()"
+                                        type="radio" name="orderType" id="pickup">
+                                    <label class="form-check-label" onclick="updateOrderDataWithSelections()"
+                                        for="pickup">Pickup</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <!-- Payment Method -->
+                    <div class="row row-cols-1 row-cols-md-2 g-4 mx-2 mb-3">
+                        <div class="col">
+                            <p class="lead">Mode of Payment:</p>
+                            <div class="form-check my-2">
+                                <input class="form-check-input" onclick="updateOrderDataWithSelections()" type="radio"
+                                    name="modePayment" id="cash">
+                                <label class="form-check-label" onclick="updateOrderDataWithSelections()"
+                                    for="cash">Cash</label>
+                            </div>
+                            <div class="form-check my-2">
+                                <input class="form-check-input" onclick="updateOrderDataWithSelections()" type="radio"
+                                    name="modePayment" id="gcash">
+                                <label class="form-check-label" onclick="updateOrderDataWithSelections()"
+                                    for="gcash">GCash</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="refNumber" class="form-label">Enter Reference Number</label>
+                                <input type="text" class="form-control" id="refNumber" placeholder="1234-5678-910">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <!-- VAT and Total -->
+                    <div class="mx-3 mb-2">
+                        <p class="subheading">VAT: ₱0.00</p>
+                    </div>
+                    <hr>
+                    <div class="text-end px-3 mb-3">
+                        <h3 class="subheading3">TOTAL: ₱120</h3>
+                    </div>
+                    <button onclick="openPopup()" class="btn buy-btn rounded-5 mx-auto d-block mb-2">Checkout</button>
                 </div>
             </div>
         </div>
-
-        <!-- SUMMARY CONTAINER -->
-        <div class="col-12 col-lg-6 mb-4">
-            <div class="card rounded-5 p-3 h-100">
-                <h3 class="subheading2 text-start ms-2 pt-2 pb-3">Summary</h3>
-                <div class="d-flex justify-content-evenly mb-2">
-                    <p class="lead mb-0">Items: 1</p>
-                    <p class="lead mb-0">Total: ₱120</p>
-                </div>
-                <hr>
-                <!-- CHOOSE YOUR ORDER METHOD -->
-                <div class="mx-3 mb-3">
-                    <p class="lead">Choose your order method:</p>
-                    <div class="row row-cols-2 gx-2">
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="orderType" id="dinein">
-                                <label class="form-check-label" for="dinein">Dine-in</label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="orderType" id="delivery">
-                                <label class="form-check-label" for="delivery">Home Delivery</label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="orderType" id="takeout">
-                                <label class="form-check-label" for="takeout">Takeout</label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="orderType" id="pickup">
-                                <label class="form-check-label" for="pickup">Pickup</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <!-- MODE OF PAYMENT -->
-                <div class="row row-cols-1 row-cols-md-2 g-4 mx-2 mb-3">
-                    <div class="col">
-                        <p class="lead">Mode of Payment:</p>
-                        <div class="form-check my-2">
-                            <input class="form-check-input" type="radio" name="modePayment" id="cash">
-                            <label class="form-check-label" for="cash">Cash</label>
-                        </div>
-                        <div class="form-check my-2">
-                            <input class="form-check-input" type="radio" name="modePayment" id="gcash">
-                            <label class="form-check-label" for="gcash">GCash</label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="refNumber" class="form-label">Enter Reference Number</label>
-                            <input type="text" class="form-control" id="refNumber" placeholder="1234-5678-910">
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="mx-3 mb-2">
-                    <p class="subheading">VAT: ₱0.00</p>
-                </div>
-                <hr>
-                <div class="text-end px-3 mb-3">
-                    <h3 class="subheading3">TOTAL: ₱120</h3>
-                </div>
-                <button class="btn buy-btn rounded-5 mx-auto d-block mb-2">Checkout</button>
-            </div>
-        </div>
     </div>
-</div>
 
+    <!-- Placeholder for modal -->
+    <div id="modal-placeholder"></div>
 
-
-    </div>
-    </div>
+    <!-- Scripts -->
     <script src="assets/js/swiper-bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        // Load modal content and attach confirm click handler
+        fetch("../modal/cart-modal.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("modal-placeholder").innerHTML = data;
+
+                document.querySelector('.addbtn').addEventListener('click', function (e) {
+                    e.preventDefault();
+                    confirmOrder();
+                });
+            });
+
+        function openPopup() {
+            const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+            modal.show();
+        }
+
+        function getSelectedRadio(name) {
+            const selected = document.querySelector(`input[name="${name}"]:checked`);
+            return selected ? selected.id : null;
+        }
+
+        function confirmOrder() {
+            const orderMethod = getSelectedRadio("orderType");
+            const paymentMethod = getSelectedRadio("modePayment");
+            const refNumber = document.getElementById("refNumber")?.value.trim();
+
+            if (!orderMethod || !paymentMethod) {
+                alert("Please select both order method and payment method.");
+                return;
+            }
+
+            if (paymentMethod === "gcash" && refNumber === "") {
+                alert("Please enter a GCash reference number.");
+                return;
+            }
+
+            const rawData = localStorage.getItem("orderData");
+            const orderData = rawData ? JSON.parse(rawData) : [];
+
+            orderData.forEach(item => {
+                item.orderMethod = orderMethod;
+                item.paymentMethod = paymentMethod;
+                if (paymentMethod === "gcash") {
+                    item.refNumber = refNumber;
+                }
+            });
+
+            localStorage.setItem("orderData", JSON.stringify(orderData));
+
+            const modal = bootstrap.Modal.getInstance(document.getElementById('confirmModal'));
+            if (modal) modal.hide();
+
+            const toast = new bootstrap.Toast(document.getElementById('orderToast'));
+            toast.show();
+
+            console.log("Order confirmed and saved:", orderData);
+        }
+    </script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
 </body>
+
 
 </html>
