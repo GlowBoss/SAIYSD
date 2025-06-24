@@ -65,7 +65,7 @@
                     <li class="nav-item"><a class="nav-link" href="menu.html">Coffee</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#location">Location</a></li>
-                   
+
                 </ul>
 
                 <div class="d-flex align-items-center mt-lg-0">
@@ -89,7 +89,7 @@
                             <div class="icon me-2"></div>
                             <div class="subheading2 fw-bold cart-title">Cart</div>
                         </div>
-                        <button class="btn btn-outline-danger btn-sm h6">
+                        <button class="btn btn-outline-danger btn-sm h6" id="clearCartBtn">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </div>
@@ -202,16 +202,85 @@
     <script src="assets/js/swiper-bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script>
-        // Load modal content and attach confirm click handler
+        // Load modal content and attach cart logic
         fetch("../modal/cart-modal.html")
             .then(res => res.text())
             .then(data => {
                 document.getElementById("modal-placeholder").innerHTML = data;
 
+                const rawData = localStorage.getItem("orderData");
+                let orderData = rawData ? JSON.parse(rawData) : [];
+
+                const cartContainer = document.querySelector('.overflow-auto');
+                cartContainer.innerHTML = '';
+
+                // Render cart items
+                orderData.forEach((item, index) => {
+                    const itemHTML = document.createElement('div');
+                    itemHTML.classList.add('cart-item-wrapper');
+                    itemHTML.innerHTML = `
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-sm btn-outline-secondary me-2 minus-btn" data-index="${index}">-</button>
+                            <div class="quantity subheading fw-bold mx-1" id="qty-${index}">${item.quantity}x</div>
+                            <button class="btn btn-sm btn-outline-secondary ms-2 plus-btn" data-index="${index}">+</button>
+                        </div>
+                        <div class="product subheading fw-bold ms-3">${item.name}</div>
+                        <div class="price subheading fw-bold ms-2">₱120</div>
+                    </div>
+                    <hr>
+                `;
+                    cartContainer.appendChild(itemHTML);
+                });
+
+                // Update cart UI
+                function updateCartUI(index) {
+                    document.getElementById(`qty-${index}`).textContent = `${orderData[index].quantity}x`;
+                }
+
+                // Save cart to localStorage
+                function saveCart() {
+                    localStorage.setItem("orderData", JSON.stringify(orderData));
+                }
+
+                // Wire up plus buttons
+                document.querySelectorAll('.plus-btn').forEach(btn => {
+                    btn.addEventListener('click', e => {
+                        const index = e.target.getAttribute('data-index');
+                        orderData[index].quantity++;
+                        updateCartUI(index);
+                        saveCart();
+                    });
+                });
+
+                // Wire up minus buttons
+                document.querySelectorAll('.minus-btn').forEach(btn => {
+                    btn.addEventListener('click', e => {
+                        const index = e.target.getAttribute('data-index');
+                        if (orderData[index].quantity > 1) {
+                            orderData[index].quantity--;
+                            updateCartUI(index);
+                            saveCart();
+                        }
+                    });
+                });
+
+                // Confirm button logic
                 document.querySelector('.addbtn').addEventListener('click', function (e) {
                     e.preventDefault();
                     confirmOrder();
                 });
+
+                // Clear cart button logic
+                const clearCartBtn = document.getElementById('clearCartBtn');
+                if (clearCartBtn) {
+                    clearCartBtn.addEventListener('click', function () {
+                        if (confirm("Are you sure you want to clear the cart?")) {
+                            localStorage.removeItem("orderData");
+                            cartContainer.innerHTML = '<div class="text-muted">Your cart is empty.</div>';
+                        }
+                    });
+                }
             });
 
         function openPopup() {
@@ -261,6 +330,9 @@
             console.log("Order confirmed and saved:", orderData);
         }
     </script>
+
+
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
