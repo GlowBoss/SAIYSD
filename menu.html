@@ -49,7 +49,7 @@
                     <li class="nav-item"><a class="nav-link" href="menu.html">Coffee</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#location">Location</a></li>
-                    
+
                 </ul>
 
                 <!-- Only the icon will hide on small screens -->
@@ -105,7 +105,7 @@
                 </select>
             </div>
         </div>
-        
+
         <!-- Category Pills Row -->
         <div class="category-scroll d-flex gap-3 overflow-auto py-3">
             <div class="category-pill text-center active" data-category="All">All</div>
@@ -384,9 +384,8 @@
                 finalName = `${name}_${size}_${sugar}s_${ice}`;
             }
 
-            // ✅ Insert this block here:
+            // Get price
             let price = 0;
-
             if (type === 'beverage') {
                 const selectedSize = document.querySelector('input[name="priceOptions"]:checked')?.value;
                 const allSizes = JSON.parse(document.querySelector('.buy-btn[data-name="' + name + '"]').getAttribute('data-sizes'));
@@ -397,18 +396,24 @@
                 if (product) price = product.price;
             }
 
-            // ✅ Use price below:
+            // ✅ Get category
+            const product = allProducts.find(p => p.name === name);
+            const validCategories = ['Coffee', 'Tea', 'Food'];
+            let category = product?.category || 'Unknown';
+            if (!validCategories.includes(category)) {
+                category = 'Unknown';
+            }
+
+            // ✅ Create order object
             const order = {
                 name: finalName,
                 quantity: 1,
-                dataCategory: "All",
-                modeOfPayment: "Gcash",
-                orderMethod: "Dine-in",
+                dataCategory: category,
                 price: `₱${price}`,
                 notes: note
             };
 
-            // Save to localStorage
+            // ✅ Save to localStorage
             let currentOrders = JSON.parse(localStorage.getItem("orders") || "[]");
             currentOrders.push(order);
             localStorage.setItem("orders", JSON.stringify(currentOrders));
@@ -426,6 +431,7 @@
             const toast = new bootstrap.Toast(document.getElementById('orderToast'));
             toast.show();
         }
+
 
         let allProducts = [];
 
