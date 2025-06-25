@@ -216,4 +216,10 @@ color: var(--text-color-dark);
     margin-left: 0.5em;
     font-weight: 500;
 }
+
+.price{
+   font-size: clamp(1.1rem, 2vw, 1.35rem);
+   font-weight: 600;
+   color: var(--text-color-dark);
+}
   

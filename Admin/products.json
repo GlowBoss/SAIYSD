@@ -9,10 +9,10 @@
                 "code": "ESP",
                 "img": "img-menu/espresso.png",
                 "sizes": [
-                    { "name": "small", "code": "S", "price": 60 },
-                    { "name": "medium", "code": "M", "price": 80 },
-                    { "name": "large", "code": "L", "price": 100 }
-                ]
+                    { "name": "12oz", "code": "12", "price": 60 },
+                    { "name": "16oz", "code": "16", "price": 80 }
+                ],
+                "sugarLevels": [0, 25, 50, 75, 100]
             },
             {
                 "isAvailable": true,
@@ -20,10 +20,10 @@
                 "code": "AMR",
                 "img": "img-menu/americano.png",
                 "sizes": [
-                    { "name": "small", "code": "S", "price": 70 },
-                    { "name": "medium", "code": "M", "price": 90 },
-                    { "name": "large", "code": "L", "price": 140 }
-                ]
+                    { "name": "12oz", "code": "12", "price": 70 },
+                    { "name": "16oz", "code": "16", "price": 90 }
+                ],
+                "sugarLevels": [0, 25, 50, 75, 100]
             },
             {
                 "isAvailable": true,
@@ -31,10 +31,10 @@
                 "code": "LTT",
                 "img": "img-menu/latte.png",
                 "sizes": [
-                    { "name": "small", "code": "S", "price": 80 },
-                    { "name": "medium", "code": "M", "price": 100 },
-                    { "name": "large", "code": "L", "price": 120 }
-                ]
+                    { "name": "12oz", "code": "12", "price": 80 },
+                    { "name": "16oz", "code": "16", "price": 100 }
+                ],
+                "sugarLevels": [0, 25, 50, 75, 100]
             }
         ]
     },
@@ -48,10 +48,10 @@
                 "code": "GRN",
                 "img": "img-menu/green_tea.png",
                 "sizes": [
-                    { "name": "small", "code": "S", "price": 50 },
-                    { "name": "medium", "code": "M", "price": 70 },
-                    { "name": "large", "code": "L", "price": 90 }
-                ]
+                    { "name": "12oz", "code": "12", "price": 50 },
+                    { "name": "16oz", "code": "16", "price": 70 }
+                ],
+                "sugarLevels": [0, 25, 50, 75, 100]
             },
             {
                 "isAvailable": true,
@@ -59,10 +59,10 @@
                 "code": "MLK",
                 "img": "img-menu/milk_tea.png",
                 "sizes": [
-                    { "name": "small", "code": "S", "price": 65 },
-                    { "name": "medium", "code": "M", "price": 85 },
-                    { "name": "large", "code": "L", "price": 105 }
-                ]
+                    { "name": "12oz", "code": "12", "price": 65 },
+                    { "name": "16oz", "code": "16", "price": 85 }
+                ],
+                "sugarLevels": [0, 25, 50, 75, 100]
             },
             {
                 "isAvailable": true,
@@ -70,10 +70,10 @@
                 "code": "MCH",
                 "img": "img-menu/matcha_latte.png",
                 "sizes": [
-                    { "name": "small", "code": "S", "price": 80 },
-                    { "name": "medium", "code": "M", "price": 100 },
-                    { "name": "large", "code": "L", "price": 120 }
-                ]
+                    { "name": "12oz", "code": "12", "price": 80 },
+                    { "name": "16oz", "code": "16", "price": 100 }
+                ],
+                "sugarLevels": [0, 25, 50, 75, 100]
             }
         ]
     },
