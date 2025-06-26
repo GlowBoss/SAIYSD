@@ -11,7 +11,7 @@ html {
     height: auto;
     display: flex;
     flex-direction: column;
-    background-color: var(--card-bg-color)
+    background-color: var(--card-bg-color);
 }
 
 .carousel-control-prev-icon {
@@ -29,7 +29,6 @@ html {
 
 .carousel-control-prev,
 .carousel-control-next {
-    
     width: 10%;
 }
 
@@ -53,10 +52,21 @@ html {
     height: 18rem;
     border-radius: 20px;
     text-align: center;
+    border: none;
    
 }
 
 .cardContainer {
     border-radius: 20px;
     text-align: center;
+    border: none;
+}
+.btn-dropdown{
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
+
+button.btn.btn-dropdown:hover {
+    background-color: #945400ea !important;
+    color: white !important;
 }

@@ -22,14 +22,20 @@
         <div class="row">
             <!-- Sidebar column for md+ screens -->
             <div class="col-12 col-md-4 col-lg-3 d-none d-md-block">
-                <div class="card sideBarLogo rounded-5 mb-2">
-                    <img src="../assets/img/round_logo.png" class="card-img-top" alt="logo" />
-                </div>
+
                 <div class="custom-sidebar rounded-5 p-4 bg-white border">
                     <!-- Sidebar content here -->
+                    <!-- Logo centered -->
+                    <div class="row pb-4">
+                        <div class="sideBar text-center">
+                            <img src="../assets/img/saisydLogo.png" class="card-img-top" alt="logo" />
+                        </div>
+                    </div>
+
+                    <!-- MENU section -->
                     <div class="row pb-4">
                         <div class="sideBar">
-                            <p class="m-0">MENU</p>
+                            <p class="fw-bold m-0">MENU</p>
                             <div class="nav-item d-flex justify-content-start align-items-center">
                                 <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
                                 <a class="nav-link active ms-2" href="home.html">Dashboard</a>
@@ -51,17 +57,17 @@
 
                     <div class="row pb-4">
                         <div class="sideBar">
-                            <p class="m-0">FINANCIAL</p>
+                            <p class="fw-bold m-0">FINANCIAL</p>
                             <div class="nav-item d-flex justify-content-start align-items-center">
                                 <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                <a class="nav-link active ms-2" href="#">Sales and Report</a>
+                                <a class="nav-link active ms-2" href="sales-and-report.html">Sales and Report</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="row pb-4">
                         <div class="sideBar">
-                            <p class="m-0">TOOLS</p>
+                            <p class="fw-bold m-0">TOOLS</p>
                             <div class="nav-item d-flex justify-content-start align-items-center">
                                 <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
                                 <a class="nav-link active ms-2" href="#">Settings</a>
@@ -75,66 +81,67 @@
                 </div>
             </div>
 
-            <!-- Offcanvas sidebar for small screens -->
-            <div class="d-md-none">
-                <div class="row offcanvasContainer">
 
-                    <div class="offcanvas p-0 offcanvas-start show" tabindex="-1" id="offcanvasSidebar"
-                        aria-labelledby="offcanvasSidebarLabel" style="visibility: visible; background: white;">
-                        <div class="offcanvas-header d-flex justify-content-between">
-                            <div class="card rounded-5 mb-2" style="align-self: center;">
-                                <img src="../assets/img/round_logo.png" class="card-img-top" alt="logo" />
+            <!-- Offcanvas Sidebar -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar"
+                aria-labelledby="offcanvasSidebarLabel">
+                <!-- Header with Logo and Close Button -->
+                <div
+                    class="offcanvas-header d-flex align-items-center justify-content-between px-3 pt-3 pb-2 border-bottom">
+                    <img src="../assets/img/saisydLogo.png" alt="Logo" class="me-2"
+                        style="max-height: 50px; max-width: 100px;" />
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+
+                <!-- Body -->
+                <div class="offcanvas-body overflow-auto px-0">
+                    <div class="custom-sidebar px-4 py-3 bg-white h-100">
+
+                        <!-- Menu Section -->
+                        <div class="sideBar pb-4">
+                            <p class="fw-bold">MENU</p>
+                            <div class="nav-item d-flex align-items-center">
+                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
+                                <a class="nav-link active ms-2" href="home.html">Dashboard</a>
                             </div>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
-                                style="align-self: flex-start;"></button>
-                        </div>
-
-
-
-                        <div class="offcanvas-body">
-                            <div class="custom-sidebar rounded-5 p-4 bg-white border h-100">
-                                <div class="sideBar pb-4">
-                                    <p>MENU</p>
-                                    <div class="nav-item d-flex justify-content-start align-items-center">
-                                        <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="home.html">Dashboard</a>
-                                    </div>
-                                    <div class="nav-item d-flex justify-content-start align-items-center">
-                                        <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="point-of-sales.html">POS</a>
-                                    </div>
-                                    <div class="nav-item d-flex justify-content-start align-items-center">
-                                        <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="menu-management.html">Menu Management</a>
-                                    </div>
-                                    <div class="nav-item d-flex justify-content-start align-items-center">
-                                        <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="inventory-management.html">Inventory</a>
-                                    </div>
-                                </div>
-
-                                <div class="sideBar pb-4">
-                                    <p>FINANCIAL</p>
-                                    <div class="nav-item d-flex justify-content-start align-items-center">
-                                        <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="sales-and-report.html">Sales and
-                                            Report</a>
-                                    </div>
-                                </div>
-
-                                <div class="sideBar pb-4 ">
-                                    <p>TOOLS</p>
-                                    <div class="nav-item d-flex justify-content-start align-items-center">
-                                        <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="#">Settings</a>
-                                    </div>
-                                    <div class="nav-item d-flex justify-content-start align-items-center">
-                                        <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="login.html">Logout</a>
-                                    </div>
-                                </div>
+                            <div class="nav-item d-flex align-items-center">
+                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
+                                <a class="nav-link active ms-2" href="notification.html">Notification</a>
+                            </div>
+                            <div class="nav-item d-flex align-items-center">
+                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
+                                <a class="nav-link active ms-2" href="menu-management.html">Menu Management</a>
+                            </div>
+                            <div class="nav-item d-flex align-items-center">
+                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
+                                <a class="nav-link active ms-2" href="inventory-management.html">Inventory</a>
                             </div>
                         </div>
+
+                        <!-- Financial Section -->
+                        <div class="sideBar pb-4">
+                            <p class="fw-bold">FINANCIAL</p>
+                            <div class="nav-item d-flex align-items-center">
+                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
+                                <a class="nav-link active ms-2" href="sales-and-report.html">Sales and
+                                    Report</a>
+                            </div>
+                        </div>
+
+                        <!-- Tools Section -->
+                        <div class="sideBar pb-2">
+                            <p class="fw-bold">TOOLS</p>
+                            <div class="nav-item d-flex align-items-center">
+                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
+                                <a class="nav-link active ms-2" href="#">Settings</a>
+                            </div>
+                            <div class="nav-item d-flex align-items-center">
+                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
+                                <a class="nav-link active ms-2" href="login.html">Logout</a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -174,6 +181,7 @@
             </div>
         </div>
     </div>
+    
     <script src="../assets/js/notif.js"></script>
     <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">

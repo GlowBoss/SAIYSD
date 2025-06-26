@@ -8,10 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/sales-and-report.css">
+
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="icon" href="../assets/img/round_logo.png" type="image/png">
+    <link rel="stylesheet" href="../assets/css/sales-and-report.css">
 </head>
 
 <body>
@@ -20,14 +22,20 @@
         <div class="row">
             <!-- Sidebar column for md+ screens -->
             <div class="col-12 col-md-4 col-lg-3 d-none d-md-block">
-                <div class="card sideBarLogo rounded-5 mb-2">
-                    <img src="../assets/img/round_logo.png" class="card-img-top" alt="logo" />
-                </div>
+
                 <div class="custom-sidebar rounded-5 p-4 bg-white border">
                     <!-- Sidebar content here -->
+                    <!-- Logo centered -->
+                    <div class="row pb-4">
+                        <div class="sideBar text-center">
+                            <img src="../assets/img/saisydLogo.png" class="card-img-top" alt="logo" />
+                        </div>
+                    </div>
+
+                    <!-- MENU section -->
                     <div class="row pb-4">
                         <div class="sideBar">
-                            <p class="m-0">MENU</p>
+                            <p class="fw-bold m-0">MENU</p>
                             <div class="nav-item d-flex justify-content-start align-items-center">
                                 <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
                                 <a class="nav-link active ms-2" href="home.html">Dashboard</a>
@@ -63,7 +71,7 @@
 
                     <div class="row pb-4">
                         <div class="sideBar">
-                            <p class="m-0">TOOLS</p>
+                            <p class="fw-bold m-0">TOOLS</p>
                             <div class="nav-item d-flex justify-content-start align-items-center">
                                 <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
                                 <a class="nav-link active ms-2" href="#">Settings</a>
@@ -139,7 +147,7 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12">
                         <div id="modal-placeholder"></div>
-                        <div class="card rounded-5 mt-3 pb-3 shadow-2" style="min-height: 90vh;">
+                        <div class="card rounded-5 pb-3 shadow-2" style="min-height: 90vh;">
                             <h4 class="subheading fw-bold p-4 m-1 d-flex align-items-center" role="button"
                                 data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar"
                                 aria-controls="offcanvasSidebar" style="cursor: pointer;">
@@ -264,7 +272,7 @@
                                 <div class="col-12">
                                     <div class="card cardContainer m-2">
                                         <div class="card-body text-center">
-                                            <h5>Table</h5>
+                                            <p class="fw-bold">Table</p>
                                             <div class="row mt-3 g-3 justify-content-center">
 
                                                 <!-- Search Bar -->
@@ -276,14 +284,15 @@
                                                 <!-- Dropdown 1 -->
                                                 <div class="col-12 col-sm-6 col-md-4 col-lg-2">
                                                     <div class="dropdown-center">
-                                                        <button class="btn btn-secondary dropdown-toggle w-100"
+                                                        <button
+                                                            class="btn btn-dropdown dropdown-toggle w-100 fw-semibold"
                                                             type="button" data-bs-toggle="dropdown">
                                                             Name
                                                         </button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" href="#">Descending</a>
+                                                            <li><a class="dropdown-item" href="#">Ascending (A-Z)</a>
                                                             </li>
-                                                            <li><a class="dropdown-item" href="#">Asceding</a>
+                                                            <li><a class="dropdown-item" href="#">Descending (Z-A)</a>
                                                             </li>
 
                                                         </ul>
@@ -293,16 +302,16 @@
                                                 <!-- Dropdown 2 -->
                                                 <div class="col-12 col-sm-6 col-md-4 col-lg-2">
                                                     <div class="dropdown-center">
-                                                        <button class="btn btn-secondary dropdown-toggle w-100"
+                                                        <button
+                                                            class="btn btn-dropdown dropdown-toggle w-100 fw-semibold"
                                                             type="button" data-bs-toggle="dropdown">
-                                                            Filter 2
+                                                            Price
                                                         </button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                                            <li><a class="dropdown-item" href="#">Action two</a>
-                                                            </li>
-                                                            <li><a class="dropdown-item" href="#">Action three</a>
-                                                            </li>
+                                                            <li><a class="dropdown-item" href="#">Price <i
+                                                                        class="bi bi-arrow-up text-dark"></i></a></li>
+                                                            <li><a class="dropdown-item" href="#">Price <i
+                                                                        class="bi bi-arrow-down text-dark"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -310,15 +319,14 @@
                                                 <!-- Dropdown 3 -->
                                                 <div class="col-12 col-sm-6 col-md-4 col-lg-2">
                                                     <div class="dropdown-center">
-                                                        <button class="btn btn-secondary dropdown-toggle w-100"
+                                                        <button
+                                                            class="btn btn-dropdown dropdown-toggle w-100 fw-semibold"
                                                             type="button" data-bs-toggle="dropdown">
-                                                            Filter 3
+                                                            Status
                                                         </button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                                            <li><a class="dropdown-item" href="#">Action two</a>
-                                                            </li>
-                                                            <li><a class="dropdown-item" href="#">Action three</a>
+                                                            <li><a class="dropdown-item" href="#">Available</a></li>
+                                                            <li><a class="dropdown-item" href="#">Out of Stock</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -327,7 +335,7 @@
                                                 <!-- Export Button -->
                                                 <div class="col-12 col-sm-6 col-md-4 col-lg-2">
                                                     <button type="button" class="btn btn-success w-100"
-                                                        onclick="openPopup()">Export
+                                                        style="border-radius: 10px;" onclick="openPopup()">Export
                                                     </button>
                                                 </div>
 
@@ -336,7 +344,7 @@
                                         </div>
                                         <div class="row align-items-center">
                                             <div class="col-12">
-                                                <div class="card cardTable rounded-4 m-3" style="min-height: 30vh;">
+                                                <div class="card cardTable rounded-3 m-3" style="min-height: 30vh;">
                                                     <div class="card-body">
                                                         <h5 class="card-title mb-3">Order List</h5>
                                                         <div class="table-responsive">

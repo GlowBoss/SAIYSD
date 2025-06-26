@@ -1,36 +1,80 @@
+ /* Sidebar width - clean and responsive */
+ #offcanvasSidebar {
+     width: 90vw !important;
+     max-width: 280px !important;
+     background-color: white;
+     border-right: 1px solid #ccc;
 
-.sideBar p {
-    font-size: var(--heading);
-    font-family: var(--primaryFont);
-    font-weight: 300;
+ }
 
-}
+ .sideBarLogo {
+     display: block;
+     margin: 0 auto 1rem auto;
+     max-width: 100px;
+     max-height: 100px;
+     height: auto;
+     width: auto;
+     object-fit: contain;
+ }
 
-.sideBarLogo img {
-    max-height: 190px;
-    width: auto;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
+ .sideBar p {
+     font-size: var(--subheading);
+     font-family: var(--primaryFont);
+     font-weight: 200;
+     margin-bottom: 0.5rem;
+ }
 
-.nav-link,
-.nav-link.active {
-    color: var(--text-color-dark);
-    text-decoration: none;
-    font-size: var(--subheading);
-    font-family: var(--primaryFont);
-}
+ .nav-link,
+ .nav-link.active {
+     color: var(--text-color-dark);
+     text-decoration: none;
+     font-size: clamp(1rem, 1.15vw, 1.15rem);
+     font-family: var(--primaryFont);
 
-.nav-link:hover,
-.nav-link.active:hover {
-    color: var(--text-color-dark);
-    text-shadow: 0 0 8px var(--btn-hover2);
-    cursor: pointer;
-}
+ }
 
-.custom-sidebar {
-    overflow-y: auto;
-    min-height: 70vh;
-    max-height: 100vh;
+ .nav-link:hover,
+ .nav-link.active:hover {
+     color: var(--text-color-dark);
+     text-shadow: 0 0 8px var(--btn-hover2);
+     cursor: pointer;
+ }
+
+ .menu-icon {
+     width: 16px;
+     height: 16px;
+ }
+
+ .custom-sidebar {
+     overflow-y: auto;
+     min-height: 70vh;
+     max-height: 100vh;
+ }
+
+ .offcanvas-header .btn-close {
+     margin-left: auto;
+ }
+
+ .nav-item {
+     padding: 0.3rem;
+     gap: 10px;
+     font-size: var(--h6);
+ }
+
+ .sideBarLogo2 {
+     display: block;
+     margin: 0 auto 1rem auto;
+     max-width: 100px;
+     max-height: 100px;
+     height: auto;
+     width: auto;
+     object-fit: contain;
+ }
+
+.card-img-top {
+  max-width: 200px;
+  max-height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

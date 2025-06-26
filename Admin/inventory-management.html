@@ -21,14 +21,20 @@
         <div class="row">
             <!-- Sidebar column for md+ screens -->
             <div class="col-12 col-md-4 col-lg-3 d-none d-md-block">
-                <div class="card sideBarLogo rounded-5 mb-2">
-                    <img src="../assets/img/round_logo.png" class="card-img-top" alt="logo" />
-                </div>
+
                 <div class="custom-sidebar rounded-5 p-4 bg-white border">
                     <!-- Sidebar content here -->
+                    <!-- Logo centered -->
+                    <div class="row pb-4">
+                        <div class="sideBar text-center">
+                            <img src="../assets/img/saisydLogo.png" class="card-img-top" alt="logo" />
+                        </div>
+                    </div>
+
+                    <!-- MENU section -->
                     <div class="row pb-4">
                         <div class="sideBar">
-                            <p class="m-0">MENU</p>
+                            <p class="fw-bold m-0">MENU</p>
                             <div class="nav-item d-flex justify-content-start align-items-center">
                                 <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
                                 <a class="nav-link active ms-2" href="home.html">Dashboard</a>
@@ -45,12 +51,16 @@
                                 <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
                                 <a class="nav-link active ms-2" href="menu-management.html">Menu Management</a>
                             </div>
+                            <!-- <div class="nav-item d-flex justify-content-start align-items-center">
+                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
+                                <a class="nav-link active ms-2" href="inventory-management.html">Inventory</a>
+                            </div> -->
                         </div>
                     </div>
 
                     <div class="row pb-4">
                         <div class="sideBar">
-                            <p class="m-0">FINANCIAL</p>
+                            <p class="fw-bold m-0">FINANCIAL</p>
                             <div class="nav-item d-flex justify-content-start align-items-center">
                                 <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
                                 <a class="nav-link active ms-2" href="sales-and-report.html">Sales and Report</a>
@@ -60,7 +70,7 @@
 
                     <div class="row pb-4">
                         <div class="sideBar">
-                            <p class="m-0">TOOLS</p>
+                            <p class="fw-bold m-0">TOOLS</p>
                             <div class="nav-item d-flex justify-content-start align-items-center">
                                 <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
                                 <a class="nav-link active ms-2" href="#">Settings</a>
@@ -140,41 +150,53 @@
             <div class="col-md-8 col-lg-9">
                 <div class="col-12 col-md-12 col-lg-12">
                     <div class="card rounded-4 p-2" style="max-height: 95vh; overflow-y: auto;">
-                        <h4 class="subheading fw-bold p-4 m-1 d-flex align-items-center" role="button"
-                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar"
-                            aria-controls="offcanvasSidebar" style="cursor: pointer;">
-                            <i class="ri-menu-line d-md-none me-2"></i>
-                            <span>Inventory Management</span>
-                        </h4>
+
                         <div>
                             <!-- TOP FUNCTIONS BAR -->
-                            <div class="container-fluid px-3 px-md-5">
-                                <div class="row align-items-center g-3">
-                                    <div class="col-12 col-md-3 text-center text-md-start">
-                                        <p class="subheading fw-bold">Current Stocks</p>
-                                    </div>
-                                    <div class="col-12 col-md-9 mb-2">
-                                        <div class="d-flex flex-column flex-md-row align-items-stretch gap-2">
-                                            <input type="text" class="form-control" placeholder="Enter Item Name"
-                                                aria-label="Enter Item Name" id="item-input">
-                                            <button class="btn btn-success" type="button" id="button-addon2">
-                                                Search
-                                            </button>
-                                            <button class="btn btn-success" type="button" id="button-addon2">
-                                                Add Item/s
-                                            </button>
-                                            <button class="btn btn-outline-success" type="button" id="export-excel"
-                                                onclick="openPopup()">Export to Excel
-                                            </button>
-                                        </div>
-                                    </div>
+                            <!-- Header Row -->
+                            <div class="align-items-center py-4 px-lg-5 px-2">
+                                <h4 class="subheading fw-bold p-4 m-1 d-flex align-items-center" role="button"
+                                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar"
+                                    aria-controls="offcanvasSidebar" style="cursor: pointer;">
+                                    <i class="ri-menu-line d-md-none me-2"></i>
+                                    <span>Inventory Management</span>
+                                </h4>
+                            </div>
+                            <div class="row g-2 align-items-center mb-3 px-2 px-lg-3">
+                                <div class="col-12 col-sm-6">
+                                    <h4 class="subheading fw-bold">Current Stock</h4>
                                 </div>
+                                <!-- search -->
+                                <div class="col-12 col-sm">
+                                    <input type="text" class="form-control" placeholder="Search Product Name"
+                                        aria-label="Enter product Name" id="item-input">
+                                </div>
+                                <!-- add button -->
+                                <div class="col-12 col-sm-auto col-md-12 col-lg-auto">
+                                    <button class="btn categorybtn w-100" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#confirmModal">
+                                        Search
+                                    </button>
+                                </div>
+                                <div class="col-12 col-sm-auto col-md-12 col-lg-auto">
+                                    <button class="btn categorybtn w-100" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#confirmModal">
+                                        Add
+                                    </button>
+                                </div>
+                                <div class="col-12 col-sm-auto col-md-12 col-lg-auto">
+                                    <button class="btn btn-outline-success w-100" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#confirmModal">
+                                        Export
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
                         <!-- TABLE -->
                         <div class="card mb-5 mx-3 overflow-scroll" style="height: 90vh">
                             <table class="table overflow-hidden">
-                                <thead class="table-secondary">
+                                <thead class="table-secondary text-center">
                                     <tr>
                                         <th scope="col">Item Code.</th>
                                         <th scope="col">Photo</th>
@@ -185,7 +207,7 @@
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="text-center">
                                     <tr>
                                         <th scope="row">1</th>
                                         <td>orange.png</td>
