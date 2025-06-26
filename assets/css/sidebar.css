@@ -2,12 +2,12 @@
 .sideBar p {
     font-size: var(--heading);
     font-family: var(--primaryFont);
-    font-weight: 500;
+    font-weight: 300;
 
 }
 
 .sideBarLogo img {
-    max-height: 250px;
+    max-height: 190px;
     width: auto;
     height: auto;
     display: block;

@@ -417,20 +417,19 @@
 
             // ✅ FIXED: Create consistent order object structure
             const order = {
-                name: finalName,        // Full name with customizations for uniqueness
-                displayName: displayName, // Clean name for display
+                name: finalName,
+                displayName: displayName,
                 quantity: 1,
                 dataCategory: category,
-                price: price,           // Store as number for calculations
+                price: price,
                 notes: note,
                 size: size,
                 sugar: sugar,
-                ice: ice.replace('ice', ''), // Clean ice option
+                ice: ice.replace('ice', ''),
                 type: type,
                 addedAt: new Date().toISOString()
             };
 
-            // ✅ FIXED: Add to existing cart items or create new
             let currentOrders = [];
             try {
                 const existingData = localStorage.getItem("orders");
@@ -442,22 +441,20 @@
 
             // Check if same item already exists in cart
             const existingIndex = currentOrders.findIndex(item =>
-                item.name === order.name &&
+                item.displayName === order.displayName &&
                 item.size === order.size &&
                 item.sugar === order.sugar &&
                 item.ice === order.ice
             );
 
             if (existingIndex > -1) {
-                // Increase quantity of existing item
                 currentOrders[existingIndex].quantity++;
             } else {
-                // Add new item
                 currentOrders.push(order);
             }
 
-            // ✅ FIXED: Save to consistent localStorage key
             localStorage.setItem("orders", JSON.stringify(currentOrders));
+
 
             // Close modal
             const modal = bootstrap.Modal.getInstance(document.getElementById('item-customization'));
