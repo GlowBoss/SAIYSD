@@ -217,7 +217,8 @@
             <script>
                 var products = [];
                 var total = 0;
-                var orderData = []; // Initialize the order data array
+                var orderData = [];
+                var selectedPaymentMode = "";
 
                 // Fetch products from JSON file
                 fetch('products.json')
@@ -227,7 +228,6 @@
                         loadCategories();
                     });
 
-                // Load product categories
                 function loadCategories() {
                     var categoriesContainer = document.getElementById("categories");
                     products.forEach((product, index) => {
@@ -238,14 +238,12 @@
                     });
                 }
 
-                // Select a category and load products
                 function selectCategory(element, index) {
                     document.querySelectorAll('.category-pill').forEach(pill => pill.classList.remove('active'));
                     element.classList.add('active');
                     loadProducts(index);
                 }
 
-                // Load products based on selected category
                 function loadProducts(categoryIndex) {
                     var maincontainer = document.getElementById("maincontainer");
                     maincontainer.innerHTML = "";
@@ -254,9 +252,11 @@
                         products[categoryIndex].contents.forEach((content, contentIndex) => {
                             content.sizes.forEach((size, sizeIndex) => {
                                 const sugarSelectId = `sugar-${categoryIndex}-${contentIndex}-${sizeIndex}`;
-                                const sugarOptions = (content.sugarLevels || [])
-                                    .map(level => `<option value="${level}">${level}% Sugar</option>`)
-                                    .join('');
+                                const iceSelectId = `ice-${categoryIndex}-${contentIndex}-${sizeIndex}`;
+
+                                const sugarLevels = (content.sugarLevels && content.sugarLevels.length > 0) ? content.sugarLevels : [0, 25, 50, 75, 100];
+                                const sugarOptions = sugarLevels.map(level => `<option value="${level}">${level}% Sugar</option>`).join('');
+                                const iceOptions = ["No Ice", "Less Ice", "Regular Ice"].map(level => `<option value="${level}">${level}</option>`).join('');
 
                                 maincontainer.innerHTML += `
                     <div class="col">
@@ -270,8 +270,11 @@
                             <select class="form-select mb-2" id="${sugarSelectId}">
                                 ${sugarOptions}
                             </select>
+                            <select class="form-select mb-2" id="${iceSelectId}">
+                                ${iceOptions}
+                            </select>
                             <button class="btn btn-dark btn-sm mt-1"
-                                onclick="showQuantityModal('${size.price}','${content.code + size.code}','${content.name} ${size.name}', '${sugarSelectId}')">
+                                onclick="showQuantityModal('${size.price}','${content.code + size.code}','${content.name} ${size.name}', '${sugarSelectId}', '${iceSelectId}')">
                                 Add to Order
                             </button>
                         </div>
@@ -296,97 +299,90 @@
                     }
                 }
 
-                // Show quantity modal
-                function showQuantityModal(price, code, name, sugarSelectId = null) {
+                function showQuantityModal(price, code, name, sugarSelectId = null, iceSelectId = null) {
                     const quantityModal = document.getElementById('quantityModal');
-                    const quantityInput = document.getElementById('quantityInput');
                     const addButton = document.getElementById('addToReceiptButton');
 
-                    // Set the data attributes for the button
                     addButton.setAttribute('data-price', price);
                     addButton.setAttribute('data-code', code);
                     addButton.setAttribute('data-name', name);
                     addButton.setAttribute('data-sugarSelectId', sugarSelectId);
+                    addButton.setAttribute('data-iceSelectId', iceSelectId);
 
-                    // Show the modal
                     const modal = new bootstrap.Modal(quantityModal);
                     modal.show();
                 }
 
                 function cancelOrder() {
-                    // Clear receipt UI
                     document.getElementById("receipt").innerHTML = "";
-                    // Reset total
                     total = 0;
                     document.getElementById("totalValue").innerHTML = "0.00";
-                    // Clear stored data
-                    orderData = []; // Reset order data
-                    localStorage.removeItem('orderData');
+                    orderData = [];
                 }
 
-                // Add item to receipt
-                // Add item to receipt
                 function addToReceipt() {
                     const addButton = document.getElementById('addToReceiptButton');
                     const price = addButton.getAttribute('data-price');
                     const code = addButton.getAttribute('data-code');
                     const name = addButton.getAttribute('data-name');
                     const sugarSelectId = addButton.getAttribute('data-sugarSelectId');
+                    const iceSelectId = addButton.getAttribute('data-iceSelectId');
                     const quantity = parseInt(document.getElementById('quantityInput').value) || 1;
 
                     total += parseFloat(price) * quantity;
                     document.getElementById("totalValue").innerHTML = total.toFixed(2);
-
-                    // Save the total to local storage
                     localStorage.setItem('orderTotal', total.toFixed(2));
 
                     let sugarLevel = '';
                     if (sugarSelectId) {
                         const sugarDropdown = document.getElementById(sugarSelectId);
                         if (sugarDropdown) {
-                            sugarLevel = sugarDropdown.value; // Get the selected sugar level
+                            sugarLevel = sugarDropdown.value;
+                        }
+                    }
+
+                    let iceLevel = '';
+                    if (iceSelectId) {
+                        const iceDropdown = document.getElementById(iceSelectId);
+                        if (iceDropdown) {
+                            iceLevel = iceDropdown.value;
                         }
                     }
 
                     const receiptContainer = document.getElementById("receipt");
                     receiptContainer.innerHTML += `
-    <div class="d-flex flex-row justify-content-between align-items-center mb-1 receipt-item">
-        <div class="flex-grow-1 item-name">
-            <small><span style="font-weight: bold;">${name} | ${quantity}x</span> ${code}</small>
-        </div>
-        <div class="item-price">
-            <small>₱ ${(parseFloat(price) * quantity).toFixed(2)}</small>
-        </div>
-    </div>`;
+        <div class="d-flex flex-row justify-content-between align-items-center mb-1 receipt-item">
+            <div class="flex-grow-1 item-name">
+                <small><span style="font-weight: bold;">${name} | ${quantity}x</span> ${code} ${sugarLevel ? '| ' + sugarLevel + '% Sugar' : ''} ${iceLevel ? '| ' + iceLevel : ''}</small>
+            </div>
+            <div class="item-price">
+                <small>₱ ${(parseFloat(price) * quantity).toFixed(2)}</small>
+            </div>
+        </div>`;
 
-                    // Find the category of the product
                     let category = '';
                     for (const product of products) {
                         const foundContent = product.contents.find(content => content.code === code);
                         if (foundContent) {
-                            category = product.category; // Get the category if found
-                            break; // Exit the loop once found
+                            category = product.category;
+                            break;
                         }
                     }
 
-                    // Save the item to the order data
                     orderData.push({
                         name: name,
                         price: parseFloat(price),
-                        category: category, // Use the found category
+                        category: category,
                         quantity: quantity,
                         sugarLevel: sugarLevel,
+                        iceLevel: iceLevel,
                         totalPrice: (parseFloat(price) * quantity).toFixed(2)
                     });
 
-                    // Hide the quantity modal
                     const quantityModal = bootstrap.Modal.getInstance(document.getElementById('quantityModal'));
                     quantityModal.hide();
                 }
 
-
-
-                // Open confirmation popup
                 function openPopup() {
                     const receiptItems = document.querySelectorAll('#receipt .receipt-item');
                     const summaryList = document.getElementById('orderSummaryList');
@@ -405,19 +401,17 @@
                         }
                     });
 
-                    // Get selected payment mode
-                    const paymentMode = document.getElementById('paymentMode').value;
+                    const paymentModeElement = document.getElementById('paymentMode');
+                    selectedPaymentMode = paymentModeElement ? paymentModeElement.value : 'N/A';
 
-                    // Display total price and payment mode
                     summaryList.innerHTML += `<li class="fw-bold">Total: ₱${totalPrice.toFixed(2)}</li>`;
-                    summaryList.innerHTML += `<li class="fw-bold">Payment Mode: ${paymentMode}</li>`;
+                    summaryList.innerHTML += `<li class="fw-bold">Payment Mode: ${selectedPaymentMode}</li>`;
 
                     document.getElementById('confirmModal').dataset.currentOrder = JSON.stringify(currentOrder);
                     const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
                     modal.show();
                 }
 
-                // Confirm order and save to localStorage
                 function confirmOrder() {
                     const modal = bootstrap.Modal.getInstance(document.getElementById('confirmModal'));
                     modal.hide();
@@ -426,11 +420,21 @@
                     const toast = new bootstrap.Toast(toastElement, { delay: 3000 });
                     toast.show();
 
-                    // Save order to localStorage for use on notification.html
-                    localStorage.setItem('orderData', JSON.stringify(orderData));
+                    let existingOrders = JSON.parse(localStorage.getItem('orderData')) || [];
+                    existingOrders.push({
+                        items: [...orderData],
+                        total: total.toFixed(2),
+                        paymentMode: selectedPaymentMode,
+                        timestamp: new Date().toISOString()
+                    });
+                    localStorage.setItem('orderData', JSON.stringify(existingOrders));
+
+                    orderData = [];
+                    document.getElementById("receipt").innerHTML = "";
+                    total = 0;
+                    document.getElementById("totalValue").innerHTML = "0.00";
                 }
 
-                // Initialize the application
                 document.addEventListener("DOMContentLoaded", function () {
                     const offcanvasElement = document.getElementById("offcanvasSidebar");
                     const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
@@ -445,8 +449,9 @@
                             document.querySelector('.confirm-order-btn').addEventListener('click', confirmOrder);
                         });
                 });
-
             </script>
+
+
 
 
 
