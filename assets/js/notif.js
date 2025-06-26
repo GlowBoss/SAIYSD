@@ -103,68 +103,204 @@ function confirmOrder() {
   toast.show();
 }
 
-// Get both arrays from localStorage
-const completedOrders = JSON.parse(localStorage.getItem('completedOrders') || '[]');
-const orderData = JSON.parse(localStorage.getItem('orderData') || '[]');
+document.addEventListener('DOMContentLoaded', function() {
+  // Function to safely get and parse data from localStorage
+  const getLocalStorageData = (key) => {
+    try {
+      const storedData = localStorage.getItem(key);
+      return storedData ? JSON.parse(storedData) : [];
+    } catch (e) {
+      console.error(`Error parsing ${key}:`, e);
+      return [];
+    }
+  };
 
-// Combine the arrays
-const allOrders = [...completedOrders, ...orderData];
+  // Get data from both locations
+  const orderData = getLocalStorageData('orderData');
+  const completedOrders = getLocalStorageData('completedOrders');
 
-// Check if we have any orders
-const display = document.getElementById('orderCardsContainer');
+  // Combine and filter valid orders from both sources
+  const allOrders = [...orderData, ...completedOrders].filter(order => 
+    order.items && Array.isArray(order.items) && order.items.length > 0
+  );
 
-if (Array.isArray(allOrders) && allOrders.length > 0) {
-  const productsHTML = allOrders.map(item => `
-    <div class="card rounded-4 p-3 text-start" data-status="all">
-      <!-- Main Content Row -->
-      <div class="d-flex flex-column flex-md-row justify-content-between">
-        <!-- Left Content - Order Details -->
-        <div class="order-details">
-          <strong class="order-title fs-5 fs-md-3">${item.name || 'No name'}</strong>
-          <div class="order-item ms-0 ms-md-5 mt-1">
-            <strong>${item.quantity || 1}x</strong> ${item.name || 'No name'}
+  const display = document.getElementById('orderCardsContainer');
+  if (!display) {
+    console.error("Display container not found");
+    return;
+  }
+
+  if (allOrders.length === 0) {
+    display.innerHTML = '<div class="alert alert-info">No orders yet.</div>';
+    return;
+  }
+
+  // Generate HTML for each order with source indicator
+  display.innerHTML = allOrders.map((order, index) => {
+    const orderTime = order.timestamp 
+      ? new Date(order.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      : '--:--';
+
+    // Determine order source for styling
+    const isCompleted = completedOrders.some(completedOrder => 
+      completedOrder.timestamp === order.timestamp
+    );
+
+    const itemsHtml = order.items.map(item => `
+      <div class="order-item d-flex justify-content-between align-items-center py-2 border-bottom">
+        <div class="d-flex flex-wrap align-items-center">
+          <strong class="me-2">${item.quantity || 1}x</strong>
+          <span class="me-2">${item.name || 'Unnamed item'}</span>
+          ${item.sugarLevel ? `<small class="text-muted me-2">(${item.sugarLevel}% sugar)</small>` : ''}
+          ${item.iceLevel ? `<small class="text-muted">(${item.iceLevel})</small>` : ''}
+        </div>
+        <div class="text-end">
+          <span>₱${item.totalPrice || (item.price * (item.quantity || 1)).toFixed(2)}</span>
+          ${item.category ? `<div class="text-muted small">${item.category}</div>` : ''}
+        </div>
+      </div>
+    `).join('');
+
+    return `
+      <div class="card rounded-4 p-3 mb-3 ${isCompleted ? 'border-success' : ''}" 
+           data-order-index="${index}" 
+           data-order-source="${isCompleted ? 'completed' : 'active'}">
+        <!-- Header row with source indicator -->
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <div>
+            <h5 class="mb-0 fs-6 fs-sm-5 d-inline">Order #${index + 1}</h5>
+            ${isCompleted ? '<span class="badge bg-success ms-2">Completed</span>' : ''}
           </div>
-          <div class="order-price ms-0 ms-md-5 mt-1">₱${item.price || '0'}</div>
+          <small class="text-muted">${orderTime}</small>
         </div>
         
-        <!-- Right Content - Controls -->
-        <div class="order-controls mt-3 mt-md-0">
-          <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-2">
-            <!-- Status Dropdown -->
-            <div class="status-selector-container">
-              <select class="form-select status-selector icon-select">
-                <option value="all" selected>🟡Pending</option>
-                <option value="preparing">🟡Preparing</option>
-                <option value="ready">🟢Ready</option>
-                <option value="completed">✅Completed</option>
-              </select>
-            </div>
+        <!-- Items list -->
+        <div class="order-items mb-3">
+          ${itemsHtml}
+        </div>
+        
+        <!-- Total row -->
+        <div class="d-flex justify-content-between align-items-center border-top pt-2">
+          <div>
+            <strong class="fs-6">Total:</strong>
+            <small class="text-muted d-block">${order.paymentMode || 'Cash'} payment</small>
+          </div>
+          <h5 class="mb-0 fs-6 fs-sm-5">₱${order.total || '0.00'}</h5>
+        </div>
+        
+        <!-- Controls - Only show for active orders -->
+        ${!isCompleted ? `
+        <div class="d-flex justify-content-end gap-2 mt-3">
+          <div class="d-flex flex-column flex-sm-row align-items-end align-items-sm-center gap-2">
+            <select class="form-select status-selector icon-select" style="min-width: 150px;">
+              <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>🟡 Pending</option>
+              <option value="preparing" ${order.status === 'preparing' ? 'selected' : ''}>🟠 Preparing</option>
+              <option value="ready" ${order.status === 'ready' ? 'selected' : ''}>🟢 Ready</option>
+              <option value="completed" ${order.status === 'completed' ? 'selected' : ''}>✅ Completed</option>
+            </select>
             
-            <!-- Action Buttons -->
-            <div class="action-buttons d-flex gap-2">
+            <div class="d-flex gap-2">
               <button class="btn btn-accept text-white fw-semibold rounded-pill px-3 py-1 py-sm-2"
-                onclick="changeCardStatus(this, 'ready')">Accept</button>
-              <button class="btn btn-decline fw-semibold rounded-pill px-3 py-1 py-sm-2">Decline</button>
+                onclick="acceptOrder(this)">
+                Accept
+              </button>
+              <button class="btn btn-decline fw-semibold rounded-pill px-3 py-1 py-sm-2"
+                onclick="declineOrder(this)">
+                Decline
+              </button>
             </div>
           </div>
         </div>
+        ` : ''}
       </div>
-      
-      <!-- Footer - Payment Info -->
-      <div class="order-footer mt-2">
-        <div class="text-muted small text-start text-md-end">
-          Mode of Payment: ${item.paymentMethod || 'Not specified'}
-        </div>
-        ${item.paymentMethod && item.paymentMethod.toLowerCase() !== 'cash' ?
-          `<div class="text-muted small text-start text-md-end">
-            Reference Number: ${item.refNumber || 'N/A'}
-          </div>` : ''
-        }
-      </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
+
+  // Initialize status selectors
+  initializeStatusSelectors();
+});
+
+// Initialize status selectors with event listeners
+function initializeStatusSelectors() {
+  document.querySelectorAll('.status-selector').forEach(selector => {
+    const card = selector.closest('.card');
+    selector.addEventListener('change', function() {
+      updateOrderStatus(card, this.value);
+    });
+  });
+}
+
+// Update order status in localStorage
+function updateOrderStatus(card, status) {
+  const orderIndex = card.dataset.orderIndex;
+  const isCompleted = card.dataset.orderSource === 'completed';
+  const storageKey = isCompleted ? 'completedOrders' : 'orderData';
   
-  display.innerHTML = productsHTML;
-} else {
-  display.innerHTML = '<p class="text-muted">No orders found.</p>';
+  try {
+    const orders = JSON.parse(localStorage.getItem(storageKey)) || [];
+    if (orders[orderIndex]) {
+      orders[orderIndex].status = status;
+      localStorage.setItem(storageKey, JSON.stringify(orders));
+      
+      // Visual feedback
+      card.classList.remove('border-warning', 'border-primary', 'border-success');
+      if (status === 'completed') {
+        card.classList.add('border-success');
+        card.dataset.orderSource = 'completed';
+        // Move to completed orders
+        moveToCompletedOrders(orderIndex);
+      } else if (status === 'preparing') {
+        card.classList.add('border-primary');
+      } else if (status === 'ready') {
+        card.classList.add('border-success');
+      } else {
+        card.classList.add('border-warning');
+      }
+    }
+  } catch (e) {
+    console.error("Error updating order status:", e);
+  }
+}
+
+// Move order to completedOrders
+function moveToCompletedOrders(index) {
+  try {
+    const activeOrders = JSON.parse(localStorage.getItem('orderData')) || [];
+    const completedOrders = JSON.parse(localStorage.getItem('completedOrders')) || [];
+    
+    if (activeOrders[index]) {
+      // Add to completed
+      completedOrders.push(activeOrders[index]);
+      // Remove from active
+      activeOrders.splice(index, 1);
+      
+      // Update localStorage
+      localStorage.setItem('orderData', JSON.stringify(activeOrders));
+      localStorage.setItem('completedOrders', JSON.stringify(completedOrders));
+    }
+  } catch (e) {
+    console.error("Error moving order to completed:", e);
+  }
+}
+
+// Global functions for button actions
+function acceptOrder(button) {
+  const card = button.closest('.card');
+  const selector = card.querySelector('.status-selector');
+  selector.value = 'preparing';
+  selector.dispatchEvent(new Event('change'));
+}
+
+function declineOrder(button) {
+  const card = button.closest('.card');
+  const orderIndex = card.dataset.orderIndex;
+  
+  try {
+    let activeOrders = JSON.parse(localStorage.getItem('orderData')) || [];
+    activeOrders.splice(orderIndex, 1);
+    localStorage.setItem('orderData', JSON.stringify(activeOrders));
+    card.remove();
+  } catch (e) {
+    console.error("Error declining order:", e);
+  }
 }
