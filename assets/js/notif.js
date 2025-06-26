@@ -1,5 +1,75 @@
 
-// Your existing offcanvas and fetch code remains unchanged
+
+// Global function so it works with onclick=
+function changeCardStatus(button, newStatus) {
+  const card = button.closest('[data-status]');
+  const select = card.querySelector('.status-selector');
+  const actionButtons = card.querySelector('.action-buttons');
+
+  // 1. Update data-status
+  card.setAttribute('data-status', newStatus);
+
+  // 2. Update dropdown
+  if (select) select.value = newStatus;
+
+  // 3. Hide action buttons if not preparing
+  if (actionButtons) {
+    actionButtons.style.display = (newStatus === 'preparing') ? 'flex' : 'none';
+  }
+
+  // 4. Update card class for visual feedback
+  updateCardStyle(card, newStatus);
+
+  // 5. Re-apply filter
+  const activeCategoryBtn = document.querySelector('.categorybtn-active');
+  if (activeCategoryBtn) {
+    const selectedCategory = activeCategoryBtn.getAttribute('data-category');
+    const cardStatus = card.getAttribute('data-status');
+    card.style.display = (selectedCategory === 'all' || selectedCategory === cardStatus) ? 'block' : 'none';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Handle dropdown change
+  document.querySelectorAll('.status-selector').forEach(select => {
+    select.addEventListener('change', function () {
+      const card = this.closest('[data-status]');
+      const status = this.value;
+
+      card.setAttribute('data-status', status);
+
+      const actionButtons = card.querySelector('.action-buttons');
+      if (actionButtons) {
+        actionButtons.style.display = (status === 'preparing') ? 'flex' : 'none';
+      }
+
+      // Re-apply filter
+      const activeCategoryBtn = document.querySelector('.categorybtn-active');
+      if (activeCategoryBtn) {
+        const selectedCategory = activeCategoryBtn.getAttribute('data-category');
+        card.style.display = (selectedCategory === 'all' || selectedCategory === status) ? 'block' : 'none';
+      }
+    });
+  });
+
+  // Filter by category buttons
+  document.querySelectorAll('.categorybtn, .categorybtn-active').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.categorybtn, .categorybtn-active').forEach(b => {
+        b.classList.remove('categorybtn-active');
+      });
+      btn.classList.add('categorybtn-active');
+
+      const selectedCategory = btn.getAttribute('data-category');
+
+      document.querySelectorAll('.card[data-status]').forEach(card => {
+        const cardStatus = card.getAttribute('data-status');
+        card.style.display = (selectedCategory === 'all' || cardStatus === selectedCategory) ? 'block' : 'none';
+      });
+    });
+  });
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   const offcanvasElement = document.getElementById("offcanvasSidebar");
   const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
@@ -43,7 +113,7 @@ function acceptOrder(button) {
 function declineOrder(button) {
   const card = button.closest('.card');
   const orderIndex = card.dataset.orderIndex;
-  
+
   try {
     let activeOrders = JSON.parse(localStorage.getItem('orderData')) || [];
     activeOrders.splice(orderIndex, 1);
@@ -60,7 +130,7 @@ function changeCardStatus(button, newStatus) {
   const actionButtons = card.querySelector('.action-buttons');
 
   card.setAttribute('data-status', newStatus);
-  
+
   if (select) select.value = newStatus;
 
   if (actionButtons) {
@@ -75,7 +145,7 @@ function changeCardStatus(button, newStatus) {
     badge.className = 'badge bg-success ms-2';
     badge.textContent = 'Completed';
     card.querySelector('h5').appendChild(badge);
-    
+
     const controls = card.querySelector('.d-flex.justify-content-end');
     if (controls) controls.remove();
   }
@@ -85,13 +155,13 @@ function updateOrderStatusInStorage(card, newStatus) {
   const orderIndex = card.dataset.orderIndex;
   const isCompleted = card.dataset.orderSource === 'completed';
   const storageKey = isCompleted ? 'completedOrders' : 'orderData';
-  
+
   try {
     const orders = JSON.parse(localStorage.getItem(storageKey)) || [];
     if (orders[orderIndex]) {
       orders[orderIndex].status = newStatus;
       localStorage.setItem(storageKey, JSON.stringify(orders));
-      
+
       if (newStatus === 'completed') {
         moveToCompletedOrders(orderIndex);
       }
@@ -105,11 +175,11 @@ function moveToCompletedOrders(index) {
   try {
     const activeOrders = JSON.parse(localStorage.getItem('orderData')) || [];
     const completedOrders = JSON.parse(localStorage.getItem('completedOrders')) || [];
-    
+
     if (activeOrders[index]) {
       completedOrders.push(activeOrders[index]);
       activeOrders.splice(index, 1);
-      
+
       localStorage.setItem('orderData', JSON.stringify(activeOrders));
       localStorage.setItem('completedOrders', JSON.stringify(completedOrders));
     }
@@ -130,12 +200,16 @@ function initializeOrderManagement() {
     }
   };
 
+
+  // Get data from both locations
   const orderData = getLocalStorageData('orderData');
   const completedOrders = getLocalStorageData('completedOrders');
+
+  // Combine and filter valid orders from both sources
   const allOrders = [...orderData, ...completedOrders].filter(order =>
     order.items && Array.isArray(order.items) && order.items.length > 0
   );
-
+  console.log(allOrders);
   const display = document.getElementById('orderCardsContainer');
   if (!display) {
     console.error("Display container not found");
@@ -175,7 +249,8 @@ function initializeOrderManagement() {
       <div class="card rounded-4 p-3 mb-3 ${isCompleted ? 'border-success' : ''}" 
            data-status="${order.status || 'pending'}" 
            data-order-index="${index}" 
-           data-order-source="${isCompleted ? 'completed' : 'active'}">
+           data-status="${order.status}" >
+        <!-- Header row with source indicator -->
         <div class="d-flex justify-content-between align-items-center mb-2">
           <div>
             <h5 class="mb-0 fs-6 fs-sm-5 d-inline">Order #${index + 1}</h5>
@@ -206,15 +281,14 @@ function initializeOrderManagement() {
               <option value="completed" ${order.status === 'completed' ? 'selected' : ''}>✅ Completed</option>
             </select>
           </div>
-          
-          <div class="action-buttons d-flex gap-2" style="display: ${order.status === 'preparing' ? 'flex' : 'none'}">
-            <button class="btn btn-accept text-white fw-semibold rounded-pill px-3 py-1 py-sm-2"
+          <div class="d-flex gap-2">
+            <button class="btn action-buttons btn-accept text-white fw-semibold rounded-pill px-3 py-1 py-sm-2"
               onclick="acceptOrder(this)">
               Accept
             </button>
             <button class="btn btn-decline fw-semibold rounded-pill px-3 py-1 py-sm-2"
               onclick="declineOrder(this)">
-              Decline
+              Clear
             </button>
           </div>
         </div>
@@ -223,28 +297,89 @@ function initializeOrderManagement() {
     `;
   }).join('');
 
-  // Initialize event listeners
-  document.querySelectorAll('.status-selector').forEach(select => {
-    select.addEventListener('change', function() {
-      changeCardStatus(this, this.value);
-    });
-  });
+  // Initialize status selectors
+  initializeStatusSelectors();
+};
 
-  document.querySelectorAll('.categorybtn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.categorybtn').forEach(b => {
-        b.classList.remove('categorybtn-active');
-      });
-      this.classList.add('categorybtn-active');
-      
-      const selectedCategory = this.getAttribute('data-category');
-      
-      document.querySelectorAll('.card[data-status]').forEach(card => {
-        const cardStatus = card.getAttribute('data-status');
-        card.style.display = (selectedCategory === 'all' || cardStatus === selectedCategory) 
-          ? 'block' 
-          : 'none';
-      });
+// Initialize status selectors with event listeners
+function initializeStatusSelectors() {
+  document.querySelectorAll('.status-selector').forEach(selector => {
+    selector.addEventListener('change', function () {
+      const card = this.closest('.card');
+      const newStatus = this.value;
+
+      // 1. Update data-status
+      card.setAttribute('data-status', newStatus);
+
+      // 2. Toggle visibility of action buttons
+      const actionButtons = card.querySelector('.action-buttons');
+      if (actionButtons) {
+        actionButtons.style.display = (newStatus === 'pending') ? 'flex' : 'none';
+      }
+
+      // 3. Update visual card class (border)
+      card.classList.remove('border-success', 'border-warning', 'border-primary');
+      if (newStatus === 'completed' || newStatus === 'ready') {
+        card.classList.add('border-success');
+      } else if (newStatus === 'preparing') {
+        card.classList.add('border-primary');
+      } else {
+        card.classList.add('border-warning');
+      }
+
+      // 4. Re-apply category filter
+      const activeCategoryBtn = document.querySelector('.categorybtn-active');
+      if (activeCategoryBtn) {
+        const selectedCategory = activeCategoryBtn.getAttribute('data-category');
+        card.style.display = (selectedCategory === 'all' || selectedCategory === newStatus) ? 'block' : 'none';
+      }
     });
   });
+}
+
+// Move order to completedOrders
+function moveToCompletedOrders(index) {
+  try {
+    const activeOrders = JSON.parse(localStorage.getItem('orderData')) || [];
+    const completedOrders = JSON.parse(localStorage.getItem('completedOrders')) || [];
+
+    if (activeOrders[index]) {
+      // Add to completed
+      completedOrders.push(activeOrders[index]);
+      // Remove from active
+      activeOrders.splice(index, 1);
+
+      // Update localStorage
+      localStorage.setItem('orderData', JSON.stringify(activeOrders));
+      localStorage.setItem('completedOrders', JSON.stringify(completedOrders));
+    }
+  } catch (e) {
+    console.error("Error moving order to completed:", e);
+  }
+}
+
+// Global functions for button actions
+function acceptOrder(button) {
+  const card = button.closest('.card');
+  const selector = card.querySelector('.status-selector');
+  selector.value = 'preparing';
+  selector.dispatchEvent(new Event('change'));
+  const actionButtons = card.querySelector('.action-buttons');
+  if (actionButtons) {
+    actionButtons.style.display = 'none';
+  }
+}
+
+function declineOrder(button) {
+  const card = button.closest('.card');
+  const orderIndex = card.dataset.orderIndex;
+
+  try {
+    let activeOrders = JSON.parse(localStorage.getItem('orderData')) || [];
+    activeOrders.splice(orderIndex, 1);
+    localStorage.setItem('orderData', JSON.stringify(activeOrders));
+    card.remove();
+  } catch (e) {
+    console.error("Error declining order:", e);
+  }
 }

@@ -20,64 +20,67 @@
     <div class="container-fluid mainContainer p-3">
         <div class="row">
 
-            <!-- Offcanvas sidebar for small screens -->
-            <div class="">
-                    <div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvasSidebar"
-                        aria-labelledby="offcanvasSidebarLabel" style="visibility: visible; background: white;">
-                        <div class="offcanvas-header d-flex justify-content-between">
-                            <div class="card rounded-5 mx-auto mb-2" style="align-self: center;">
-                                <img src="../assets/img/round_logo.png" class="card-img-top" alt="logo" />
+            <!-- Offcanvas Sidebar -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar"
+                aria-labelledby="offcanvasSidebarLabel">
+                <!-- Header with Logo and Close Button -->
+                <div
+                    class="offcanvas-header d-flex align-items-center justify-content-between px-3 pt-3 pb-2 border-bottom">
+                    <img src="../assets/img/saisydLogo.png" alt="Logo" class="me-2"
+                        style="max-height: 50px; max-width: 100px;" />
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+
+                <!-- Body -->
+                <div class="offcanvas-body overflow-auto px-0">
+                    <div class="custom-sidebar px-4 py-3 bg-white h-100">
+
+                        <!-- Menu Section -->
+                        <div class="sideBar pb-4">
+                            <p class="fw-bold">MENU</p>
+                            <div class="nav-item d-flex align-items-center">
+                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
+                                <a class="nav-link active ms-2" href="home.html">Dashboard</a>
                             </div>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
-                                style="align-self: flex-start;"></button>
+                            <div class="nav-item d-flex align-items-center">
+                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
+                                <a class="nav-link active ms-2" href="notification.html">Notification</a>
+                            </div>
+                            <div class="nav-item d-flex align-items-center">
+                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
+                                <a class="nav-link active ms-2" href="menu-management.html">Menu Management</a>
+                            </div>
+                            <div class="nav-item d-flex align-items-center">
+                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
+                                <a class="nav-link active ms-2" href="inventory-management.html">Inventory</a>
+                            </div>
                         </div>
 
-                        <div class="offcanvas-body p-4 overflow-auto"> <!-- Added p-0 and overflow-auto -->
-                            <div class="custom-sidebar rounded-5 p-4 bg-white border h-100"> <!-- Keep h-100 -->
-                                <div class="sideBar pb-4">
-                                    <p>MENU</p>
-                                    <div class="nav-item d-flex justify-content-start align-items-center">
-                                        <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="home.html">Dashboard</a>
-                                    </div>
-                                    <div class="nav-item d-flex justify-content-start align-items-center">
-                                        <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="notification.html">Notification</a>
-                                    </div>
-                                    <div class="nav-item d-flex justify-content-start align-items-center">
-                                        <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="menu-management.html">Menu Management</a>
-                                    </div>
-                                    <div class="nav-item d-flex justify-content-start align-items-center">
-                                        <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="inventory-management.html">Inventory</a>
-                                    </div>
-                                </div>
+                        <!-- Financial Section -->
+                        <div class="sideBar pb-4">
+                            <p class="fw-bold">FINANCIAL</p>
+                            <div class="nav-item d-flex align-items-center">
+                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
+                                <a class="nav-link active ms-2" href="sales-and-report.html">Sales and Report</a>
+                            </div>
+                        </div>
 
-                                <div class="sideBar pb-4">
-                                    <p>FINANCIAL</p>
-                                    <div class="nav-item d-flex justify-content-start align-items-center">
-                                        <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="sales-and-report.html">Sales and
-                                            Report</a>
-                                    </div>
-                                </div>
-
-                                <div class="sideBar pb-4">
-                                    <p>TOOLS</p>
-                                    <div class="nav-item d-flex justify-content-start align-items-center">
-                                        <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="#">Settings</a>
-                                    </div>
-                                    <div class="nav-item d-flex justify-content-start align-items-center">
-                                        <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="login.html">Logout</a>
-                                    </div>
-                                </div>
+                        <!-- Tools Section -->
+                        <div class="sideBar pb-2">
+                            <p class="fw-bold">TOOLS</p>
+                            <div class="nav-item d-flex align-items-center">
+                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
+                                <a class="nav-link active ms-2" href="#">Settings</a>
+                            </div>
+                            <div class="nav-item d-flex align-items-center">
+                                <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
+                                <a class="nav-link active ms-2" href="login.html">Logout</a>
                             </div>
                         </div>
                     </div>
-                
+                </div>
+
             </div>
 
             <!-- Main content column -->
@@ -86,35 +89,38 @@
                 <div class="d-flex flex-column flex-lg-row pt-3">
                     <!-- POS content -->
                     <div class="flex-fill">
-                        <div class="card p-3 topcontainer mb-3">
+                        <div class="card p-2 topcontainer mb-3">
                             <div class="container-fluid">
                                 <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <div class="heading fw-bold" role="button" data-bs-toggle="offcanvas"
-                                        data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar"
-                                        style="cursor: pointer;">
-                                        Point of Sale System
+                                    <div class="d-flex align-items-center gap-3">
+                                        <button class="btn btn-sm btn-dark" data-bs-toggle="offcanvas"
+                                            data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar"
+                                            aria-label="Toggle sidebar">
+                                            <i class="bi bi-list" style="font-size: 1.3rem;"></i>
+                                        </button>
+                                        <h5 class="heading fw-semibold mb-0 pt-2 text-center text-lg-start">Point of
+                                            Sale System</h5>
                                     </div>
-                                    <button class="btn btn-light position-relative" data-bs-toggle="offcanvas"
-                                        data-bs-target="#orderNotif" aria-controls="orderNotif">
+                                    <a href="notification.html" class="btn btn-light position-relative">
                                         <i class="bi bi-bell-fill"></i>
                                         <span
                                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                            3
+                                            <!-- 3 -->
                                             <span class="visually-hidden">unread messages</span>
                                         </span>
-                                    </button>
+                                    </a>
                                 </div>
-                                <div class="subtitle pb-3">Payment Management</div>
-                                <div class="subheading"><span style="font-weight: bold;">Menu</span> Category</div>
-                                <div class="category-scroll d-flex gap-3 overflow-auto pb-2" id="categories">
+                                <div class="subheading py-3 px-2">Category</div>
+
+                                <div class="category-scroll d-flex gap-3 overflow-auto pb-3" id="categories">
                                     <!-- Categories -->
                                 </div>
                             </div>
                         </div>
 
                         <div class="card overflow-auto p-3 maincontainer">
-                            <div class="subheading">
-                                <span style="font-weight: bold;">Menu</span> Items
+                            <div class="subheading px-2">
+                                Items
                             </div>
                             <div class="row g-3 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6"
                                 id="maincontainer">
@@ -126,7 +132,7 @@
                     <!-- Receipt -->
                     <div class="flex-lg-shrink-0 ms-0 ms-lg-3 mt-3 mt-lg-0" style="min-width: 300px;">
                         <div class="card p-3 overflow-auto" style="height: 100%;">
-                            <div class="category-title"><span style="font-weight: bold;">Menu</span> Receipt</div>
+                            <div class="category-title">Receipt</div>
                             <div class="container-fluid">
                                 <div class="line-divider"></div>
                             </div>
@@ -138,9 +144,10 @@
                                     <div><b id="totalValue">0</b></div>
                                 </div>
                                 <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mt-4">
-                                    <button class="btn btn-success w-100 w-md-auto" onclick="openPopup()">Order
+                                    <button class="btn btn-dark w-100 w-md-auto rounded-3" onclick="openPopup()">Order
                                         Now</button>
-                                    <button class="btn btn-danger w-100 w-md-auto" onclick="cancelOrder()">Cancel
+                                    <button class="btn btn-outline-dark w-100 w-md-auto rounded-3"
+                                        onclick="cancelOrder()">Cancel
                                         Order</button>
                                 </div>
                             </div>
@@ -150,7 +157,7 @@
             </div>
 
             <!-- notif part -->
-            <div class="offcanvas offcanvas-end " tabindex="-1" id="orderNotif" aria-labelledby="orderNotifLabel"
+            <!-- <div class="offcanvas offcanvas-end " tabindex="-1" id="orderNotif" aria-labelledby="orderNotifLabel"
                 style="width: 500px;">
                 <div class="offcanvas-header">
                     <h5 class="subheading fw-bold" id="orderNotifLabel">Order Notification</h5>
@@ -193,7 +200,7 @@
 
 
                 </div>
-            </div>
+            </div> -->
 
 
             <!-- Order Confirmation Modal -->
@@ -248,7 +255,7 @@
                                 maincontainer.innerHTML += `
                     <div class="col">
                         <div class="menu-item border p-3 rounded shadow-sm text-center width-auto card-hover" style="cursor: pointer;">
-                            <img src="../assets/img/${content.img}" alt="${content.name}" class="img-fluid mb-2" style="max-height: 150px;">
+                            <img src="../assets/img/${content.img}" alt="${content.name}" class="img-fluid mb-2" style="max-height: 170px; min-height: 120px">
                             <div class="lead menu-name fw-bold">${content.name}</div>
                             <div class="d-flex justify-content-center align-items-center gap-2 my-2">
                                 <span class="lead fw-bold menu-price">₱${size.price}</span>
@@ -260,7 +267,7 @@
                             <select class="form-select mb-2" id="${iceSelectId}">
                                 ${iceOptions}
                             </select>
-                            <button class="btn btn-dark btn-sm mt-1"
+                            <button class="btn btn-dark btn-sm mt-1 rounded-5"
                                 onclick="showQuantityModal('${size.price}','${content.code + size.code}','${content.name} ${size.name}', '${sugarSelectId}', '${iceSelectId}')">
                                 Add to Order
                             </button>
@@ -274,7 +281,7 @@
                 <div class="col">
                     <div onclick="showQuantityModal('${content.price}','${content.code}','${content.name}')" 
                          class="menu-item border p-3 rounded shadow-sm text-center width-auto card-hover" 
-                         style="cursor: pointer;">
+                         style="cursor: pointer; height: 230px;">
                         <img src="../assets/img/${content.img}" alt="${content.name}" class="img-fluid mb-2" style="max-height: 150px;">
                         <div class="lead menu-name fw-bold">${content.name}</div>
                         <div class="d-flex justify-content-center align-items-center gap-2 my-2">

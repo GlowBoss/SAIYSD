@@ -83,7 +83,7 @@
         <div class="row justify-content-center">
             <!-- Cart Card -->
             <div class="col-12 col-lg-5 mb-4">
-                <div class="card rounded-5 cart-section p-3" style="height: 75vh;">
+                <div class="card rounded-5 cart-section p-3" style="max-height: 75vh;">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="d-flex align-items-center">
                             <div class="icon me-2"></div>
@@ -181,11 +181,6 @@
                     </div>
                     <hr>
 
-                    <!-- VAT and Total -->
-                    <div class="mx-3 mb-2">
-                        <p class="subheading">VAT: <span id="vat-amount">₱0.00</span></p>
-                    </div>
-                    <hr>
                     <div class="text-end px-3 mb-3">
                         <h3 class="subheading3">TOTAL: <span id="grand-total">₱0.00</span></h3>
                     </div>
@@ -355,20 +350,14 @@
                 itemCount += item.quantity;
             });
 
-            const vat = subtotal * 0.12;
-            const grandTotal = subtotal + vat;
-
             if (document.getElementById('item-count')) {
                 document.getElementById('item-count').textContent = itemCount;
             }
             if (document.getElementById('order-total')) {
                 document.getElementById('order-total').textContent = `₱${subtotal.toFixed(2)}`;
             }
-            if (document.getElementById('vat-amount')) {
-                document.getElementById('vat-amount').textContent = `₱${vat.toFixed(2)}`;
-            }
             if (document.getElementById('grand-total')) {
-                document.getElementById('grand-total').textContent = `₱${grandTotal.toFixed(2)}`;
+                document.getElementById('grand-total').textContent = `₱${subtotal.toFixed(2)}`;
             }
         }
 
@@ -471,7 +460,7 @@
             const completedRaw = localStorage.getItem("orderData");
             const orderData = completedRaw ? JSON.parse(completedRaw) : [];
 
-          orderData.push(newOrder);
+            orderData.push(newOrder);
 
             // Save updated list
             localStorage.setItem("orderData", JSON.stringify(orderData));
@@ -509,6 +498,36 @@
             updateCartBadge();
             updateOrderSummary();
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCartBadge();
+            updateOrderSummary();
+
+            // Disable "Cash" payment when "Pickup" is selected
+            const orderTypeRadios = document.querySelectorAll('input[name="orderType"]');
+            const cashRadio = document.getElementById('cash');
+
+            function toggleCashOption() {
+                const selected = document.querySelector('input[name="orderType"]:checked');
+                if (selected && selected.id === "pickup") {
+                    cashRadio.disabled = true;
+                    // Optional: uncheck it if currently selected
+                    if (cashRadio.checked) {
+                        cashRadio.checked = false;
+                    }
+                } else {
+                    cashRadio.disabled = false;
+                }
+            }
+
+            orderTypeRadios.forEach(radio => {
+                radio.addEventListener('change', toggleCashOption);
+            });
+
+            // Initial call on page load
+            toggleCashOption();
+        });
+
     </script>
 
 

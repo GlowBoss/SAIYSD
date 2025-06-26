@@ -26,3 +26,25 @@ html {
     background-color: var(--card-bg-color);
     overflow-x: hidden;
 }
+
+.categorybtn,
+.categorybtn-active {
+    border: 2px solid #C4A277;
+    color: #C4A277;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+    /* padding: 6px 16px; */
+    /* width: auto; */
+}
+
+.categorybtn-active {
+    background-color: #C4A277;
+    color: white;
+}
+
+
+.categorybtn:hover {
+    background-color: #C4A277;
+    color: white;
+    cursor: pointer;
+}
