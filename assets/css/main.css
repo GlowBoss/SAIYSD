@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--secondaryFont);
     padding-top: 40px;
@@ -29,10 +33,11 @@ body {
 }
 
 .nav-link.active {
-    color: var(--primary-color);
-    font-weight: 700;
-
+    color: #B45F06;
+    font-weight: bold;
+    border-bottom: 2px solid #B45F06;
 }
+
 
 .contact-btn {
     background-color: var(--primary-color);
