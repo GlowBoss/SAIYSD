@@ -453,30 +453,36 @@
             }
 
             const rawData = localStorage.getItem("orders");
-            const orderData = rawData ? JSON.parse(rawData) : [];
+            const items = rawData ? JSON.parse(rawData) : [];
 
-            orderData.forEach(item => {
-                item.orderMethod = orderMethod;
-                item.paymentMethod = paymentMethod;
-                if (paymentMethod === "gcash") {
-                    item.refNumber = refNumber;
-                }
-                item.orderStatus = "pending";
-                item.orderDate = new Date().toISOString();
-            });
+            // Optional: calculate total amount
+            const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2);
 
-            const completedRaw = localStorage.getItem("completedOrders");
-            const completedOrders = completedRaw ? JSON.parse(completedRaw) : [];
+            // Create the new order object with a structure like you want
+            const newOrder = {
+                items: [...items],                         // all cart items
+                total: total,                              // computed total
+                paymentMode: paymentMethod,                // e.g. "Cash" or "Gcash"
+                refNumber: paymentMethod === "gcash" ? refNumber : null,
+                timestamp: new Date().toISOString()
+            };
 
-            const updatedOrders = [...completedOrders, ...orderData];
-            localStorage.setItem("completedOrders", JSON.stringify(updatedOrders));
+            // Append this new order to orderData list
+            const completedRaw = localStorage.getItem("orderData");
+            const orderData = completedRaw ? JSON.parse(completedRaw) : [];
+
+          orderData.push(newOrder);
+
+            // Save updated list
+            localStorage.setItem("orderData", JSON.stringify(orderData));
+
+            // Clear the current cart
             localStorage.removeItem("orders");
 
-            const modal = bootstrap.Modal.getInstance(document.getElementById('confirmModal'));
-            if (modal) modal.hide();
+            // Close modal and show toast
+            bootstrap.Modal.getInstance(document.getElementById('confirmModal'))?.hide();
+            new bootstrap.Toast(document.getElementById('orderToast')).show();
 
-            const toast = new bootstrap.Toast(document.getElementById('orderToast'));
-            if (toast) toast.show();
 
             updateOrderSummary();
 
