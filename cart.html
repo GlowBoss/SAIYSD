@@ -48,9 +48,13 @@
 
             <!-- Right: Toggle + Icon (for small screens) -->
             <div class="d-flex align-items-center">
-                <a href="cart.html" class="d-block d-lg-none">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png" class="icon-bag" />
+                <!-- Icon + Text (visible only on small screens) -->
+                <a href="cart.html" class="d-flex d-lg-none align-items-center text-decoration-none me-2">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png" class="icon-bag me-1" />
+                    <span class="lead" style="color: var(--text-color-dark);">Cart</span>
                 </a>
+
+                <!-- Toggle button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#saisydNavbar"
                     aria-controls="saisydNavbar" aria-expanded="false" aria-label="Toggle navigation"
                     style="background: none; border: none; box-shadow: none; padding: 0;">
@@ -58,21 +62,24 @@
                 </button>
             </div>
 
-            <!-- Center Nav Links and Right Icons -->
+
+            <!-- Center: Nav links | Right: Icon + Button for large screens -->
             <div class="collapse navbar-collapse" id="saisydNavbar">
+
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 d-flex align-items-lg-center gap-lg-4">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#location">Location</a></li>
-
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                 </ul>
 
                 <div class="d-flex align-items-center mt-lg-0">
-                    <a href="cart.html" class="d-none d-lg-block">
-                        <img src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png" class="icon-bag" />
+                    <!-- Large screen icon with "Cart" label -->
+                    <a href="cart.html" class="d-none d-lg-flex align-items-center me-2 text-decoration-none">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png" class="icon-bag me-1" />
+                        <span class="lead " style="color: var(--text-color-dark)">Cart</span>
                     </a>
-                    <button class="contact-btn ms-0 ms-lg-2">Contact Us</button>
+                    <button class="contact-btn ms-0 ms-lg-2" onclick="location.href='menu.html'">Menu</button>
                 </div>
             </div>
         </div>

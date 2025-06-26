@@ -27,12 +27,12 @@
                 <img src="assets/img/saisydLogo.png" alt="SAISYD Logo" style="height: 50px;">
             </a>
 
-
             <!-- Right: Toggle + Icon (for small screens) -->
             <div class="d-flex align-items-center">
-                <!-- Icon visible only on small screens -->
-                <a href="cart.html" class="d-block d-lg-none ">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png" class="icon-bag" />
+                <!-- Icon + Text (visible only on small screens) -->
+                <a href="cart.html" class="d-flex d-lg-none align-items-center text-decoration-none me-2">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png" class="icon-bag me-1" />
+                    <span class="lead" style="color: var(--text-color-dark);">Cart</span>
                 </a>
 
                 <!-- Toggle button -->
@@ -43,26 +43,24 @@
                 </button>
             </div>
 
+
             <!-- Center: Nav links | Right: Icon + Button for large screens -->
             <div class="collapse navbar-collapse" id="saisydNavbar">
 
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 d-flex align-items-lg-center gap-lg-4">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#location">Location</a></li>
-
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                 </ul>
 
-                <!-- Only the icon will hide on small screens -->
                 <div class="d-flex align-items-center mt-lg-0">
-                    <!-- Large screen icon only -->
-                    <a href="cart.html" class="d-none d-lg-block">
-                        <img src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png" class="icon-bag" />
+                    <!-- Large screen icon with "Cart" label -->
+                    <a href="cart.html" class="d-none d-lg-flex align-items-center me-2 text-decoration-none">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png" class="icon-bag me-1" />
+                        <span class="lead " style="color: var(--text-color-dark)">Cart</span>
                     </a>
-
-                    <!-- Contact Us should always be visible -->
-                    <button class="contact-btn ms-0 ms-lg-2">Contact Us</button>
+                    <button class="contact-btn ms-0 ms-lg-2" onclick="location.href='menu.html'">Menu</button>
                 </div>
             </div>
         </div>
@@ -616,19 +614,22 @@
                     data-bs-ride="carousel" data-wow-delay="0.3s">
                     <div class="carousel-inner text-center">
                         <div class="carousel-item active" data-bs-interval="5000">
-                            <a href="https://www.instagram.com/saisydcafe?utm_source=ig_web_button_share_sheet&igsh=MTY4eXNldmtzejk3NA==" target="_blank" class="social-circle instagram">
+                            <a href="https://www.instagram.com/saisydcafe?utm_source=ig_web_button_share_sheet&igsh=MTY4eXNldmtzejk3NA=="
+                                target="_blank" class="social-circle instagram">
                                 <i class="fab fa-instagram fa-2x"></i>
                             </a>
                             <p class="lead more-p mt-3">Follow us on Instagram</p>
                         </div>
                         <div class="carousel-item" data-bs-interval="4000">
-                            <a href="https://www.facebook.com/saisydcafethehiddenfarm" target="_blank" class="social-circle facebook">
+                            <a href="https://www.facebook.com/saisydcafethehiddenfarm" target="_blank"
+                                class="social-circle facebook">
                                 <i class="fab fa-facebook-f fa-2x"></i>
                             </a>
                             <p class="lead more-p mt-3">Like us on Facebook</p>
                         </div>
                         <div class="carousel-item" data-bs-interval="4000">
-                            <a href="https://www.tiktok.com/@saisyd.cafe?is_from_webapp=1&sender_device=pc" target="_blank" class="social-circle tiktok">
+                            <a href="https://www.tiktok.com/@saisyd.cafe?is_from_webapp=1&sender_device=pc"
+                                target="_blank" class="social-circle tiktok">
                                 <i class="fab fa-tiktok fa-2x"></i>
                             </a>
                             <p class="lead more-p mt-3">Watch on TikTok</p>
@@ -811,8 +812,8 @@
 
 
     <!-- Footer -->
-    <footer class="bg-footer text-dark pt-5 pb-3" >
-        <div class="container" >
+    <footer class="bg-footer text-dark pt-5 pb-3">
+        <div class="container">
             <div class="d-lg-none accordion" id="footerAccordion">
                 <!-- SAISYD -->
                 <div class="accordion-item border-0">
@@ -852,10 +853,10 @@
 
                 <!-- Company -->
                 <div class="accordion-item border-0" style="text-align: justify;">
-                        <button class="accordion-button bg-footer text-dark fw-bold collapsed" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#collapseCompany">
-                            Company
-                        </button>
+                    <button class="accordion-button bg-footer text-dark fw-bold collapsed" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseCompany">
+                        Company
+                    </button>
                     </h2>
                     <div id="collapseCompany" class="accordion-collapse collapse">
                         <div class="accordion-body" style="text-align: justify;">
@@ -904,7 +905,7 @@
             <div class="row gy-4 d-none d-lg-flex">
                 <div class="col-lg-4" style="text-align: justify;">
                     <h5 class="fw-bold">SAISYD</h5>
-                    <p class="small" >
+                    <p class="small">
                         Minimalist café that serves good
                         food and coffee — perfect for slow mornings, casual catch-ups, and cozy evenings with
                         friends and family. Whether you're here to study, unwind, or simply savor the moment,
