@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="icon" href="../assets/img/round_logo.png" type="image/png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
 
@@ -110,7 +111,7 @@
                                         <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
                                         <a class="nav-link active ms-2" href="notification.html">Notification</a>
                                     </div>
-                                     <div class="nav-item d-flex justify-content-start align-items-center">
+                                    <div class="nav-item d-flex justify-content-start align-items-center">
                                         <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
                                         <a class="nav-link active ms-2" href="point-of-sales.html">POS</a>
                                     </div>
@@ -132,7 +133,8 @@
                                     <p>FINANCIAL</p>
                                     <div class="nav-item d-flex justify-content-start align-items-center">
                                         <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="sales-and-report.html">Sales and Report</a>
+                                        <a class="nav-link active ms-2" href="sales-and-report.html">Sales and
+                                            Report</a>
                                     </div>
                                 </div>
 
@@ -157,240 +159,30 @@
                 <div class="card scroll-hidden mt-2 rounded-4" style="max-height: 95vh; overflow-y: auto;">
                     <div class="card-body text-center">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="fw-bold m-3" role="button"
-                            data-bs-toggle="offcanvas" 
-                            data-bs-target="#offcanvasSidebar">Order Notification</h4>
+                            <h4 class="subheading fw-bold m-1 d-flex align-items-center" role="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar"
+                                aria-controls="offcanvasSidebar" style="cursor: pointer;">
+                                <i class="ri-menu-line d-md-none me-2"></i>
+                                <span>Order Notification</span>
+                            </h4>
                         </div>
 
                         <!-- Category Buttons -->
                         <div class="mb-3">
                             <div class="d-flex flex-wrap gap-2 justify-content-center">
-                                <button class="categorybtn-active  btn-outline rounded-pill px-3">All Orders</button>
-                                <button class="categorybtn  btn-outline rounded-pill px-3">Preparing</button>
-                                <button class="categorybtn  btn-outline rounded-pill px-3">Ready</button>
-                                <button class="categorybtn  btn-outline rounded-pill px-3">Completed</button>
+                                <button class="categorybtn-active categorybtn btn btn-outline rounded-pill px-3"
+                                    data-category="all">All Orders</button>
+                                <button class="categorybtn btn btn-outline rounded-pill px-3"
+                                    data-category="preparing">Preparing</button>
+                                <button class="categorybtn btn btn-outline rounded-pill px-3"
+                                    data-category="ready">Ready</button>
+                                <button class="categorybtn btn btn-outline rounded-pill px-3"
+                                    data-category="completed">Completed</button>
                             </div>
                         </div>
 
                         <!-- Order Cards -->
-                        <div class="d-flex flex-column gap-3">
-                            <!-- Order Card -->
-                            <div class="card rounded-4 p-3 text-start">
-                                <div
-                                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
-                                    <div>
-                                        <strong class="fs-3">Name</strong>
-                                        <div class="ms-md-5 ms-3"><strong>1x</strong> Amerikano</div>
-                                        <div class="ms-md-5 ms-3">₱500</div>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-2 mt-3 mt-md-0">
-                                        <!-- Dropdown -->
-                                        <div class="dropdown">
-                                            <button
-                                                class=" btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center p-0"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                                                style="width: 30px; height: 30px;">
-                                                <i class="bi bi-caret-down-fill" style="font-size: 16px;"></i>
-                                            </button>
-
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Move to Preparing</a></li>
-                                                <li><a class="dropdown-item" href="#">Move to Ready</a></li>
-                                                <li><a class="dropdown-item" href="#">Mark as Completed</a></li>
-                                            </ul>
-                                        </div>
-
-                                        <!-- Action Buttons -->
-                                        <button
-                                            class=" btn-accept text-white fw-semibold rounded-pill px-3">Accept</button>
-                                        <button class=" btn-decline fw-semibold rounded-pill px-3">Decline</button>
-                                    </div>
-                                </div>
-                                <div class="text-muted mt-2 small text-end">Mode of Payment: GCASH</div>
-                            </div>
-
-                            <div class="card rounded-4 p-3 text-start">
-                                <div
-                                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
-                                    <div>
-                                        <strong class="fs-3">Name</strong>
-                                        <div class="ms-md-5 ms-3"><strong>1x</strong> Amerikano</div>
-                                        <div class="ms-md-5 ms-3">₱500</div>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-2 mt-3 mt-md-0">
-                                        <!-- Dropdown -->
-                                        <div class="dropdown">
-                                            <button
-                                                class=" btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center p-0"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                                                style="width: 30px; height: 30px;">
-                                                <i class="bi bi-caret-down-fill" style="font-size: 16px;"></i>
-                                            </button>
-
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Move to Preparing</a></li>
-                                                <li><a class="dropdown-item" href="#">Move to Ready</a></li>
-                                                <li><a class="dropdown-item" href="#">Mark as Completed</a></li>
-                                            </ul>
-                                        </div>
-
-                                        <!-- Action Buttons -->
-                                        <button
-                                            class=" btn-accept text-white fw-semibold rounded-pill px-3">Accept</button>
-                                        <button class=" btn-decline fw-semibold rounded-pill px-3">Decline</button>
-                                    </div>
-                                </div>
-                                <div class="text-muted mt-2 small text-end">Mode of Payment: GCASH</div>
-                            </div>
-
-                            <div class="card rounded-4 p-3 text-start">
-                                <div
-                                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
-                                    <div>
-                                        <strong class="fs-3">Name</strong>
-                                        <div class="ms-md-5 ms-3"><strong>1x</strong> Amerikano</div>
-                                        <div class="ms-md-5 ms-3">₱500</div>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-2 mt-3 mt-md-0">
-                                        <!-- Dropdown -->
-                                        <div class="dropdown">
-                                            <button
-                                                class=" btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center p-0"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                                                style="width: 30px; height: 30px;">
-                                                <i class="bi bi-caret-down-fill" style="font-size: 16px;"></i>
-                                            </button>
-
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Move to Preparing</a></li>
-                                                <li><a class="dropdown-item" href="#">Move to Ready</a></li>
-                                                <li><a class="dropdown-item" href="#">Mark as Completed</a></li>
-                                            </ul>
-                                        </div>
-
-                                        <!-- Action Buttons -->
-                                        <button
-                                            class=" btn-accept text-white fw-semibold rounded-pill px-3">Accept</button>
-                                        <button class=" btn-decline fw-semibold rounded-pill px-3">Decline</button>
-                                    </div>
-                                </div>
-                                <div class="text-muted mt-2 small text-end">Mode of Payment: GCASH</div>
-                            </div>
-
-
-                            <div class="card rounded-4 p-3 text-start">
-                                <div
-                                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
-                                    <div>
-                                        <strong class="fs-3">Name</strong>
-                                        <div class="ms-md-5 ms-3"><strong>1x</strong> Amerikano</div>
-                                        <div class="ms-md-5 ms-3">₱500</div>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-2 mt-3 mt-md-0">
-                                        <!-- Dropdown -->
-                                        <div class="dropdown">
-                                            <button
-                                                class=" btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center p-0"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                                                style="width: 30px; height: 30px;">
-                                                <i class="bi bi-caret-down-fill" style="font-size: 16px;"></i>
-                                            </button>
-
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Move to Preparing</a></li>
-                                                <li><a class="dropdown-item" href="#">Move to Ready</a></li>
-                                                <li><a class="dropdown-item" href="#">Mark as Completed</a></li>
-                                            </ul>
-                                        </div>
-
-                                        <!-- Action Buttons -->
-                                        <button
-                                            class=" btn-accept text-white fw-semibold rounded-pill px-3">Accept</button>
-                                        <button class=" btn-decline fw-semibold rounded-pill px-3">Decline</button>
-                                    </div>
-                                </div>
-                                <div class="text-muted mt-2 small text-end">Mode of Payment: GCASH</div>
-                            </div>
-
-
-                            <div class="card rounded-4 p-3 text-start">
-                                <div
-                                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
-                                    <div>
-                                        <strong class="fs-3">Name</strong>
-                                        <div class="ms-md-5 ms-3"><strong>1x</strong> Amerikano</div>
-                                        <div class="ms-md-5 ms-3">₱500</div>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-2 mt-3 mt-md-0">
-                                        <!-- Dropdown -->
-                                        <div class="dropdown">
-                                            <button
-                                                class=" btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center p-0"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                                                style="width: 30px; height: 30px;">
-                                                <i class="bi bi-caret-down-fill" style="font-size: 16px;"></i>
-                                            </button>
-
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Move to Preparing</a></li>
-                                                <li><a class="dropdown-item" href="#">Move to Ready</a></li>
-                                                <li><a class="dropdown-item" href="#">Mark as Completed</a></li>
-                                            </ul>
-                                        </div>
-
-                                        <!-- Action Buttons -->
-                                        <button
-                                            class=" btn-accept text-white fw-semibold rounded-pill px-3">Accept</button>
-                                        <button class=" btn-decline fw-semibold rounded-pill px-3">Decline</button>
-                                    </div>
-                                </div>
-                                <div class="text-muted mt-2 small text-end">Mode of Payment: GCASH</div>
-                            </div>
-
-
-                            <div class="card rounded-4 p-3 text-start">
-                                <div
-                                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
-                                    <div>
-                                        <strong class="fs-3">Name</strong>
-                                        <div class="ms-md-5 ms-3"><strong>1x</strong> Amerikano</div>
-                                        <div class="ms-md-5 ms-3">₱500</div>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-2 mt-3 mt-md-0">
-                                        <!-- Dropdown -->
-                                        <div class="dropdown">
-                                            <button
-                                                class=" btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center p-0"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                                                style="width: 30px; height: 30px;">
-                                                <i class="bi bi-caret-down-fill" style="font-size: 16px;"></i>
-                                            </button>
-
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Move to Preparing</a></li>
-                                                <li><a class="dropdown-item" href="#">Move to Ready</a></li>
-                                                <li><a class="dropdown-item" href="#">Mark as Completed</a></li>
-                                            </ul>
-                                        </div>
-
-                                        <!-- Action Buttons -->
-                                        <button
-                                            class="btn-accept text-white fw-semibold rounded-pill px-3">Accept</button>
-                                        <button class=" btn-decline fw-semibold rounded-pill px-3">Decline</button>
-                                    </div>
-                                </div>
-                                <div class="text-muted mt-2 small text-end">Mode of Payment: GCASH</div>
-                            </div>
-
-
-                            
-
+                        <div class="d-flex flex-column gap-3" id="orderCardsContainer">
 
                         </div>
                     </div>
@@ -398,46 +190,7 @@
             </div>
         </div>
     </div>
-
-
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const offcanvasElement = document.getElementById("offcanvasSidebar");
-            const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
-
-            // Open offcanvas by default on small screens
-            if (window.innerWidth < 768) {
-                bsOffcanvas.show();
-            }
-        });
-
-        fetch("../modal/inventory-management-modal.html")
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById("modal-placeholder").innerHTML = data;
-                document.querySelector('.addbtn').addEventListener('click', function (e) {
-                    e.preventDefault();
-                    confirmOrder();
-                });
-            });
-
-        function openPopup() {
-            const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
-            modal.show();
-        }
-
-        function confirmOrder() {
-            const modal = bootstrap.Modal.getInstance(document.getElementById('confirmModal'));
-            modal.hide();
-
-            const toastElement = document.getElementById('orderToast');
-            const toast = new bootstrap.Toast(toastElement);
-            toast.show();
-        }
-    </script>
-
-    </script>
+    <script src="../assets/js/notif.js"></script>
     <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
         </script>

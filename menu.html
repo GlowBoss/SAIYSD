@@ -260,17 +260,20 @@
         crossorigin="anonymous"></script>
 
     <script>
-
+        // Load item customization modal
         fetch("modal/item-customization.html")
             .then(res => res.text())
             .then(data => {
                 document.getElementById("modal-placeholder").innerHTML = data;
 
                 // Add button listener
-                document.querySelector('.addbtn').addEventListener('click', function (e) {
-                    e.preventDefault();
-                    confirmOrder();
-                });
+                const addBtn = document.querySelector('.addbtn');
+                if (addBtn) {
+                    addBtn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        confirmOrder();
+                    });
+                }
 
                 const modalEl = document.getElementById('item-customization');
                 if (modalEl) {
@@ -280,8 +283,10 @@
                         document.querySelector('.modal-backdrop')?.remove();
                     });
                 }
+            })
+            .catch(error => {
+                console.error('Error loading item customization modal:', error);
             });
-
 
         function openPopup(button) {
             const modal = new bootstrap.Modal(document.getElementById('item-customization'));
@@ -313,21 +318,21 @@
                 sizes.forEach((sz, i) => {
                     const id = `size${sz.name.replace(/\s/g, '')}`;
                     const html = `
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="priceOptions" id="${id}" value="${sz.name}" ${i === 1 ? 'checked' : ''}>
-                        <label class="form-check-label h6" for="${id}">${sz.name}</label>
-                    </div>
-                </div>`;
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="priceOptions" id="${id}" value="${sz.name}" ${i === 1 ? 'checked' : ''}>
+                    <label class="form-check-label h6" for="${id}">${sz.name}</label>
+                </div>
+            </div>`;
                     sizeContainer.insertAdjacentHTML('beforeend', html);
                 });
 
-                // 🟢 Update price when size changes
+                // Update price when size changes
                 document.querySelectorAll('input[name="priceOptions"]').forEach(radio => {
                     radio.addEventListener('change', () => updateModalPrice(sizes));
                 });
 
-                // 🟢 Set initial price
+                // Set initial price
                 updateModalPrice(sizes);
 
             } else {
@@ -348,12 +353,12 @@
                 sugars.forEach((sugar, i) => {
                     const id = `sugar${sugar}`;
                     const html = `
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sugarOption" id="${id}" value="${sugar}" ${i === 0 ? 'checked' : ''}>
-                        <label class="form-check-label h6" for="${id}">${sugar}%</label>
-                    </div>
-                </div>`;
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sugarOption" id="${id}" value="${sugar}" ${i === 0 ? 'checked' : ''}>
+                    <label class="form-check-label h6" for="${id}">${sugar}%</label>
+                </div>
+            </div>`;
                     sugarContainer.insertAdjacentHTML('beforeend', html);
                 });
             } else {
@@ -369,34 +374,40 @@
             }
         }
 
-
         function confirmOrder() {
             const name = document.querySelector('.itemName').textContent;
             const size = document.querySelector('input[name="priceOptions"]:checked')?.value || '';
             const sugar = document.querySelector('input[name="sugarOption"]:checked')?.value || '';
             const ice = document.querySelector('input[name="iceOptions"]:checked')?.id || '';
-            const note = document.getElementById('customer_notes').value;
+            const note = document.getElementById('customer_notes')?.value || '';
 
-            const type = document.querySelector('.modal-body .mx-3:nth-of-type(1)').style.display === 'none' ? 'food' : 'beverage';
+            const type = document.getElementById('size-section').style.display === 'none' ? 'food' : 'beverage';
 
+            // ✅ FIXED: Create better display name
+            let displayName = name;
             let finalName = name;
             if (type === 'beverage') {
                 finalName = `${name}_${size}_${sugar}s_${ice}`;
+                // Keep display name clean for cart
+                displayName = name;
             }
 
             // Get price
             let price = 0;
             if (type === 'beverage') {
                 const selectedSize = document.querySelector('input[name="priceOptions"]:checked')?.value;
-                const allSizes = JSON.parse(document.querySelector('.buy-btn[data-name="' + name + '"]').getAttribute('data-sizes'));
-                const match = allSizes.find(sz => sz.name === selectedSize);
-                if (match) price = match.price;
+                const buyBtn = document.querySelector(`.buy-btn[data-name="${name}"]`);
+                if (buyBtn) {
+                    const allSizes = JSON.parse(buyBtn.getAttribute('data-sizes'));
+                    const match = allSizes.find(sz => sz.name === selectedSize);
+                    if (match) price = match.price;
+                }
             } else {
                 const product = allProducts.find(p => p.name === name);
                 if (product) price = product.price;
             }
 
-            // ✅ Get category
+            // Get category
             const product = allProducts.find(p => p.name === name);
             const validCategories = ['Coffee', 'Tea', 'Food'];
             let category = product?.category || 'Unknown';
@@ -404,52 +415,94 @@
                 category = 'Unknown';
             }
 
-            // ✅ Create order object
+            // ✅ FIXED: Create consistent order object structure
             const order = {
-                name: finalName,
+                name: finalName,        // Full name with customizations for uniqueness
+                displayName: displayName, // Clean name for display
                 quantity: 1,
                 dataCategory: category,
-                price: `₱${price}`,
-                notes: note
+                price: price,           // Store as number for calculations
+                notes: note,
+                size: size,
+                sugar: sugar,
+                ice: ice.replace('ice', ''), // Clean ice option
+                type: type,
+                addedAt: new Date().toISOString()
             };
 
-            // ✅ Save to localStorage
-            let currentOrders = JSON.parse(localStorage.getItem("orders") || "[]");
-            currentOrders.push(order);
+            // ✅ FIXED: Add to existing cart items or create new
+            let currentOrders = [];
+            try {
+                const existingData = localStorage.getItem("orders");
+                currentOrders = existingData ? JSON.parse(existingData) : [];
+            } catch (error) {
+                console.error('Error parsing existing orders:', error);
+                currentOrders = [];
+            }
+
+            // Check if same item already exists in cart
+            const existingIndex = currentOrders.findIndex(item =>
+                item.name === order.name &&
+                item.size === order.size &&
+                item.sugar === order.sugar &&
+                item.ice === order.ice
+            );
+
+            if (existingIndex > -1) {
+                // Increase quantity of existing item
+                currentOrders[existingIndex].quantity++;
+            } else {
+                // Add new item
+                currentOrders.push(order);
+            }
+
+            // ✅ FIXED: Save to consistent localStorage key
             localStorage.setItem("orders", JSON.stringify(currentOrders));
 
             // Close modal
             const modal = bootstrap.Modal.getInstance(document.getElementById('item-customization'));
-            modal.hide();
+            if (modal) modal.hide();
 
-            // 🛠️ FIX: Enable scroll and remove backdrop
+            // Fix scroll and backdrop
             document.body.style.overflow = '';
             document.body.classList.remove('modal-open');
             document.querySelector('.modal-backdrop')?.remove();
 
             // Show toast
             const toast = new bootstrap.Toast(document.getElementById('orderToast'));
-            toast.show();
-        }
+            if (toast) toast.show();
 
+            // ✅ NEW: Update cart badge if function exists
+            if (typeof updateCartBadge === 'function') {
+                updateCartBadge();
+            }
+
+            console.log("Item added to cart:", order);
+            console.log("Current cart:", currentOrders);
+        }
 
         let allProducts = [];
 
         async function fetchProducts() {
-            const res = await fetch('Admin/products.json');
-            const data = await res.json();
+            try {
+                const res = await fetch('Admin/products.json');
+                const data = await res.json();
 
-            // Flatten contents
-            data.forEach(category => {
-                category.contents.forEach(product => {
-                    const base = {
-                        ...product,
-                        category: category.category
-                    };
-                    allProducts.push(base);
+                // Flatten contents
+                allProducts = [];
+                data.forEach(category => {
+                    category.contents.forEach(product => {
+                        const base = {
+                            ...product,
+                            category: category.category
+                        };
+                        allProducts.push(base);
+                    });
                 });
-            });
-            displayProducts();
+                displayProducts();
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
         }
 
         function displayProducts(filterCategory = 'All', sortOption = 'popularity') {
@@ -469,14 +522,16 @@
                     filtered.sort((a, b) => getPrice(b) - getPrice(a));
                     break;
                 case 'newest':
-                    filtered.sort(() => Math.random());
+                    filtered.sort(() => Math.random() - 0.5);
                     break;
                 case 'popularity':
                 default:
-                    filtered.sort(() => Math.random());
+                    filtered.sort(() => Math.random() - 0.5);
             }
 
             const grid = document.getElementById('productGrid');
+            if (!grid) return;
+
             grid.innerHTML = '';
             filtered.forEach(prod => {
                 // Construct size+price string for display
@@ -490,49 +545,47 @@
                 }
 
                 const html = `
-                    <div class="col">
-                        <div class="menu-item text-center shadow-sm" style="
-                            height: 320px; 
-                            background-color: #fff9f2; 
-                            border-radius: 20px; 
-                            border: 1px solid #e0c9a6;
-                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
-                            display: flex; 
-                            flex-direction: column; 
-                            justify-content: space-between; 
-                            padding: 15px;
-                            transition: transform 0.2s ease;
-                        ">
-                            <div style="height: 150px; display: flex; align-items: center; justify-content: center;">
-                                <img src="assets/img/${prod.img}" alt="${prod.name}" class="img-fluid" 
-                                    style="max-height: 100%; max-width: 100%; object-fit: contain;">    
-                            </div>
-                            <div class="subheading menu-name" style="
-                                font-size: 1.2rem; 
-                                font-weight: 500; 
-                                color: #4b2e2e;
-                                margin-top: 10px;
-                            ">
-                                ${prod.name}
-                            </div>  
-                            <div class="d-flex justify-content-center align-items-center text-center px-2" style="color: #6e4f3a; font-size: 0.85rem;">
-                                ${sizePriceDisplay}
-                            </div>
-                            <button class="lead buy-btn mt-auto" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#item-customization"
-                                data-name="${prod.name}"
-                                data-price="${getPrice(prod)}"
-                                data-sizes='${JSON.stringify(prod.sizes || [])}'
-                                data-sugar='${JSON.stringify(prod.sugarLevels || [])}'
-                                data-type="${prod.sizes ? 'beverage' : 'food'}" 
-                                onclick="openPopup(this)">Buy</button>
-                        </div>
-                    </div>`;
+            <div class="col">
+                <div class="menu-item text-center shadow-sm" style="
+                    height: 320px; 
+                    background-color: #fff9f2; 
+                    border-radius: 20px; 
+                    border: 1px solid #e0c9a6;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+                    display: flex; 
+                    flex-direction: column; 
+                    justify-content: space-between; 
+                    padding: 15px;
+                    transition: transform 0.2s ease;
+                ">
+                    <div style="height: 150px; display: flex; align-items: center; justify-content: center;">
+                        <img src="assets/img/${prod.img}" alt="${prod.name}" class="img-fluid" 
+                            style="max-height: 100%; max-width: 100%; object-fit: contain;">    
+                    </div>
+                    <div class="subheading menu-name" style="
+                        font-size: 1.2rem; 
+                        font-weight: 500; 
+                        color: #4b2e2e;
+                        margin-top: 10px;
+                    ">
+                        ${prod.name}
+                    </div>  
+                    <div class="d-flex justify-content-center align-items-center text-center px-2" style="color: #6e4f3a; font-size: 0.85rem;">
+                        ${sizePriceDisplay}
+                    </div>
+                    <button class="lead buy-btn mt-auto" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#item-customization"
+                        data-name="${prod.name}"
+                        data-price="${getPrice(prod)}"
+                        data-sizes='${JSON.stringify(prod.sizes || [])}'
+                        data-sugar='${JSON.stringify(prod.sugarLevels || [])}'
+                        data-type="${prod.sizes ? 'beverage' : 'food'}" 
+                        onclick="openPopup(this)">Buy</button>
+                </div>
+            </div>`;
                 grid.innerHTML += html;
             });
-
-
         }
 
         function getPrice(prod) {
@@ -546,20 +599,45 @@
                 document.querySelectorAll('.category-pill').forEach(el => el.classList.remove('active'));
                 item.classList.add('active');
                 const category = item.dataset.category;
-                const sort = document.getElementById('sortSelect').value;
+                const sort = document.getElementById('sortSelect')?.value || 'popularity';
                 displayProducts(category, sort);
             });
         });
 
         // Sort change
-        document.getElementById('sortSelect').addEventListener('change', e => {
-            const selectedSort = e.target.value;
-            const activeCat = document.querySelector('.category-pill.active').dataset.category;
-            displayProducts(activeCat, selectedSort);
-        });
+        const sortSelect = document.getElementById('sortSelect');
+        if (sortSelect) {
+            sortSelect.addEventListener('change', e => {
+                const selectedSort = e.target.value;
+                const activeCat = document.querySelector('.category-pill.active')?.dataset.category || 'All';
+                displayProducts(activeCat, selectedSort);
+            });
+        }
 
+        // ✅ NEW: Cart badge update function
+        function updateCartBadge() {
+            try {
+                const rawData = localStorage.getItem("orders");
+                const orderData = rawData ? JSON.parse(rawData) : [];
+                const totalItems = orderData.reduce((sum, item) => sum + item.quantity, 0);
+
+                const badge = document.querySelector('.cart-badge');
+                if (badge) {
+                    badge.textContent = totalItems;
+                    badge.style.display = totalItems > 0 ? 'inline' : 'none';
+                }
+            } catch (error) {
+                console.error('Error updating cart badge:', error);
+            }
+        }
+
+        // Initialize
         fetchProducts();
 
+        // Update cart badge on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartBadge();
+        });
     </script>
 
 
