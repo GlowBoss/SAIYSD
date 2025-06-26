@@ -20,11 +20,8 @@
     <div class="container-fluid mainContainer p-3">
         <div class="row">
 
-
             <!-- Offcanvas sidebar for small screens -->
             <div class="">
-                <div class="row offcanvasContainer">
-
                     <div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvasSidebar"
                         aria-labelledby="offcanvasSidebarLabel" style="visibility: visible; background: white;">
                         <div class="offcanvas-header d-flex justify-content-between">
@@ -35,10 +32,8 @@
                                 style="align-self: flex-start;"></button>
                         </div>
 
-
-
-                        <div class="offcanvas-body">
-                            <div class="custom-sidebar rounded-5 p-4 bg-white border h-100">
+                        <div class="offcanvas-body p-4 overflow-auto"> <!-- Added p-0 and overflow-auto -->
+                            <div class="custom-sidebar rounded-5 p-4 bg-white border h-100"> <!-- Keep h-100 -->
                                 <div class="sideBar pb-4">
                                     <p>MENU</p>
                                     <div class="nav-item d-flex justify-content-start align-items-center">
@@ -48,14 +43,6 @@
                                     <div class="nav-item d-flex justify-content-start align-items-center">
                                         <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
                                         <a class="nav-link active ms-2" href="notification.html">Notification</a>
-                                    </div>
-                                    <div class="nav-item d-flex justify-content-start align-items-center">
-                                        <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="point-of-sales.html">POS</a>
-                                    </div>
-                                    <div class="nav-item d-flex justify-content-start align-items-center">
-                                        <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="notification.html">Order Management</a>
                                     </div>
                                     <div class="nav-item d-flex justify-content-start align-items-center">
                                         <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
@@ -76,7 +63,7 @@
                                     </div>
                                 </div>
 
-                                <div class="sideBar pb-4 ">
+                                <div class="sideBar pb-4">
                                     <p>TOOLS</p>
                                     <div class="nav-item d-flex justify-content-start align-items-center">
                                         <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
@@ -84,13 +71,13 @@
                                     </div>
                                     <div class="nav-item d-flex justify-content-start align-items-center">
                                         <img src="../assets/img/dots.png" alt="Menu Icon" class="menu-icon ms-2" />
-                                        <a class="nav-link active ms-2" href="#">Logout</a>
+                                        <a class="nav-link active ms-2" href="login.html">Logout</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                
             </div>
 
             <!-- Main content column -->
