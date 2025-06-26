@@ -17,7 +17,7 @@
     --gray:#333333;
 
     /* FONT-SIZE */
-    --title: clamp(2.5rem, 6vw, 6rem);
+    --title: clamp(2.4rem, 6vw, 6rem);
     --heading: clamp(1.8rem, 4vw, 2.5rem);
     --subheading: clamp(1.2rem, 3vw, 1.5rem);
     --lead: clamp(0.95rem, 2vw, 1rem);
