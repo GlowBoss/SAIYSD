@@ -184,6 +184,23 @@ color: var(--text-color-dark);
     margin-bottom: 20px;
 }
 
+.buy-btn {
+    background-color: var(--primary-color) !important;
+    color: var(--text-color-dark) !important;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.4rem 2.5rem;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.buy-btn:hover {
+    opacity: 0.9;
+    background-color: var(--btn-hover1) !important;
+    color: var(--text-color-light) !important;
+}
+
 
 .btn-checkout {
     background-color: var(--primary-color);
