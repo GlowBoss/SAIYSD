@@ -21,10 +21,9 @@
                 </div>
 
                 <div class="d-flex gap-3 align-items-center flex-wrap justify-content-end">
-                    <button class="btn bg-transparent icon-btn">
+                    <a href="notification.html" class="btn bg-transparent icon-btn">
                         <i class="bi bi-bell"></i>
-                    </button>
-
+                    </a>
                     <a href="../index.html" class="btn custom-visit">
                         <i class="bi bi-globe"></i> <span class="d-none d-md-inline">Visit Site</span>
                     </a>
@@ -39,12 +38,10 @@
                 <p class="dashboard-subtitle">Unlock your potential. Let earnings follow.</p>
 
                 <div class="container mt-5 mb-5">
-                    <div class="row g-4 justify-content-center"> 
+                    <div class="row g-4 justify-content-center">
                         <div class="col-12 col-sm-6 col-md-4">
-                            <a href="point-of-sales.html" class="dashboard-box text-decoration-none">Point of Sale System</a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4">
-                            <a href="notification.html" class="dashboard-box text-decoration-none">Notification</a>
+                            <a href="point-of-sales.html" class="dashboard-box text-decoration-none">Point of Sale
+                                System</a>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4">
                             <a href="inventory-management.html" class="dashboard-box text-decoration-none">Inventory
@@ -59,7 +56,7 @@
                                 Management</a>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4">
-                            <a href="notification.html" class="dashboard-box text-decoration-none">Notification</a>
+                            <a href="user_role.html" class="dashboard-box text-decoration-none">User Role</a>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4">
                             <a href="setting.html" class="dashboard-box text-decoration-none">Settings</a>
